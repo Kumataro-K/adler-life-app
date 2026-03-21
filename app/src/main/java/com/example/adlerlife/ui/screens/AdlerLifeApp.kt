@@ -1,6 +1,7 @@
 package com.example.adlerlife.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -19,7 +21,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Park
 import androidx.compose.material.icons.outlined.SelfImprovement
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Spa
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -33,17 +37,21 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.adlerlife.BuildConfig
 import com.example.adlerlife.data.model.ChatMessage
 import com.example.adlerlife.data.model.TraceDaySummary
 import com.example.adlerlife.data.model.TraceLog
@@ -52,6 +60,10 @@ import com.example.adlerlife.ui.components.CalendarDayCell
 import com.example.adlerlife.ui.components.ChatBubble
 import com.example.adlerlife.ui.components.GentleCard
 import com.example.adlerlife.ui.components.TraceLogRow
+import com.example.adlerlife.util.DISCLAIMER_TEXT
+import com.example.adlerlife.util.PRIVACY_POLICY_TEXT
+import com.example.adlerlife.util.exportLogs
+import com.example.adlerlife.util.shareText
 import com.example.adlerlife.viewmodel.AdlerViewModel
 import java.time.LocalDate
 import java.time.YearMonth
@@ -64,22 +76,69 @@ private enum class Destination(
 ) {
     TRACE("軌跡", { Icon(Icons.Outlined.Spa, contentDescription = null) }),
     CHAT("対話", { Icon(Icons.Outlined.SelfImprovement, contentDescription = null) }),
-    CALENDAR("暦", { Icon(Icons.Outlined.Park, contentDescription = null) })
+    CALENDAR("暦", { Icon(Icons.Outlined.Park, contentDescription = null) }),
+    SETTINGS("設定", { Icon(Icons.Outlined.Settings, contentDescription = null) })
 }
+
+private enum class LegalDocument { DISCLAIMER, PRIVACY }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AdlerLifeApp(viewModel: AdlerViewModel) {
+fun AdlerLifeApp(
+    viewModel: AdlerViewModel,
+    showDisclaimerInitially: Boolean,
+    onDisclaimerAccepted: () -> Unit
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val traceLogs by viewModel.traceLogs.collectAsStateWithLifecycle()
     val monthSummaries by viewModel.monthSummaries.collectAsStateWithLifecycle()
-    var destination by remember { mutableStateOf(Destination.TRACE) }
+    var destination by rememberSaveable { mutableStateOf(Destination.TRACE) }
     var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
+    var showInitialDisclaimer by rememberSaveable { mutableStateOf(showDisclaimerInitially) }
+    var openDocument by remember { mutableStateOf<LegalDocument?>(null) }
+    val context = androidx.compose.ui.platform.LocalContext.current
+
+    LaunchedEffect(showDisclaimerInitially) {
+        if (showDisclaimerInitially) showInitialDisclaimer = true
+    }
 
     selectedDate?.let { date ->
         ModalBottomSheet(onDismissRequest = { selectedDate = null }) {
             DayLogSheet(date = date, logs = viewModel.logsForDate(date))
         }
+    }
+
+    openDocument?.let { document ->
+        LegalDocumentDialog(
+            title = if (document == LegalDocument.DISCLAIMER) "ご利用の前に" else "プライバシーポリシー",
+            text = if (document == LegalDocument.DISCLAIMER) DISCLAIMER_TEXT else PRIVACY_POLICY_TEXT,
+            onDismiss = { openDocument = null }
+        )
+    }
+
+    if (showInitialDisclaimer) {
+        AlertDialog(
+            onDismissRequest = {},
+            title = { Text("ご利用の前に") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Text(DISCLAIMER_TEXT)
+                    TextButton(onClick = { openDocument = LegalDocument.PRIVACY }) {
+                        Text("プライバシーポリシーを見る")
+                    }
+                }
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        showInitialDisclaimer = false
+                        onDisclaimerAccepted()
+                    }
+                ) {
+                    Text("同意して始める 🌿")
+                }
+            }
+        )
     }
 
     Scaffold(
@@ -147,6 +206,13 @@ fun AdlerLifeApp(viewModel: AdlerViewModel) {
                     onPreviousMonth = viewModel::previousMonth,
                     onNextMonth = viewModel::nextMonth,
                     onSelectDate = { selectedDate = it }
+                )
+
+                Destination.SETTINGS -> SettingsScreen(
+                    onShowDisclaimer = { openDocument = LegalDocument.DISCLAIMER },
+                    onShowPrivacy = { openDocument = LegalDocument.PRIVACY },
+                    onExport = { shareText(context, exportLogs(traceLogs)) },
+                    versionName = BuildConfig.VERSION_NAME
                 )
             }
         }
@@ -394,6 +460,84 @@ private fun CalendarScreen(
             AdBanner()
         }
     }
+}
+
+@Composable
+private fun SettingsScreen(
+    onShowDisclaimer: () -> Unit,
+    onShowPrivacy: () -> Unit,
+    onExport: () -> Unit,
+    versionName: String
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        GentleCard(
+            title = "設定",
+            subtitle = "法務情報やエクスポートをここから開けます。"
+        ) {
+            SettingsRow(title = "免責事項", subtitle = "セルフケアアプリとしての位置づけを確認") { onShowDisclaimer() }
+            SettingsRow(title = "プライバシーポリシー", subtitle = "データ保存と広告配信について") { onShowPrivacy() }
+            SettingsRow(title = "記録をエクスポート 📤", subtitle = "共有シートでメモやメールへ送る") { onExport() }
+            Text(
+                text = "バージョン情報  $versionName",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.72f)
+            )
+        }
+        GentleCard(
+            title = "ご利用の前に",
+            subtitle = "いつでも全文を確認できます。"
+        ) {
+            Text(
+                text = DISCLAIMER_TEXT,
+                modifier = Modifier.clickable { onShowDisclaimer() },
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
+    }
+}
+
+@Composable
+private fun SettingsRow(title: String, subtitle: String, onClick: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(vertical = 6.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        Text(title, style = MaterialTheme.typography.bodyLarge)
+        Text(
+            subtitle,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.68f)
+        )
+    }
+}
+
+@Composable
+private fun LegalDocumentDialog(title: String, text: String, onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(title) },
+        text = {
+            Column(
+                modifier = Modifier.heightIn(max = 420.dp).verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text(text)
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("閉じる")
+            }
+        }
+    )
 }
 
 @Composable

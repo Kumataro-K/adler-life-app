@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.adlerlife.data.local.AdlerDatabase
+import com.example.adlerlife.data.local.AppPreferences
 import com.example.adlerlife.data.repository.AdlerRepository
 import com.example.adlerlife.domain.HybridAiCoach
 import com.example.adlerlife.ui.screens.AdlerLifeApp
@@ -15,6 +17,7 @@ import com.google.android.gms.ads.MobileAds
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         MobileAds.initialize(this) {}
@@ -23,11 +26,16 @@ class MainActivity : ComponentActivity() {
             dao = AdlerDatabase.getInstance(applicationContext).adlerDao(),
             aiCoach = HybridAiCoach()
         )
+        val preferences = AppPreferences(this)
 
         setContent {
             ForestMoodTheme {
                 val viewModel = viewModel<AdlerViewModel>(factory = AdlerViewModel.Factory(repository))
-                AdlerLifeApp(viewModel)
+                AdlerLifeApp(
+                    viewModel = viewModel,
+                    showDisclaimerInitially = !preferences.hasAcceptedDisclaimer(),
+                    onDisclaimerAccepted = preferences::setDisclaimerAccepted
+                )
             }
         }
     }
