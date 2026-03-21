@@ -1,10 +1,8 @@
 package com.example.adlerlife.domain
 
 import com.example.adlerlife.BuildConfig
-import com.example.adlerlife.data.model.ActionCategory
-import com.example.adlerlife.data.model.ActionLogEntity
-import com.example.adlerlife.data.model.CoachingInsight
-import com.example.adlerlife.data.model.ReflectionInput
+import com.example.adlerlife.data.model.ChatMessage
+import com.example.adlerlife.data.model.TraceLog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
@@ -13,61 +11,54 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 interface AiCoach {
-    suspend fun suggestMicroAction(desire: String, mood: Int, energyLevel: Int): String
-    suspend fun reflectOnValues(input: ReflectionInput, actions: List<ActionLogEntity>): CoachingInsight
+    suspend fun reflectToday(logs: List<TraceLog>): String
+    suspend fun continueConversation(logs: List<TraceLog>, history: List<ChatMessage>, userMessage: String): String
 }
 
 class HybridAiCoach(
     private val client: OkHttpClient = OkHttpClient()
 ) : AiCoach {
-    override suspend fun suggestMicroAction(desire: String, mood: Int, energyLevel: Int): String {
-        val fallback = localSuggestion(desire, mood, energyLevel)
+    override suspend fun reflectToday(logs: List<TraceLog>): String {
+        val fallback = localReflection(logs)
+        if (logs.isEmpty()) return fallback
         return requestOpenAi(
-            systemPrompt = """
-                You are a gentle Adlerian coach. Avoid commands and evaluation.
-                Suggest one tiny action for the present moment in Japanese.
-                Keep it under 40 Japanese characters, soften with possibility, and never mention productivity.
-            """.trimIndent(),
-            userPrompt = "今やりたいこと: $desire / 気分: $mood / エネルギー: $energyLevel / fallback: $fallback"
+            systemPrompt = SYSTEM_PROMPT,
+            userPrompt = buildString {
+                appendLine("今日の記録です：")
+                logs.forEach { appendLine(it.toPromptLine()) }
+                appendLine("この内容をもとに、私自身への問いかけをしてください。")
+            }
         ) ?: fallback
     }
 
-    override suspend fun reflectOnValues(
-        input: ReflectionInput,
-        actions: List<ActionLogEntity>
-    ): CoachingInsight {
-        val fallback = localInsight(input, actions)
-        val response = requestOpenAi(
-            systemPrompt = """
-                You are a reflective Adlerian coach. In Japanese, infer values from daily notes without judging.
-                Return exactly two lines:
-                summary: <one sentence>
-                prompt: <one open question>
-            """.trimIndent(),
+    override suspend fun continueConversation(
+        logs: List<TraceLog>,
+        history: List<ChatMessage>,
+        userMessage: String
+    ): String {
+        val fallback = localFollowUp(logs, userMessage)
+        return requestOpenAi(
+            systemPrompt = SYSTEM_PROMPT,
             userPrompt = buildString {
-                appendLine("今日やったこと: ${input.actionsSummary}")
-                appendLine("印象に残った瞬間: ${input.memorableMoment}")
-                appendLine("小さな喜び: ${input.smallJoy}")
-                appendLine("最近の行動カテゴリ: ${actions.joinToString { it.category.label }}")
+                appendLine("今日の記録です：")
+                if (logs.isEmpty()) {
+                    appendLine("- 今日はまだ記録がありません。")
+                } else {
+                    logs.forEach { appendLine(it.toPromptLine()) }
+                }
+                appendLine("これまでの会話：")
+                history.takeLast(6).forEach { message ->
+                    appendLine("- ${message.role.name}: ${message.text}")
+                }
+                appendLine("ユーザーの追加入力: $userMessage")
+                appendLine("この流れを受けて、問いかけ形式で返してください。")
             }
-        ) ?: return fallback
-
-        val lines = response.lines()
-        val summary = lines.firstOrNull { it.startsWith("summary:") }
-            ?.removePrefix("summary:")
-            ?.trim()
-            .orEmpty()
-        val prompt = lines.firstOrNull { it.startsWith("prompt:") }
-            ?.removePrefix("prompt:")
-            ?.trim()
-            .orEmpty()
-        return if (summary.isNotBlank() && prompt.isNotBlank()) {
-            CoachingInsight(summary = summary, prompt = prompt)
-        } else {
-            fallback
-        }
+        ) ?: fallback
     }
 
     private suspend fun requestOpenAi(systemPrompt: String, userPrompt: String): String? {
@@ -104,7 +95,7 @@ class HybridAiCoach(
                     }
                     null
                 }
-            }.getOrNull()
+            }.getOrNull()?.trim()?.takeIf { it.isNotBlank() }
         }
     }
 
@@ -121,35 +112,37 @@ class HybridAiCoach(
             )
     }
 
-    private fun localSuggestion(desire: String, mood: Int, energyLevel: Int): String {
-        val desireText = desire.lowercase()
-        return when {
-            energyLevel < 30 -> "深呼吸して、窓辺で1分ぼんやりしてみる"
-            "話" in desireText || "会" in desireText -> "気になる人にひとこと送ってみる"
-            mood < 40 -> "好きな音を1曲だけ流してみる"
-            energyLevel > 70 -> "5分だけ外の空気を吸いに行ってみる"
-            else -> "気になる本やメモを5分だけひらいてみる"
-        }
+    private fun TraceLog.toPromptLine(): String {
+        val time = SimpleDateFormat("HH:mm", Locale.JAPAN).format(Date(timestamp))
+        return "- ${time} / 何をしたか: $what / どう感じたか: $howFelt / 気分: $mood / エネルギー: $energy"
     }
 
-    private fun localInsight(input: ReflectionInput, actions: List<ActionLogEntity>): CoachingInsight {
-        val topCategory = actions.groupingBy { it.category }.eachCount().maxByOrNull { it.value }?.key
-        val summary = when (topCategory) {
-            ActionCategory.CONNECTION -> "今日は人とのつながりの中で、自分らしい温度を大切にしていたようです。"
-            ActionCategory.BODY -> "今日は身体の感覚を手がかりに、無理のない流れを選んでいたようです。"
-            ActionCategory.CREATIVE -> "今日は表現や遊び心が、あなたの充実につながっていたようです。"
-            ActionCategory.DISCOVERY -> "今日は新しい発見に心がほどける瞬間を大切にしていたようです。"
-            else -> "今日は静かな余白や小さなよろこびを、自分なりに守っていたようです。"
-        }
-        val prompt = when {
-            input.memorableMoment.isNotBlank() -> "その瞬間に、どんな感覚がいちばん自然でしたか？"
-            input.smallJoy.isNotBlank() -> "その小さな喜びは、これからの日々にどう置いておきたいですか？"
-            else -> "最近の過ごし方の中で、いちばん肩の力が抜けるのはどんな場面ですか？"
-        }
-        return CoachingInsight(summary = summary, prompt = prompt)
+    private fun localReflection(logs: List<TraceLog>): String {
+        if (logs.isEmpty()) return "今日はまだ記録がないようですが、いま言葉にしてみたい感覚はありますか？"
+        val words = logs.flatMap { listOf(it.what, it.howFelt) }
+            .flatMap { it.split(" ", "、", "。", "\n") }
+            .map { it.trim() }
+            .filter { it.length >= 2 }
+        val echoed = words.lastOrNull() ?: logs.first().what
+        return "「$echoed」という言葉に今日の手ざわりがあるとしたら、どんな場面がいちばん残っていますか？"
+    }
+
+    private fun localFollowUp(logs: List<TraceLog>, userMessage: String): String {
+        val base = userMessage.takeIf { it.isNotBlank() } ?: logs.firstOrNull()?.howFelt ?: "今日の流れ"
+        return "「$base」をもう少しほどいてみると、その奥にはどんな気持ちや願いがありそうですか？"
     }
 
     companion object {
         private val JSON = "application/json; charset=utf-8".toMediaType()
+        private const val SYSTEM_PROMPT = """
+あなたは評価をしないコーチです。
+以下のルールを必ず守ってください：
+
+「良い」「悪い」「すべき」「できた」「できなかった」は使わない
+必ず問いかけ形式（疑問文）で終わる
+3文以内で返す
+ユーザーの言葉をそのまま使う
+アドラー心理学に限定せず、人間の感情や動機に寄り添う
+"""
     }
 }

@@ -4,17 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.example.adlerlife.data.model.ActionLogEntity
-import com.example.adlerlife.data.model.ImpulseLogEntity
-import com.example.adlerlife.data.model.ReflectionLogEntity
+import com.example.adlerlife.data.model.TraceLog
 
 @Database(
-    entities = [ImpulseLogEntity::class, ActionLogEntity::class, ReflectionLogEntity::class],
-    version = 1,
+    entities = [TraceLog::class],
+    version = 2,
     exportSchema = false
 )
-@TypeConverters(Converters::class)
 abstract class AdlerDatabase : RoomDatabase() {
     abstract fun adlerDao(): AdlerDao
 
@@ -28,7 +24,7 @@ abstract class AdlerDatabase : RoomDatabase() {
                     context.applicationContext,
                     AdlerDatabase::class.java,
                     "adler_life.db"
-                ).build().also { instance = it }
+                ).fallbackToDestructiveMigration().build().also { instance = it }
             }
         }
     }

@@ -3,64 +3,52 @@ package com.example.adlerlife.data.model
 import androidx.compose.ui.graphics.Color
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.LocalDateTime
-import java.util.UUID
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
 
-@Entity(tableName = "impulse_logs")
-data class ImpulseLogEntity(
-    @PrimaryKey val id: String = UUID.randomUUID().toString(),
-    val desire: String,
-    val mood: Int,
-    val energyLevel: Int,
-    val suggestion: String,
-    val createdAt: String = LocalDateTime.now().toString()
+@Entity(tableName = "trace_logs")
+data class TraceLog(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val what: String,
+    val howFelt: String,
+    val mood: Float,
+    val energy: Float,
+    val timestamp: Long = System.currentTimeMillis()
 )
 
-@Entity(tableName = "action_logs")
-data class ActionLogEntity(
-    @PrimaryKey val id: String = UUID.randomUUID().toString(),
-    val action: String,
-    val feeling: String,
-    val category: ActionCategory,
-    val createdAt: String = LocalDateTime.now().toString()
+data class TraceInput(
+    val what: String = "",
+    val howFelt: String = "",
+    val mood: Float = 0.5f,
+    val energy: Float = 0.5f
 )
 
-@Entity(tableName = "reflection_logs")
-data class ReflectionLogEntity(
-    @PrimaryKey val id: String = UUID.randomUUID().toString(),
-    val actionsSummary: String,
-    val memorableMoment: String,
-    val smallJoy: String,
-    val aiFeedback: String,
-    val createdAt: String = LocalDateTime.now().toString()
-)
-
-enum class ActionCategory(val label: String, val color: Color) {
-    REST("余白", Color(0xFF8FB3A5)),
-    CREATIVE("表現", Color(0xFFD6A77A)),
-    CONNECTION("対話", Color(0xFFB38CB4)),
-    BODY("身体", Color(0xFF7FA7D8)),
-    DISCOVERY("発見", Color(0xFFB8C47A))
+data class TraceDaySummary(
+    val date: LocalDate,
+    val averageMood: Float,
+    val logs: List<TraceLog>
+) {
+    val color: Color
+        get() = when {
+            logs.isEmpty() -> Color(0xFFF5F5F5)
+            averageMood <= 0.33f -> Color(0xFFFFCDD2)
+            averageMood <= 0.66f -> Color(0xFFFFF9C4)
+            else -> Color(0xFFC8E6C9)
+        }
 }
 
-data class ImpulseInput(
-    val desire: String = "",
-    val mood: Int = 50,
-    val energyLevel: Int = 50
+data class ChatMessage(
+    val id: String,
+    val role: ChatRole,
+    val text: String,
+    val timestamp: Long = System.currentTimeMillis()
 )
 
-data class ReflectionInput(
-    val actionsSummary: String = "",
-    val memorableMoment: String = "",
-    val smallJoy: String = ""
-)
+enum class ChatRole {
+    USER,
+    AI
+}
 
-data class DailyTrajectory(
-    val date: String,
-    val categories: List<ActionCategory>
-)
-
-data class CoachingInsight(
-    val summary: String,
-    val prompt: String
-)
+fun TraceLog.toLocalDate(zoneId: ZoneId = ZoneId.systemDefault()): LocalDate =
+    Instant.ofEpochMilli(timestamp).atZone(zoneId).toLocalDate()

@@ -4,28 +4,20 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.adlerlife.data.model.ActionLogEntity
-import com.example.adlerlife.data.model.ImpulseLogEntity
-import com.example.adlerlife.data.model.ReflectionLogEntity
+import com.example.adlerlife.data.model.TraceLog
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AdlerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertImpulseLog(log: ImpulseLogEntity)
+    suspend fun insertTraceLog(log: TraceLog)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertActionLog(log: ActionLogEntity)
+    @Query("SELECT * FROM trace_logs ORDER BY timestamp DESC")
+    fun observeTraceLogs(): Flow<List<TraceLog>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertReflectionLog(log: ReflectionLogEntity)
+    @Query("SELECT * FROM trace_logs WHERE timestamp BETWEEN :startInclusive AND :endExclusive ORDER BY timestamp DESC")
+    fun observeTraceLogsBetween(startInclusive: Long, endExclusive: Long): Flow<List<TraceLog>>
 
-    @Query("SELECT * FROM impulse_logs ORDER BY createdAt DESC LIMIT 1")
-    fun observeLatestImpulseLog(): Flow<ImpulseLogEntity?>
-
-    @Query("SELECT * FROM action_logs ORDER BY createdAt DESC")
-    fun observeActionLogs(): Flow<List<ActionLogEntity>>
-
-    @Query("SELECT * FROM reflection_logs ORDER BY createdAt DESC LIMIT 1")
-    fun observeLatestReflection(): Flow<ReflectionLogEntity?>
+    @Query("SELECT * FROM trace_logs WHERE timestamp BETWEEN :startInclusive AND :endExclusive ORDER BY timestamp DESC")
+    suspend fun getTraceLogsBetween(startInclusive: Long, endExclusive: Long): List<TraceLog>
 }

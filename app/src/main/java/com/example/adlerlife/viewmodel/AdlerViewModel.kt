@@ -3,34 +3,40 @@ package com.example.adlerlife.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.adlerlife.data.model.ActionCategory
-import com.example.adlerlife.data.model.ActionLogEntity
-import com.example.adlerlife.data.model.CoachingInsight
-import com.example.adlerlife.data.model.DailyTrajectory
-import com.example.adlerlife.data.model.ImpulseInput
-import com.example.adlerlife.data.model.ReflectionInput
+import com.example.adlerlife.data.model.ChatMessage
+import com.example.adlerlife.data.model.ChatRole
+import com.example.adlerlife.data.model.TraceDaySummary
+import com.example.adlerlife.data.model.TraceInput
+import com.example.adlerlife.data.model.TraceLog
+import com.example.adlerlife.data.model.toLocalDate
 import com.example.adlerlife.data.repository.AdlerRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.YearMonth
+import java.util.UUID
 
 data class AdlerUiState(
-    val impulseInput: ImpulseInput = ImpulseInput(),
-    val currentSuggestion: String = "いまの気分に耳を澄ませると、小さな行動が見つかるかもしれません。",
-    val reflectionInput: ReflectionInput = ReflectionInput(),
-    val reflectionInsight: CoachingInsight = CoachingInsight(
-        summary = "今日の軌跡は、まだ静かに余白を残しています。",
-        prompt = "今日の中で、少しでも呼吸が楽だった場面はありましたか？"
+    val traceInput: TraceInput = TraceInput(),
+    val selectedMonth: YearMonth = YearMonth.now(),
+    val conversationDate: LocalDate = LocalDate.now(),
+    val chatMessages: List<ChatMessage> = listOf(
+        ChatMessage(
+            id = UUID.randomUUID().toString(),
+            role = ChatRole.AI,
+            text = "今日の軌跡を振り返るとき、どの場面から言葉にしてみたくなりますか？"
+        )
     ),
-    val actionDraft: String = "",
-    val feelingDraft: String = "",
-    val selectedCategory: ActionCategory = ActionCategory.REST,
-    val isLoadingSuggestion: Boolean = false,
-    val isLoadingReflection: Boolean = false
+    val chatDraft: String = "",
+    val aiReply: String = "まだ対話は始まっていません。必要なときだけボタンを押してください。",
+    val isSavingTrace: Boolean = false,
+    val isLoadingConversation: Boolean = false
 )
 
 class AdlerViewModel(
@@ -39,88 +45,136 @@ class AdlerViewModel(
     private val _uiState = MutableStateFlow(AdlerUiState())
     val uiState = _uiState.asStateFlow()
 
-    val actionLogs: StateFlow<List<ActionLogEntity>> = repository.actionLogs.stateIn(
+    val traceLogs: StateFlow<List<TraceLog>> = repository.traceLogs.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
         initialValue = emptyList()
     )
 
-    val trajectories: StateFlow<List<DailyTrajectory>> = repository.calendarTrajectory.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = emptyList()
-    )
+    val monthSummaries: StateFlow<List<TraceDaySummary>> = uiState
+        .flatMapLatest { repository.observeMonthSummaries(it.selectedMonth) }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = emptyList()
+        )
 
-    val coaching: StateFlow<CoachingInsight> = repository.coachingInsight.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = AdlerUiState().reflectionInsight
-    )
+    fun updateWhat(value: String) = _uiState.update {
+        it.copy(traceInput = it.traceInput.copy(what = value))
+    }
 
-    fun updateDesire(value: String) = _uiState.update {
-        it.copy(impulseInput = it.impulseInput.copy(desire = value))
+    fun updateHowFelt(value: String) = _uiState.update {
+        it.copy(traceInput = it.traceInput.copy(howFelt = value))
     }
 
     fun updateMood(value: Float) = _uiState.update {
-        it.copy(impulseInput = it.impulseInput.copy(mood = value.toInt()))
+        it.copy(traceInput = it.traceInput.copy(mood = value))
     }
 
     fun updateEnergy(value: Float) = _uiState.update {
-        it.copy(impulseInput = it.impulseInput.copy(energyLevel = value.toInt()))
+        it.copy(traceInput = it.traceInput.copy(energy = value))
     }
 
-    fun requestSuggestion() {
+    fun saveTrace() {
+        val input = uiState.value.traceInput
+        if (input.what.isBlank() || input.howFelt.isBlank()) return
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoadingSuggestion = true) }
-            val suggestion = repository.createImpulseSuggestion(uiState.value.impulseInput)
-            _uiState.update { it.copy(currentSuggestion = suggestion, isLoadingSuggestion = false) }
-        }
-    }
-
-    fun updateActionDraft(value: String) = _uiState.update { it.copy(actionDraft = value) }
-    fun updateFeelingDraft(value: String) = _uiState.update { it.copy(feelingDraft = value) }
-    fun updateCategory(category: ActionCategory) = _uiState.update { it.copy(selectedCategory = category) }
-
-    fun saveActionLog() {
-        val snapshot = uiState.value
-        if (snapshot.actionDraft.isBlank() || snapshot.feelingDraft.isBlank()) return
-        viewModelScope.launch {
-            repository.addActionLog(snapshot.actionDraft, snapshot.feelingDraft, snapshot.selectedCategory)
+            _uiState.update { it.copy(isSavingTrace = true) }
+            repository.saveTrace(input)
             _uiState.update {
                 it.copy(
-                    actionDraft = "",
-                    feelingDraft = "",
-                    selectedCategory = ActionCategory.REST
+                    traceInput = TraceInput(mood = it.traceInput.mood, energy = it.traceInput.energy),
+                    isSavingTrace = false
                 )
             }
         }
     }
 
-    fun updateReflectionActions(value: String) = _uiState.update {
-        it.copy(reflectionInput = it.reflectionInput.copy(actionsSummary = value))
-    }
+    fun previousMonth() = _uiState.update { it.copy(selectedMonth = it.selectedMonth.minusMonths(1)) }
+    fun nextMonth() = _uiState.update { it.copy(selectedMonth = it.selectedMonth.plusMonths(1)) }
 
-    fun updateReflectionMoment(value: String) = _uiState.update {
-        it.copy(reflectionInput = it.reflectionInput.copy(memorableMoment = value))
-    }
+    fun updateChatDraft(value: String) = _uiState.update { it.copy(chatDraft = value) }
 
-    fun updateReflectionJoy(value: String) = _uiState.update {
-        it.copy(reflectionInput = it.reflectionInput.copy(smallJoy = value))
-    }
-
-    fun submitReflection() {
+    fun reflectToday() {
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoadingReflection = true) }
-            val insight = repository.reflect(uiState.value.reflectionInput)
+            val today = LocalDate.now()
+            val todayLogs = repository.getTodayLogs(today)
+            _uiState.update { state ->
+                val resetHistory = if (state.conversationDate != today) {
+                    listOf(
+                        ChatMessage(
+                            id = UUID.randomUUID().toString(),
+                            role = ChatRole.AI,
+                            text = "今日の軌跡を振り返るとき、どの場面から言葉にしてみたくなりますか？"
+                        )
+                    )
+                } else {
+                    state.chatMessages
+                }
+                state.copy(
+                    conversationDate = today,
+                    chatMessages = resetHistory,
+                    isLoadingConversation = true
+                )
+            }
+            val response = repository.reflectToday(todayLogs)
             _uiState.update {
+                val aiMessage = ChatMessage(
+                    id = UUID.randomUUID().toString(),
+                    role = ChatRole.AI,
+                    text = response
+                )
                 it.copy(
-                    reflectionInsight = insight,
-                    isLoadingReflection = false,
-                    reflectionInput = ReflectionInput()
+                    aiReply = response,
+                    isLoadingConversation = false,
+                    chatMessages = it.chatMessages + aiMessage
                 )
             }
         }
     }
+
+    fun sendChatMessage() {
+        val userText = uiState.value.chatDraft.trim()
+        if (userText.isBlank()) return
+        viewModelScope.launch {
+            val today = LocalDate.now()
+            val todayLogs = repository.getTodayLogs(today)
+            val userMessage = ChatMessage(
+                id = UUID.randomUUID().toString(),
+                role = ChatRole.USER,
+                text = userText
+            )
+            _uiState.update { state ->
+                val baseHistory = if (state.conversationDate == today) {
+                    state.chatMessages
+                } else {
+                    emptyList()
+                }
+                state.copy(
+                    conversationDate = today,
+                    chatDraft = "",
+                    isLoadingConversation = true,
+                    chatMessages = baseHistory + userMessage
+                )
+            }
+            val history = uiState.value.chatMessages
+            val reply = repository.continueConversation(todayLogs, history, userText)
+            _uiState.update {
+                val aiMessage = ChatMessage(
+                    id = UUID.randomUUID().toString(),
+                    role = ChatRole.AI,
+                    text = reply
+                )
+                it.copy(
+                    aiReply = reply,
+                    isLoadingConversation = false,
+                    chatMessages = it.chatMessages + aiMessage
+                )
+            }
+        }
+    }
+
+    fun logsForDate(date: LocalDate): List<TraceLog> = traceLogs.value.filter { it.toLocalDate() == date }
 
     class Factory(
         private val repository: AdlerRepository
