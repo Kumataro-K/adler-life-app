@@ -23,10 +23,10 @@ class AdlerRepository(
     suspend fun saveTrace(input: TraceInput) {
         dao.insertTraceLog(
             TraceLog(
-                what = input.what.trim(),
-                howFelt = input.howFelt.trim(),
                 mood = input.mood,
-                energy = input.energy
+                energy = input.energy,
+                whatHappened = input.whatHappened.trim(),
+                feeling = input.feeling.trim()
             )
         )
     }
@@ -44,12 +44,6 @@ class AdlerRepository(
                     )
                 }
         }
-    }
-
-    fun observeLogsForDate(date: LocalDate): Flow<List<TraceLog>> {
-        val start = date.atStartOfDay(zoneId).toInstant().toEpochMilli()
-        val end = date.plusDays(1).atStartOfDay(zoneId).toInstant().toEpochMilli()
-        return dao.observeTraceLogsBetween(start, end)
     }
 
     suspend fun getTodayLogs(today: LocalDate = LocalDate.now(zoneId)): List<TraceLog> {

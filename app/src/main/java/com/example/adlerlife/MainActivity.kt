@@ -9,13 +9,15 @@ import com.example.adlerlife.data.local.AdlerDatabase
 import com.example.adlerlife.data.repository.AdlerRepository
 import com.example.adlerlife.domain.HybridAiCoach
 import com.example.adlerlife.ui.screens.AdlerLifeApp
-import com.example.adlerlife.ui.theme.AdlerLifeTheme
+import com.example.adlerlife.ui.theme.ForestMoodTheme
 import com.example.adlerlife.viewmodel.AdlerViewModel
+import com.google.android.gms.ads.MobileAds
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        MobileAds.initialize(this) {}
 
         val repository = AdlerRepository(
             dao = AdlerDatabase.getInstance(applicationContext).adlerDao(),
@@ -23,7 +25,7 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
-            AdlerLifeTheme {
+            ForestMoodTheme {
                 val viewModel = viewModel<AdlerViewModel>(factory = AdlerViewModel.Factory(repository))
                 AdlerLifeApp(viewModel)
             }

@@ -30,11 +30,11 @@ data class AdlerUiState(
         ChatMessage(
             id = UUID.randomUUID().toString(),
             role = ChatRole.AI,
-            text = "今日の軌跡を振り返るとき、どの場面から言葉にしてみたくなりますか？"
+            text = "森の中でひと息つくように、今日はどんな気分だったかから話してみませんか？"
         )
     ),
     val chatDraft: String = "",
-    val aiReply: String = "まだ対話は始まっていません。必要なときだけボタンを押してください。",
+    val aiReply: String = "必要なときだけ、今日の記録をもとにやさしく振り返れます。",
     val isSavingTrace: Boolean = false,
     val isLoadingConversation: Boolean = false
 )
@@ -59,14 +59,6 @@ class AdlerViewModel(
             initialValue = emptyList()
         )
 
-    fun updateWhat(value: String) = _uiState.update {
-        it.copy(traceInput = it.traceInput.copy(what = value))
-    }
-
-    fun updateHowFelt(value: String) = _uiState.update {
-        it.copy(traceInput = it.traceInput.copy(howFelt = value))
-    }
-
     fun updateMood(value: Float) = _uiState.update {
         it.copy(traceInput = it.traceInput.copy(mood = value))
     }
@@ -75,12 +67,18 @@ class AdlerViewModel(
         it.copy(traceInput = it.traceInput.copy(energy = value))
     }
 
+    fun updateWhatHappened(value: String) = _uiState.update {
+        it.copy(traceInput = it.traceInput.copy(whatHappened = value))
+    }
+
+    fun updateFeeling(value: String) = _uiState.update {
+        it.copy(traceInput = it.traceInput.copy(feeling = value))
+    }
+
     fun saveTrace() {
-        val input = uiState.value.traceInput
-        if (input.what.isBlank() || input.howFelt.isBlank()) return
         viewModelScope.launch {
             _uiState.update { it.copy(isSavingTrace = true) }
-            repository.saveTrace(input)
+            repository.saveTrace(uiState.value.traceInput)
             _uiState.update {
                 it.copy(
                     traceInput = TraceInput(mood = it.traceInput.mood, energy = it.traceInput.energy),
@@ -100,20 +98,20 @@ class AdlerViewModel(
             val today = LocalDate.now()
             val todayLogs = repository.getTodayLogs(today)
             _uiState.update { state ->
-                val resetHistory = if (state.conversationDate != today) {
+                val baseMessages = if (state.conversationDate == today) {
+                    state.chatMessages
+                } else {
                     listOf(
                         ChatMessage(
                             id = UUID.randomUUID().toString(),
                             role = ChatRole.AI,
-                            text = "今日の軌跡を振り返るとき、どの場面から言葉にしてみたくなりますか？"
+                            text = "森の中でひと息つくように、今日はどんな気分だったかから話してみませんか？"
                         )
                     )
-                } else {
-                    state.chatMessages
                 }
                 state.copy(
                     conversationDate = today,
-                    chatMessages = resetHistory,
+                    chatMessages = baseMessages,
                     isLoadingConversation = true
                 )
             }

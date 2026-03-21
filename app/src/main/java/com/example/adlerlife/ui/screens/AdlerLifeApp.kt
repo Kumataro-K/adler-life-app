@@ -9,17 +9,18 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.AutoAwesome
-import androidx.compose.material.icons.outlined.CalendarMonth
-import androidx.compose.material.icons.outlined.ChevronLeft
-import androidx.compose.material.icons.outlined.ChevronRight
+import androidx.compose.material.icons.outlined.Park
 import androidx.compose.material.icons.outlined.SelfImprovement
+import androidx.compose.material.icons.outlined.Spa
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -44,12 +45,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.adlerlife.data.model.ChatMessage
 import com.example.adlerlife.data.model.TraceDaySummary
 import com.example.adlerlife.data.model.TraceLog
+import com.example.adlerlife.ui.components.AdBanner
 import com.example.adlerlife.ui.components.CalendarDayCell
 import com.example.adlerlife.ui.components.ChatBubble
 import com.example.adlerlife.ui.components.GentleCard
-import com.example.adlerlife.ui.components.MetricPill
 import com.example.adlerlife.ui.components.TraceLogRow
 import com.example.adlerlife.viewmodel.AdlerViewModel
 import java.time.LocalDate
@@ -61,9 +63,9 @@ private enum class Destination(
     val label: String,
     val icon: @Composable () -> Unit
 ) {
-    LOG("軌跡", { Icon(Icons.Outlined.SelfImprovement, contentDescription = null) }),
-    CHAT("対話", { Icon(Icons.Outlined.AutoAwesome, contentDescription = null) }),
-    CALENDAR("暦", { Icon(Icons.Outlined.CalendarMonth, contentDescription = null) })
+    TRACE("軌跡", { Icon(Icons.Outlined.Spa, contentDescription = null) }),
+    CHAT("対話", { Icon(Icons.Outlined.SelfImprovement, contentDescription = null) }),
+    CALENDAR("暦", { Icon(Icons.Outlined.Park, contentDescription = null) })
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -72,15 +74,12 @@ fun AdlerLifeApp(viewModel: AdlerViewModel) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val traceLogs by viewModel.traceLogs.collectAsStateWithLifecycle()
     val monthSummaries by viewModel.monthSummaries.collectAsStateWithLifecycle()
-    var destination by remember { mutableStateOf(Destination.LOG) }
+    var destination by remember { mutableStateOf(Destination.TRACE) }
     var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
 
     selectedDate?.let { date ->
         ModalBottomSheet(onDismissRequest = { selectedDate = null }) {
-            DayLogSheet(
-                date = date,
-                logs = viewModel.logsForDate(date)
-            )
+            DayLogSheet(date = date, logs = viewModel.logsForDate(date))
         }
     }
 
@@ -88,10 +87,10 @@ fun AdlerLifeApp(viewModel: AdlerViewModel) {
         topBar = {
             TopAppBar(
                 title = {
-                    Column {
-                        Text("Adler Life")
+                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                        Text("Forest Mood", style = MaterialTheme.typography.titleLarge)
                         Text(
-                            text = "比較ではなく、今日の手ざわりを残す",
+                            text = "今日どんな気分だった？ を静かに残す",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                         )
@@ -100,7 +99,7 @@ fun AdlerLifeApp(viewModel: AdlerViewModel) {
             )
         },
         bottomBar = {
-            NavigationBar {
+            NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
                 Destination.entries.forEach { item ->
                     NavigationBarItem(
                         selected = destination == item,
@@ -119,17 +118,17 @@ fun AdlerLifeApp(viewModel: AdlerViewModel) {
                 .padding(padding)
         ) {
             when (destination) {
-                Destination.LOG -> TraceScreen(
+                Destination.TRACE -> TraceScreen(
                     traceLogs = traceLogs,
-                    what = uiState.traceInput.what,
-                    howFelt = uiState.traceInput.howFelt,
                     mood = uiState.traceInput.mood,
                     energy = uiState.traceInput.energy,
+                    whatHappened = uiState.traceInput.whatHappened,
+                    feeling = uiState.traceInput.feeling,
                     isSaving = uiState.isSavingTrace,
-                    onWhatChange = viewModel::updateWhat,
-                    onHowFeltChange = viewModel::updateHowFelt,
                     onMoodChange = viewModel::updateMood,
                     onEnergyChange = viewModel::updateEnergy,
+                    onWhatHappenedChange = viewModel::updateWhatHappened,
+                    onFeelingChange = viewModel::updateFeeling,
                     onSave = viewModel::saveTrace
                 )
 
@@ -158,79 +157,98 @@ fun AdlerLifeApp(viewModel: AdlerViewModel) {
 @Composable
 private fun TraceScreen(
     traceLogs: List<TraceLog>,
-    what: String,
-    howFelt: String,
     mood: Float,
     energy: Float,
+    whatHappened: String,
+    feeling: String,
     isSaving: Boolean,
-    onWhatChange: (String) -> Unit,
-    onHowFeltChange: (String) -> Unit,
     onMoodChange: (Float) -> Unit,
     onEnergyChange: (Float) -> Unit,
+    onWhatHappenedChange: (String) -> Unit,
+    onFeelingChange: (String) -> Unit,
     onSave: () -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         Text(
-            text = "記録はいつでも、何度でも。できたかどうかではなく、その瞬間の手ざわりを置いておきます。",
+            text = "よい・わるいを決めずに、今日の気分や体調を森に置くように記録します。",
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.72f)
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.76f)
         )
         LazyColumn(
             modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            contentPadding = PaddingValues(bottom = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             items(traceLogs, key = { it.id }) { log ->
                 TraceLogRow(log)
             }
         }
         GentleCard(
-            title = "新しい軌跡を残す",
-            subtitle = "フォームは閉じずに置いておき、必要なときにだけ触れられるようにします。"
+            title = "今日の記録",
+            subtitle = "フォームは縦にスクロールできるので、ボタンまでやさしく辿れます。"
         ) {
-            OutlinedTextField(
-                value = what,
-                onValueChange = onWhatChange,
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text("何をしたか") }
-            )
-            OutlinedTextField(
-                value = howFelt,
-                onValueChange = onHowFeltChange,
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text("どう感じたか") }
-            )
-            MoodSlider(
-                title = "今の気分",
-                leftLabel = "😔",
-                rightLabel = "😊",
-                value = mood,
-                onValueChange = onMoodChange
-            )
-            MoodSlider(
-                title = "エネルギーレベル",
-                leftLabel = "低",
-                rightLabel = "高",
-                value = energy,
-                onValueChange = onEnergyChange
-            )
-            Button(onClick = onSave, enabled = !isSaving) {
-                if (isSaving) {
-                    CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
-                } else {
-                    Text("保存する")
+            Column(
+                modifier = Modifier
+                    .heightIn(max = 360.dp)
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(14.dp)
+            ) {
+                ForestSlider(
+                    title = "今日の気分",
+                    leftLabel = "😔 つらい",
+                    rightLabel = "😊 よい",
+                    value = mood,
+                    onValueChange = onMoodChange
+                )
+                ForestSlider(
+                    title = "体のエネルギー",
+                    leftLabel = "🪫 低い",
+                    rightLabel = "⚡ 高い",
+                    value = energy,
+                    onValueChange = onEnergyChange
+                )
+                OutlinedTextField(
+                    value = whatHappened,
+                    onValueChange = onWhatHappenedChange,
+                    modifier = Modifier.fillMaxWidth(),
+                    label = { Text("今日あったこと") },
+                    placeholder = { Text("今日どんなことがありましたか？") },
+                    minLines = 3,
+                    maxLines = 3
+                )
+                OutlinedTextField(
+                    value = feeling,
+                    onValueChange = onFeelingChange,
+                    modifier = Modifier.fillMaxWidth(),
+                    label = { Text("今の気持ちをひとこと") },
+                    placeholder = { Text("気持ちを自由に書いてください") },
+                    minLines = 3,
+                    maxLines = 3
+                )
+                Button(
+                    onClick = onSave,
+                    enabled = !isSaving,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    if (isSaving) {
+                        CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
+                    } else {
+                        Text("記録する 🌿")
+                    }
                 }
+                AdBanner()
             }
         }
     }
 }
 
 @Composable
-private fun MoodSlider(
+private fun ForestSlider(
     title: String,
     leftLabel: String,
     rightLabel: String,
@@ -239,7 +257,11 @@ private fun MoodSlider(
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Text(text = "$title ${"%.2f".format(value)}", style = MaterialTheme.typography.bodyMedium)
-        Slider(value = value, onValueChange = onValueChange, valueRange = 0f..1f)
+        Slider(
+            value = value,
+            onValueChange = onValueChange,
+            valueRange = 0f..1f
+        )
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text(leftLabel, style = MaterialTheme.typography.labelLarge)
             Text(rightLabel, style = MaterialTheme.typography.labelLarge)
@@ -249,7 +271,7 @@ private fun MoodSlider(
 
 @Composable
 private fun ChatScreen(
-    messages: List<com.example.adlerlife.data.model.ChatMessage>,
+    messages: List<ChatMessage>,
     aiReply: String,
     draft: String,
     isLoading: Boolean,
@@ -264,11 +286,11 @@ private fun ChatScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         GentleCard(
-            title = "対話",
-            subtitle = "評価ではなく問いかけで、今日の軌跡にもう一度ふれてみます。"
+            title = "森と対話するように振り返る",
+            subtitle = "共感と問いかけだけを返し、評価や採点はしません。"
         ) {
             Button(onClick = onReflectToday) {
-                Text("今日の軌跡を振り返る")
+                Text("今日の記録を振り返る")
             }
             Text(text = aiReply, color = MaterialTheme.colorScheme.primary)
         }
@@ -282,20 +304,21 @@ private fun ChatScreen(
             }
         }
         GentleCard(
-            title = "追加入力",
-            subtitle = "会話履歴はその日限りで、アプリを閉じると残しません。"
+            title = "今のことばを続ける",
+            subtitle = "会話はその日限り。明日になればまた新しい森から始まります。"
         ) {
             OutlinedTextField(
                 value = draft,
                 onValueChange = onDraftChange,
                 modifier = Modifier.fillMaxWidth(),
-                label = { Text("今の言葉を置く") }
+                label = { Text("今の気持ち") },
+                placeholder = { Text("たとえば、胸がつまる感じ / 少し軽くなった など") }
             )
-            Button(onClick = onSend, enabled = !isLoading) {
+            Button(onClick = onSend, enabled = !isLoading, modifier = Modifier.fillMaxWidth()) {
                 if (isLoading) {
                     CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
                 } else {
-                    Text("送信")
+                    Text("送信する")
                 }
             }
         }
@@ -313,7 +336,7 @@ private fun CalendarScreen(
     val summaryMap = summaries.associateBy { it.date }
     val firstDay = month.atDay(1)
     val daysInMonth = month.lengthOfMonth()
-    val firstDayOffset = (firstDay.dayOfWeek.value % 7)
+    val firstDayOffset = firstDay.dayOfWeek.value % 7
 
     Column(
         modifier = Modifier
@@ -322,8 +345,8 @@ private fun CalendarScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         GentleCard(
-            title = "暦",
-            subtitle = "色はその日の気分平均だけを示し、達成率や判定は表示しません。"
+            title = "気分の暦",
+            subtitle = "色はその日の気分平均だけを静かに映し、比較はしません。"
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -331,7 +354,7 @@ private fun CalendarScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(onClick = onPreviousMonth) {
-                    Icon(Icons.Outlined.ChevronLeft, contentDescription = "前の月")
+                    Text("‹", style = MaterialTheme.typography.titleLarge)
                 }
                 Text(
                     text = month.format(DateTimeFormatter.ofPattern("yyyy年M月", Locale.JAPAN)),
@@ -339,7 +362,7 @@ private fun CalendarScreen(
                     fontWeight = FontWeight.SemiBold
                 )
                 IconButton(onClick = onNextMonth) {
-                    Icon(Icons.Outlined.ChevronRight, contentDescription = "次の月")
+                    Text("›", style = MaterialTheme.typography.titleLarge)
                 }
             }
             CalendarWeekHeader()
@@ -369,6 +392,7 @@ private fun CalendarScreen(
                     }
                 }
             }
+            AdBanner()
         }
     }
 }
@@ -380,8 +404,8 @@ private fun CalendarWeekHeader() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         listOf("日", "月", "火", "水", "木", "金", "土").forEach { label ->
-            Box(modifier = Modifier.size(42.dp), contentAlignment = Alignment.Center) {
-                Text(text = label, style = MaterialTheme.typography.labelMedium)
+            Box(modifier = Modifier.size(44.dp), contentAlignment = Alignment.Center) {
+                Text(text = label, style = MaterialTheme.typography.labelLarge)
             }
         }
     }

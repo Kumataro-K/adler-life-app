@@ -25,14 +25,9 @@ class HybridAiCoach(
 ) : AiCoach {
     override suspend fun reflectToday(logs: List<TraceLog>): String {
         val fallback = localReflection(logs)
-        if (logs.isEmpty()) return fallback
         return requestOpenAi(
             systemPrompt = SYSTEM_PROMPT,
-            userPrompt = buildString {
-                appendLine("今日の記録です：")
-                logs.forEach { appendLine(it.toPromptLine()) }
-                appendLine("この内容をもとに、私自身への問いかけをしてください。")
-            }
+            userPrompt = buildReflectionPrompt(logs)
         ) ?: fallback
     }
 
@@ -45,20 +40,27 @@ class HybridAiCoach(
         return requestOpenAi(
             systemPrompt = SYSTEM_PROMPT,
             userPrompt = buildString {
-                appendLine("今日の記録です：")
-                if (logs.isEmpty()) {
-                    appendLine("- 今日はまだ記録がありません。")
-                } else {
-                    logs.forEach { appendLine(it.toPromptLine()) }
-                }
+                append(buildReflectionPrompt(logs))
+                appendLine()
                 appendLine("これまでの会話：")
                 history.takeLast(6).forEach { message ->
                     appendLine("- ${message.role.name}: ${message.text}")
                 }
                 appendLine("ユーザーの追加入力: $userMessage")
-                appendLine("この流れを受けて、問いかけ形式で返してください。")
+                appendLine("この流れをもとに、気持ちに寄り添う言葉と問いかけをひとつ返してください。")
             }
         ) ?: fallback
+    }
+
+    private fun buildReflectionPrompt(logs: List<TraceLog>): String = buildString {
+        appendLine("今日の記録です：")
+        if (logs.isEmpty()) {
+            appendLine("- 今日はまだ記録がありません。")
+        } else {
+            logs.forEach { appendLine(it.toPromptLine()) }
+        }
+        appendLine("この内容をもとに、私の気持ちに寄り添う言葉と、")
+        appendLine("自分自身への問いかけをひとつしてください。")
     }
 
     private suspend fun requestOpenAi(systemPrompt: String, userPrompt: String): String? {
@@ -114,35 +116,61 @@ class HybridAiCoach(
 
     private fun TraceLog.toPromptLine(): String {
         val time = SimpleDateFormat("HH:mm", Locale.JAPAN).format(Date(timestamp))
-        return "- ${time} / 何をしたか: $what / どう感じたか: $howFelt / 気分: $mood / エネルギー: $energy"
+        return buildString {
+            append("- ")
+            append(time)
+            append(" / 気分: ")
+            append(mood)
+            append(" / エネルギー: ")
+            append(energy)
+            append(" / 今日あったこと: ")
+            append(whatHappened.ifBlank { "（未入力）" })
+            append(" / 気持ち: ")
+            append(feeling.ifBlank { "（未入力）" })
+        }
     }
 
     private fun localReflection(logs: List<TraceLog>): String {
-        if (logs.isEmpty()) return "今日はまだ記録がないようですが、いま言葉にしてみたい感覚はありますか？"
-        val words = logs.flatMap { listOf(it.what, it.howFelt) }
-            .flatMap { it.split(" ", "、", "。", "\n") }
-            .map { it.trim() }
-            .filter { it.length >= 2 }
-        val echoed = words.lastOrNull() ?: logs.first().what
-        return "「$echoed」という言葉に今日の手ざわりがあるとしたら、どんな場面がいちばん残っていますか？"
+        if (logs.isEmpty()) return "今日はまだ言葉が少ないようですが、森の入り口で立ち止まるように、今いちばん近い気分はどんなものですか？"
+        val echoed = logs.firstNotNullOfOrNull { it.feeling.ifBlank { it.whatHappened }.takeIf(String::isNotBlank) } ?: "今日の気分"
+        val severe = logs.any { textLooksSerious(it.feeling) || textLooksSerious(it.whatHappened) }
+        return if (severe) {
+            "「$echoed」が続いている中で、今ひとりで抱え込まずにいられる相手や専門家は思い浮かびますか？ 必要なら、その一歩をやさしく考えてみませんか？"
+        } else {
+            "「$echoed」を木陰でそっと眺めるように見つめると、今日はどんな瞬間に気持ちが少し動いていましたか？"
+        }
     }
 
     private fun localFollowUp(logs: List<TraceLog>, userMessage: String): String {
-        val base = userMessage.takeIf { it.isNotBlank() } ?: logs.firstOrNull()?.howFelt ?: "今日の流れ"
-        return "「$base」をもう少しほどいてみると、その奥にはどんな気持ちや願いがありそうですか？"
+        val base = userMessage.takeIf { it.isNotBlank() }
+            ?: logs.firstNotNullOfOrNull { it.feeling.ifBlank { it.whatHappened }.takeIf(String::isNotBlank) }
+            ?: "今の気持ち"
+        val severe = textLooksSerious(base)
+        return if (severe) {
+            "「$base」をここまで言葉にしてくれたことに重さがあるように感じます。 木が嵐の中でも根を張るように、今つながれそうな人や専門家はいますか？"
+        } else {
+            "「$base」にそっと耳を澄ますと、森の中で風向きが変わるみたいに、どんなきっかけで少し楽になれそうですか？"
+        }
+    }
+
+    private fun textLooksSerious(text: String): Boolean {
+        val lowered = text.lowercase(Locale.JAPAN)
+        return listOf("消えたい", "死にたい", "つらすぎる", "限界", "希死", "自傷").any { it in lowered }
     }
 
     companion object {
         private val JSON = "application/json; charset=utf-8".toMediaType()
         private const val SYSTEM_PROMPT = """
-あなたは評価をしないコーチです。
+あなたは穏やかで共感的なメンタルヘルスのサポーターです。
 以下のルールを必ず守ってください：
 
-「良い」「悪い」「すべき」「できた」「できなかった」は使わない
-必ず問いかけ形式（疑問文）で終わる
+評価・採点・アドバイスはしない
+「〜すべき」「〜しなければ」は使わない
+必ず共感と問いかけで返す
 3文以内で返す
-ユーザーの言葉をそのまま使う
-アドラー心理学に限定せず、人間の感情や動機に寄り添う
+ユーザーの言葉をそのまま大切に扱う
+森・自然のメタファーを時々使う（例：「木が嵐の中でも根を張るように」）
+深刻な内容には「専門家への相談」を優しく促す
 """
     }
 }

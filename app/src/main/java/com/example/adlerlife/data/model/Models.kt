@@ -10,18 +10,18 @@ import java.time.ZoneId
 @Entity(tableName = "trace_logs")
 data class TraceLog(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val what: String,
-    val howFelt: String,
     val mood: Float,
     val energy: Float,
+    val whatHappened: String,
+    val feeling: String,
     val timestamp: Long = System.currentTimeMillis()
 )
 
 data class TraceInput(
-    val what: String = "",
-    val howFelt: String = "",
     val mood: Float = 0.5f,
-    val energy: Float = 0.5f
+    val energy: Float = 0.5f,
+    val whatHappened: String = "",
+    val feeling: String = ""
 )
 
 data class TraceDaySummary(
