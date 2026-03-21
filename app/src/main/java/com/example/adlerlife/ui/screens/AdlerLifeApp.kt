@@ -105,10 +105,10 @@ fun AdlerLifeApp(viewModel: AdlerViewModel) {
                         energy = uiState.impulseInput.energyLevel.toFloat(),
                         suggestion = uiState.currentSuggestion,
                         isLoading = uiState.isLoadingSuggestion,
-                        onDesireChange = viewModel::updateDesire,
-                        onMoodChange = viewModel::updateMood,
-                        onEnergyChange = viewModel::updateEnergy,
-                        onSuggest = viewModel::requestSuggestion
+                        onDesireChange = { viewModel.updateDesire(it) },
+                        onMoodChange = { viewModel.updateMood(it) },
+                        onEnergyChange = { viewModel.updateEnergy(it) },
+                        onSuggest = { viewModel.requestSuggestion() }
                     )
                 }
 
@@ -117,10 +117,10 @@ fun AdlerLifeApp(viewModel: AdlerViewModel) {
                         LogComposer(
                             action = uiState.actionDraft,
                             feeling = uiState.feelingDraft,
-                            onActionChange = viewModel::updateActionDraft,
-                            onFeelingChange = viewModel::updateFeelingDraft,
-                            onSave = viewModel::saveActionLog,
-                            onCategoryChange = viewModel::updateCategory,
+                            onActionChange = { viewModel.updateActionDraft(it) },
+                            onFeelingChange = { viewModel.updateFeelingDraft(it) },
+                            onSave = { viewModel.saveActionLog() },
+                            onCategoryChange = { viewModel.updateCategory(it) },
                             selectedCategory = uiState.selectedCategory
                         )
                     }
@@ -134,10 +134,10 @@ fun AdlerLifeApp(viewModel: AdlerViewModel) {
                         joy = uiState.reflectionInput.smallJoy,
                         insight = uiState.reflectionInsight,
                         isLoading = uiState.isLoadingReflection,
-                        onActionsChange = viewModel::updateReflectionActions,
-                        onMomentChange = viewModel::updateReflectionMoment,
-                        onJoyChange = viewModel::updateReflectionJoy,
-                        onSubmit = viewModel::submitReflection
+                        onActionsChange = { viewModel.updateReflectionActions(it) },
+                        onMomentChange = { viewModel.updateReflectionMoment(it) },
+                        onJoyChange = { viewModel.updateReflectionJoy(it) },
+                        onSubmit = { viewModel.submitReflection() }
                     )
                 }
 
