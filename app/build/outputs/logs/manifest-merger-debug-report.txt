@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-24:12
-INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-24:12
-INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-24:12
-INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-24:12
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-30:12
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-30:12
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-30:12
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-30:12
 MERGED from [androidx.navigation:navigation-common:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\bf86d31cd58b3b5f77381ce0d73122f6\transformed\navigation-common-2.8.7\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\16910e597aeb40ab250f8693227e5dd2\transformed\navigation-runtime-2.8.7\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\8bd2d9549805fffc58fa823bef94d621\transformed\navigation-common-ktx-2.8.7\AndroidManifest.xml:2:1-7:12
@@ -85,6 +85,7 @@ MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\s
 MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\82ae5ff0ef3f75ae6bd2a72dde5eab4a\transformed\graphics-shapes-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ee5a8571dfeb56aa21c75fd15248295e\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.core:core-ktx:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\6147a5f1900599a3715e281891c187b1\transformed\core-ktx-1.15.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\b84658dbfb8117be886a1ae402a2302a\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:17:1-31:12
 MERGED from [androidx.room:room-ktx:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\633bfd50d6c0abe14004ec5141674779\transformed\room-ktx-2.7.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\591e4055483cd422154dac8925b97254\transformed\runtime-saveable-release\AndroidManifest.xml:2:1-7:12
@@ -118,8 +119,8 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:
 	android:name
 		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:2:22-64
 application
-ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:4:5-23:19
-INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:4:5-23:19
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:4:5-29:19
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:4:5-29:19
 MERGED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-test-manifest:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\dc0baad5e3b30b0eb6043dee857ffded\transformed\ui-test-manifest-1.7.3\AndroidManifest.xml:22:5-26:19
@@ -171,9 +172,9 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\strom\.gradle\cach
 	android:label
 		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:7:9-41
 	android:roundIcon
-		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:8:9-66
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:8:9-61
 	android:icon
-		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:6:9-61
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:6:9-56
 	android:allowBackup
 		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:5:9-35
 	android:theme
@@ -185,21 +186,31 @@ ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:12:13-69
 activity#com.example.adlerlife.MainActivity
-ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:15:9-22:20
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:15:9-18:40
 	android:exported
-		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:17:13-36
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:18:13-37
+	android:theme
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:17:13-54
 	android:name
 		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:16:13-41
+activity#com.example.adlerlife.SplashActivity
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:20:9-28:20
+	android:exported
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:23:13-36
+	android:theme
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:22:13-54
+	android:name
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:21:13-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:18:13-21:29
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:24:13-27:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:19:17-69
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:19:25-66
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:20:17-77
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:20:27-74
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:26:27-74
 uses-sdk
 INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml
@@ -366,6 +377,8 @@ MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\str
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ee5a8571dfeb56aa21c75fd15248295e\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
 MERGED from [androidx.core:core-ktx:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\6147a5f1900599a3715e281891c187b1\transformed\core-ktx-1.15.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.core:core-ktx:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\6147a5f1900599a3715e281891c187b1\transformed\core-ktx-1.15.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\b84658dbfb8117be886a1ae402a2302a\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\b84658dbfb8117be886a1ae402a2302a\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:21:5-44
 MERGED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:21:5-44
 MERGED from [androidx.room:room-ktx:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\633bfd50d6c0abe14004ec5141674779\transformed\room-ktx-2.7.0\AndroidManifest.xml:20:5-44

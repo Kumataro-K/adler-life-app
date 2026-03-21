@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.adlerlife.app-mergeDebugResources-82:/values-kk/values-kk.xml",
+            "outputFile": "com.example.adlerlife.app-mergeDebugResources-83:/values-kk/values-kk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\strom\\.gradle\\caches\\8.13\\transforms\\649f37c65c83f258b4390353604953ad\\transformed\\ui-release\\res\\values-kk\\values-kk.xml",

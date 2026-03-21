@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.adlerlife.app-mergeDebugResources-82:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.example.adlerlife.app-mergeDebugResources-83:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "C:\\Users\\strom\\.gradle\\caches\\8.13\\transforms\\649f37c65c83f258b4390353604953ad\\transformed\\ui-release\\res\\values-en-rAU\\values-en-rAU.xml",

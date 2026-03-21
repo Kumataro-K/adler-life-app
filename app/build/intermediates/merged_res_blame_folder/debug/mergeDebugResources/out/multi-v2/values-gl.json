@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.adlerlife.app-mergeDebugResources-82:/values-gl/values-gl.xml",
+            "outputFile": "com.example.adlerlife.app-mergeDebugResources-83:/values-gl/values-gl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\strom\\.gradle\\caches\\8.13\\transforms\\649f37c65c83f258b4390353604953ad\\transformed\\ui-release\\res\\values-gl\\values-gl.xml",

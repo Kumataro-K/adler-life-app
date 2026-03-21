@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.adlerlife.app-mergeDebugResources-82:/values-sk/values-sk.xml",
+            "outputFile": "com.example.adlerlife.app-mergeDebugResources-83:/values-sk/values-sk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\strom\\.gradle\\caches\\8.13\\transforms\\980b4262897c80cae642a3ada34b7f7b\\transformed\\play-services-base-18.0.0\\res\\values-sk\\values.xml",

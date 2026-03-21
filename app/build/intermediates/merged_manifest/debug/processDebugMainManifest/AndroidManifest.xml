@@ -46,9 +46,9 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:extractNativeLibs="false"
-        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:icon="@drawable/ic_launcher_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@android:drawable/ic_menu_my_calendar"
+        android:roundIcon="@drawable/ic_launcher_foreground"
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.ForestMood" >
@@ -58,7 +58,12 @@
 
         <activity
             android:name="com.example.adlerlife.MainActivity"
-            android:exported="true" >
+            android:exported="false"
+            android:theme="@style/Theme.App.Starting" />
+        <activity
+            android:name="com.example.adlerlife.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
