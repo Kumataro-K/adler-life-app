@@ -36,7 +36,6 @@
     <string name="bottomsheet_action_collapse">Свернуть нижний экран</string>
     <string name="bottomsheet_action_expand">Развернуть нижний экран</string>
     <string name="bottomsheet_action_expand_halfway">Развернуть наполовину</string>
-    <string name="bottomsheet_drag_handle_clicked">Двойное нажатие на маркер перемещения</string>
     <string name="bottomsheet_drag_handle_content_description">Маркер перемещения</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"Ответить"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Видео"</string>
@@ -50,16 +49,39 @@
     <string name="clear_text_end_icon_content_description">Очистить текстовое поле</string>
     <string msgid="406453423630273620" name="close_drawer">"Закрыть меню навигации"</string>
     <string msgid="7573152094250666567" name="close_sheet">"Закрыть лист"</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Включить</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">Для работы приложения \"%1$s\" требуется включить сервисы Google Play.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Включите сервисы Google Play</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Установить</string>
+    <string name="common_google_play_services_install_text">Для работы приложения \"%1$s\" требуется установить сервисы Google Play.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Установите сервисы Google Play</string>
+    <string name="common_google_play_services_notification_channel_name">Доступность сервисов Google Play</string>
+    <string name="common_google_play_services_notification_ticker">Ошибка сервисов Google Play</string>
+    <string name="common_google_play_services_unknown_issue">Приложению \"%1$s\" не удается подключиться к сервисам Google Play. Повторите попытку.</string>
+    <string name="common_google_play_services_unsupported_text">Для работы с приложением \"%1$s\" требуются сервисы Google Play. Они не поддерживаются на вашем устройстве.</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">Обновить</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">Чтобы запустить приложение \"%1$s\", обновите сервисы Google Play.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Обновите сервисы Google Play</string>
+    <string name="common_google_play_services_updating_text">Сервисы Google Play, необходимые для работы приложения \"%1$s\", в настоящий момент обновляются.</string>
+    <string name="common_google_play_services_wear_update_text">Версия сервисов Google Play устарела. Они автоматически обновятся в ближайшее время.</string>
+    <string name="common_open_on_phone">Открыть на телефоне</string>
+    <string name="common_signin_button_text">Войти</string>
+    <string name="common_signin_button_text_long">Войти через аккаунт Google</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"Ссылка скопирована в буфер обмена."</string>
     <string msgid="8038256446254964252" name="default_error_message">"Неправильный ввод"</string>
     <string msgid="6312721426453364202" name="default_popup_window_title">"Всплывающее окно"</string>
     <string msgid="1890207353314751437" name="dropdown_menu">"Раскрывающееся меню"</string>
     <string name="error_a11y_label">Ошибка: недопустимое значение</string>
     <string name="error_icon_content_description">Ошибка</string>
     <string name="exposed_dropdown_menu_content_description">Показать раскрывающееся меню</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Копировать ссылку"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Открыть в браузере"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Отправить ссылку"</string>
     <string name="icon_content_description">Значок диалогового окна</string>
     <string msgid="6827826412747255547" name="in_progress">"Выполняется"</string>
     <string msgid="7933458017204019916" name="indeterminate">"Отмечено частично"</string>
     <string name="item_view_role_description">Вкладка</string>
+    <string name="m3_loading_indicator_content_description">Загрузка</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Свернуть нижний экран"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Закрыть нижний экран"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Маркер перемещения"</string>
@@ -99,6 +121,7 @@
     <string msgid="7617233117134790350" name="m3c_dialog">"Диалоговое окно"</string>
     <string msgid="3177828188723359358" name="m3c_dropdown_menu_collapsed">"Свернуто"</string>
     <string msgid="2360841780724299882" name="m3c_dropdown_menu_expanded">"Развернуто"</string>
+    <string msgid="8687821690726149911" name="m3c_dropdown_menu_toggle">"Показать или скрыть раскрывающееся меню"</string>
     <string msgid="6152806324422087846" name="m3c_search_bar_search">"Строка поиска"</string>
     <string msgid="6152755701819882931" name="m3c_snackbar_dismiss">"Закрыть"</string>
     <string msgid="7655536806087401899" name="m3c_suggestions_available">"Подсказки показаны ниже"</string>
@@ -122,6 +145,9 @@
     <string name="material_hour_suffix">%1$s ч.</string>
     <string name="material_minute_selection">Выберите минуты</string>
     <string name="material_minute_suffix">%1$s мин.</string>
+    <string name="material_slider_range_end">Конец диапазона</string>
+    <string name="material_slider_range_start">Начало диапазона</string>
+    <string name="material_slider_value">Значение</string>
     <string name="material_timepicker_am">AM</string>
     <string name="material_timepicker_clock_mode_description">Чтобы ввести время, перейдите в режим часов.</string>
     <string name="material_timepicker_hour">Час</string>
@@ -155,7 +181,7 @@
     <string name="mtrl_picker_navigate_to_year_description">Перейти к %1$d году</string>
     <string name="mtrl_picker_out_of_range">Вне диапазона: %1$s</string>
     <string name="mtrl_picker_range_header_only_end_selected">Дата начала – %1$s</string>
-    <string name="mtrl_picker_range_header_only_start_selected">%1$s – дата окончания</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – Дата окончания</string>
     <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
     <string name="mtrl_picker_range_header_title">Выберите диапазон дат</string>
     <string name="mtrl_picker_range_header_unselected">Дата начала – дата окончания</string>
@@ -169,27 +195,51 @@
     <string name="mtrl_picker_text_input_year_abbr">г</string>
     <string name="mtrl_picker_today_description">Сегодня: %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">Перейти в режим выбора дней</string>
-    <string name="mtrl_picker_toggle_to_day_selection">Нажмите, чтобы перейти к Календарю</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Перейти в режим выбора даты</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">Перейти в режим ввода текста</string>
-    <string name="mtrl_picker_toggle_to_year_selection">Нажмите, чтобы выбрать год</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Перейти в режим выбора года</string>
+    <string name="mtrl_picker_toggled_to_day_selection">Вы перешли к Календарю</string>
+    <string name="mtrl_picker_toggled_to_year_selection">Вы перешли к выбору года</string>
     <string name="mtrl_timepicker_cancel">Отмена</string>
     <string name="mtrl_timepicker_confirm">ОК</string>
+    <string name="native_body">Текст</string>
+    <string name="native_headline">Заголовок</string>
+    <string name="native_media_view">Просмотр мультимедиа</string>
     <string msgid="542007171693138492" name="navigation_menu">"Меню навигации"</string>
     <string msgid="6610465462668679431" name="not_selected">"Не выбрано"</string>
-    <string msgid="875452955155264703" name="off">"Отключено"</string>
-    <string msgid="8655164131929253426" name="on">"Включено"</string>
+    <string name="notifications_permission_confirm">Разрешить</string>
+    <string name="notifications_permission_decline">Запретить</string>
+    <string name="notifications_permission_title">Разрешить приложению отправлять уведомления?</string>
+    <string name="offline_dialog_image_description">Значок</string>
+    <string name="offline_dialog_text">Вы получите уведомление со ссылкой, когда появится подключение к интернету.</string>
+    <string name="offline_notification_title">Вы хотели посмотреть объявление, когда были офлайн</string>
+    <string name="offline_opt_in_confirm">ОК</string>
+    <string name="offline_opt_in_decline">Нет, спасибо</string>
+    <string name="offline_opt_in_message">Когда вы подключитесь к Интернету, мы отправим вам уведомление со ссылкой на сайт рекламодателя.</string>
+    <string name="offline_opt_in_title">Посмотрите объявление, когда будете в Сети</string>
     <string name="password_toggle_content_description">Показать пароль</string>
     <string msgid="5941395253238309765" name="range_end">"Конец диапазона"</string>
     <string msgid="7097486360902471446" name="range_start">"Начало диапазона"</string>
+    <string name="s1">Сохранить изображение</string>
+    <string name="s2">Разрешить объявлению сохранить изображение в галерее?</string>
+    <string name="s3">Разрешить</string>
+    <string name="s4">Отклонить</string>
+    <string name="s5">Создать мероприятие</string>
+    <string name="s6">Разрешить объявлению создать мероприятие в календаре?</string>
+    <string name="s7">Тестовое объявление</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Поиск"</string>
     <string name="searchview_clear_text_content_description">Очистить текстовое поле</string>
     <string name="searchview_navigation_content_description">Назад</string>
     <string msgid="6043586758067023" name="selected">"Выбрано"</string>
     <string name="side_sheet_accessibility_pane_title">Боковая панель</string>
+    <string msgid="4139871816613051306" name="state_empty">"Пусто"</string>
+    <string msgid="5834637030682409883" name="state_off">"Отключено"</string>
+    <string msgid="1490883874751719580" name="state_on">"Включено"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">">999"</string>
     <string msgid="2561197295334830845" name="switch_role">"Переключатель"</string>
     <string msgid="1672349317127674378" name="tab">"Вкладка"</string>
     <string msgid="5946805113151406391" name="template_percent">"Процентов: <ns1:g id="PERCENTAGE">%1$d</ns1:g>."</string>
     <string msgid="3765533235322692011" name="tooltip_description">"Подсказка"</string>
     <string msgid="3124740595719787496" name="tooltip_label">"Показать подсказку"</string>
+    <string name="watermark_label_prefix">AdMob – </string>
 </resources>

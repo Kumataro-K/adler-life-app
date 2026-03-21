@@ -34,7 +34,6 @@
     <string name="bottomsheet_action_collapse">收合頁底面板</string>
     <string name="bottomsheet_action_expand">展開頁底面板</string>
     <string name="bottomsheet_action_expand_halfway">展開一半</string>
-    <string name="bottomsheet_drag_handle_clicked">㩒咗兩下拖曳控點</string>
     <string name="bottomsheet_drag_handle_content_description">拖曳控點</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"接聽"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"視像"</string>
@@ -48,16 +47,39 @@
     <string name="clear_text_end_icon_content_description">清除文字</string>
     <string msgid="406453423630273620" name="close_drawer">"閂導覽選單"</string>
     <string msgid="7573152094250666567" name="close_sheet">"閂表單"</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">啟用</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">您必須啟用 Google Play 服務，方可執行「%1$s」。</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">啟用 Google Play 服務</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">安裝</string>
+    <string name="common_google_play_services_install_text">您的裝置尚未安裝 Google Play 服務，因此無法執行「%1$s」。</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">安裝 Google Play 服務</string>
+    <string name="common_google_play_services_notification_channel_name">Google Play 服務的適用範圍</string>
+    <string name="common_google_play_services_notification_ticker">Google Play 服務錯誤</string>
+    <string name="common_google_play_services_unknown_issue">「%1$s」存取 Google Play 服務時發生問題。請稍後再試一次。</string>
+    <string name="common_google_play_services_unsupported_text">您的裝置不支援 Google Play 服務，因此無法執行「%1$s」。</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">更新</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">您必須更新「Google Play 服務」，才能執行 %1$s。</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">更新 Google Play 服務</string>
+    <string name="common_google_play_services_updating_text">正在更新 Google Play 服務，更新完成後方可執行「%1$s」。</string>
+    <string name="common_google_play_services_wear_update_text">需要使用新版本的 Google Play 服務。更新會即將自動開始。</string>
+    <string name="common_open_on_phone">在手機開啟</string>
+    <string name="common_signin_button_text">登入</string>
+    <string name="common_signin_button_text_long">透過 Google 登入</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"連結已複製到剪貼簿"</string>
     <string msgid="8038256446254964252" name="default_error_message">"輸入嘅資料無效"</string>
     <string msgid="6312721426453364202" name="default_popup_window_title">"彈出式視窗"</string>
     <string msgid="1890207353314751437" name="dropdown_menu">"下拉式選單"</string>
     <string name="error_a11y_label">錯誤：冇效</string>
     <string name="error_icon_content_description">錯誤</string>
     <string name="exposed_dropdown_menu_content_description">顯示下拉式選單</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"複製連結"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"在瀏覽器中開啟"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"分享連結"</string>
     <string name="icon_content_description">對話框圖示</string>
     <string msgid="6827826412747255547" name="in_progress">"進行中"</string>
     <string msgid="7933458017204019916" name="indeterminate">"部分剔咗"</string>
     <string name="item_view_role_description">分頁</string>
+    <string name="m3_loading_indicator_content_description">正在載入</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"收合頁底面板"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"關閉頁底面板"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"拖曳控點"</string>
@@ -97,6 +119,7 @@
     <string msgid="7617233117134790350" name="m3c_dialog">"對話框"</string>
     <string msgid="3177828188723359358" name="m3c_dropdown_menu_collapsed">"已收合"</string>
     <string msgid="2360841780724299882" name="m3c_dropdown_menu_expanded">"已展開"</string>
+    <string msgid="8687821690726149911" name="m3c_dropdown_menu_toggle">"切換下拉式選單"</string>
     <string msgid="6152806324422087846" name="m3c_search_bar_search">"搜尋"</string>
     <string msgid="6152755701819882931" name="m3c_snackbar_dismiss">"關閉"</string>
     <string msgid="7655536806087401899" name="m3c_suggestions_available">"建議如下"</string>
@@ -120,6 +143,9 @@
     <string name="material_hour_suffix">%1$s 點</string>
     <string name="material_minute_selection">選取分鐘</string>
     <string name="material_minute_suffix">%1$s 分</string>
+    <string name="material_slider_range_end">範圍結束</string>
+    <string name="material_slider_range_start">範圍開始</string>
+    <string name="material_slider_value">值</string>
     <string name="material_timepicker_am">AM</string>
     <string name="material_timepicker_clock_mode_description">切換至時鐘模式即可輸入時間。</string>
     <string name="material_timepicker_hour">小時</string>
@@ -167,27 +193,51 @@
     <string name="mtrl_picker_text_input_year_abbr">年</string>
     <string name="mtrl_picker_today_description">今日 %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">切換至日曆輸入模式</string>
-    <string name="mtrl_picker_toggle_to_day_selection">㩒一下就可以切換去日曆檢視模式</string>
+    <string name="mtrl_picker_toggle_to_day_selection">切換去日曆檢視模式</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">切換至文字輸入模式</string>
-    <string name="mtrl_picker_toggle_to_year_selection">㩒一下就可以切換去按年檢視模式</string>
+    <string name="mtrl_picker_toggle_to_year_selection">切換去按年檢視模式</string>
+    <string name="mtrl_picker_toggled_to_day_selection">切換咗做日曆檢視模式</string>
+    <string name="mtrl_picker_toggled_to_year_selection">切換咗做按年檢視模式</string>
     <string name="mtrl_timepicker_cancel">取消</string>
     <string name="mtrl_timepicker_confirm">確定</string>
+    <string name="native_body">內文</string>
+    <string name="native_headline">標題</string>
+    <string name="native_media_view">影音媒體檢視</string>
     <string msgid="542007171693138492" name="navigation_menu">"導覽選單"</string>
     <string msgid="6610465462668679431" name="not_selected">"未揀"</string>
-    <string msgid="875452955155264703" name="off">"閂"</string>
-    <string msgid="8655164131929253426" name="on">"開"</string>
+    <string name="notifications_permission_confirm">允許</string>
+    <string name="notifications_permission_decline">不允許</string>
+    <string name="notifications_permission_title">允許應用程式傳送通知給你嗎？</string>
+    <string name="offline_dialog_image_description">圖示</string>
+    <string name="offline_dialog_text">恢復連線後，你將收到含有該連結的通知</string>
+    <string name="offline_notification_title">查看你在離線時儲存的廣告</string>
+    <string name="offline_opt_in_confirm">確定</string>
+    <string name="offline_opt_in_decline">不用了，謝謝</string>
+    <string name="offline_opt_in_message">我們會向你傳送通知，當中包含廣告客戶網站的連結。</string>
+    <string name="offline_opt_in_title">恢復連線後開啟廣告。</string>
     <string name="password_toggle_content_description">顯示密碼</string>
     <string msgid="5941395253238309765" name="range_end">"範圍結束"</string>
     <string msgid="7097486360902471446" name="range_start">"範圍開始"</string>
+    <string name="s1">儲存圖片</string>
+    <string name="s2">允許廣告將圖片儲存至相片集嗎？</string>
+    <string name="s3">接受</string>
+    <string name="s4">拒絕</string>
+    <string name="s5">建立日曆活動</string>
+    <string name="s6">允許廣告建立日曆活動嗎？</string>
+    <string name="s7">測試廣告</string>
     <string msgid="6264217191555673260" name="search_menu_title">"搜尋"</string>
     <string name="searchview_clear_text_content_description">清除文字</string>
     <string name="searchview_navigation_content_description">返回</string>
     <string msgid="6043586758067023" name="selected">"揀咗"</string>
     <string name="side_sheet_accessibility_pane_title">側邊工作表</string>
+    <string msgid="4139871816613051306" name="state_empty">"空白"</string>
+    <string msgid="5834637030682409883" name="state_off">"閂"</string>
+    <string msgid="1490883874751719580" name="state_on">"開"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
     <string msgid="2561197295334830845" name="switch_role">"按鈕裝置"</string>
     <string msgid="1672349317127674378" name="tab">"分頁"</string>
     <string msgid="5946805113151406391" name="template_percent">"百分之 <ns1:g id="PERCENTAGE">%1$d</ns1:g>。"</string>
     <string msgid="3765533235322692011" name="tooltip_description">"提示"</string>
     <string msgid="3124740595719787496" name="tooltip_label">"顯示提示"</string>
+    <string name="watermark_label_prefix">AdMob - </string>
 </resources>

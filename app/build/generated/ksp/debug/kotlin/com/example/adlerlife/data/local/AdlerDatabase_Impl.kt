@@ -32,19 +32,16 @@ public class AdlerDatabase_Impl : AdlerDatabase() {
   }
 
   protected override fun createOpenDelegate(): RoomOpenDelegate {
-    val _openDelegate: RoomOpenDelegate = object : RoomOpenDelegate(1, "23df151dba862c2d538cb0f68db985ab", "67d07733b56602f7d7831f523a45dd8a") {
+    val _openDelegate: RoomOpenDelegate = object : RoomOpenDelegate(3,
+        "604f623dbb43f767e36d8bdd6877efba", "c934c307c0304d6833a062b87aaa8a20") {
       public override fun createAllTables(connection: SQLiteConnection) {
-        connection.execSQL("CREATE TABLE IF NOT EXISTS `impulse_logs` (`id` TEXT NOT NULL, `desire` TEXT NOT NULL, `mood` INTEGER NOT NULL, `energyLevel` INTEGER NOT NULL, `suggestion` TEXT NOT NULL, `createdAt` TEXT NOT NULL, PRIMARY KEY(`id`))")
-        connection.execSQL("CREATE TABLE IF NOT EXISTS `action_logs` (`id` TEXT NOT NULL, `action` TEXT NOT NULL, `feeling` TEXT NOT NULL, `category` TEXT NOT NULL, `createdAt` TEXT NOT NULL, PRIMARY KEY(`id`))")
-        connection.execSQL("CREATE TABLE IF NOT EXISTS `reflection_logs` (`id` TEXT NOT NULL, `actionsSummary` TEXT NOT NULL, `memorableMoment` TEXT NOT NULL, `smallJoy` TEXT NOT NULL, `aiFeedback` TEXT NOT NULL, `createdAt` TEXT NOT NULL, PRIMARY KEY(`id`))")
+        connection.execSQL("CREATE TABLE IF NOT EXISTS `trace_logs` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mood` REAL NOT NULL, `energy` REAL NOT NULL, `whatHappened` TEXT NOT NULL, `feeling` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)")
         connection.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)")
-        connection.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '23df151dba862c2d538cb0f68db985ab')")
+        connection.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '604f623dbb43f767e36d8bdd6877efba')")
       }
 
       public override fun dropAllTables(connection: SQLiteConnection) {
-        connection.execSQL("DROP TABLE IF EXISTS `impulse_logs`")
-        connection.execSQL("DROP TABLE IF EXISTS `action_logs`")
-        connection.execSQL("DROP TABLE IF EXISTS `reflection_logs`")
+        connection.execSQL("DROP TABLE IF EXISTS `trace_logs`")
       }
 
       public override fun onCreate(connection: SQLiteConnection) {
@@ -61,65 +58,34 @@ public class AdlerDatabase_Impl : AdlerDatabase() {
       public override fun onPostMigrate(connection: SQLiteConnection) {
       }
 
-      public override fun onValidateSchema(connection: SQLiteConnection): RoomOpenDelegate.ValidationResult {
-        val _columnsImpulseLogs: MutableMap<String, TableInfo.Column> = mutableMapOf()
-        _columnsImpulseLogs.put("id", TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsImpulseLogs.put("desire", TableInfo.Column("desire", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsImpulseLogs.put("mood", TableInfo.Column("mood", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsImpulseLogs.put("energyLevel", TableInfo.Column("energyLevel", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsImpulseLogs.put("suggestion", TableInfo.Column("suggestion", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsImpulseLogs.put("createdAt", TableInfo.Column("createdAt", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        val _foreignKeysImpulseLogs: MutableSet<TableInfo.ForeignKey> = mutableSetOf()
-        val _indicesImpulseLogs: MutableSet<TableInfo.Index> = mutableSetOf()
-        val _infoImpulseLogs: TableInfo = TableInfo("impulse_logs", _columnsImpulseLogs, _foreignKeysImpulseLogs, _indicesImpulseLogs)
-        val _existingImpulseLogs: TableInfo = read(connection, "impulse_logs")
-        if (!_infoImpulseLogs.equals(_existingImpulseLogs)) {
+      public override fun onValidateSchema(connection: SQLiteConnection):
+          RoomOpenDelegate.ValidationResult {
+        val _columnsTraceLogs: MutableMap<String, TableInfo.Column> = mutableMapOf()
+        _columnsTraceLogs.put("id", TableInfo.Column("id", "INTEGER", true, 1, null,
+            TableInfo.CREATED_FROM_ENTITY))
+        _columnsTraceLogs.put("mood", TableInfo.Column("mood", "REAL", true, 0, null,
+            TableInfo.CREATED_FROM_ENTITY))
+        _columnsTraceLogs.put("energy", TableInfo.Column("energy", "REAL", true, 0, null,
+            TableInfo.CREATED_FROM_ENTITY))
+        _columnsTraceLogs.put("whatHappened", TableInfo.Column("whatHappened", "TEXT", true, 0,
+            null, TableInfo.CREATED_FROM_ENTITY))
+        _columnsTraceLogs.put("feeling", TableInfo.Column("feeling", "TEXT", true, 0, null,
+            TableInfo.CREATED_FROM_ENTITY))
+        _columnsTraceLogs.put("timestamp", TableInfo.Column("timestamp", "INTEGER", true, 0, null,
+            TableInfo.CREATED_FROM_ENTITY))
+        val _foreignKeysTraceLogs: MutableSet<TableInfo.ForeignKey> = mutableSetOf()
+        val _indicesTraceLogs: MutableSet<TableInfo.Index> = mutableSetOf()
+        val _infoTraceLogs: TableInfo = TableInfo("trace_logs", _columnsTraceLogs,
+            _foreignKeysTraceLogs, _indicesTraceLogs)
+        val _existingTraceLogs: TableInfo = read(connection, "trace_logs")
+        if (!_infoTraceLogs.equals(_existingTraceLogs)) {
           return RoomOpenDelegate.ValidationResult(false, """
-              |impulse_logs(com.example.adlerlife.data.model.ImpulseLogEntity).
+              |trace_logs(com.example.adlerlife.data.model.TraceLog).
               | Expected:
-              |""".trimMargin() + _infoImpulseLogs + """
+              |""".trimMargin() + _infoTraceLogs + """
               |
               | Found:
-              |""".trimMargin() + _existingImpulseLogs)
-        }
-        val _columnsActionLogs: MutableMap<String, TableInfo.Column> = mutableMapOf()
-        _columnsActionLogs.put("id", TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsActionLogs.put("action", TableInfo.Column("action", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsActionLogs.put("feeling", TableInfo.Column("feeling", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsActionLogs.put("category", TableInfo.Column("category", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsActionLogs.put("createdAt", TableInfo.Column("createdAt", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        val _foreignKeysActionLogs: MutableSet<TableInfo.ForeignKey> = mutableSetOf()
-        val _indicesActionLogs: MutableSet<TableInfo.Index> = mutableSetOf()
-        val _infoActionLogs: TableInfo = TableInfo("action_logs", _columnsActionLogs, _foreignKeysActionLogs, _indicesActionLogs)
-        val _existingActionLogs: TableInfo = read(connection, "action_logs")
-        if (!_infoActionLogs.equals(_existingActionLogs)) {
-          return RoomOpenDelegate.ValidationResult(false, """
-              |action_logs(com.example.adlerlife.data.model.ActionLogEntity).
-              | Expected:
-              |""".trimMargin() + _infoActionLogs + """
-              |
-              | Found:
-              |""".trimMargin() + _existingActionLogs)
-        }
-        val _columnsReflectionLogs: MutableMap<String, TableInfo.Column> = mutableMapOf()
-        _columnsReflectionLogs.put("id", TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsReflectionLogs.put("actionsSummary", TableInfo.Column("actionsSummary", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsReflectionLogs.put("memorableMoment", TableInfo.Column("memorableMoment", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsReflectionLogs.put("smallJoy", TableInfo.Column("smallJoy", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsReflectionLogs.put("aiFeedback", TableInfo.Column("aiFeedback", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        _columnsReflectionLogs.put("createdAt", TableInfo.Column("createdAt", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY))
-        val _foreignKeysReflectionLogs: MutableSet<TableInfo.ForeignKey> = mutableSetOf()
-        val _indicesReflectionLogs: MutableSet<TableInfo.Index> = mutableSetOf()
-        val _infoReflectionLogs: TableInfo = TableInfo("reflection_logs", _columnsReflectionLogs, _foreignKeysReflectionLogs, _indicesReflectionLogs)
-        val _existingReflectionLogs: TableInfo = read(connection, "reflection_logs")
-        if (!_infoReflectionLogs.equals(_existingReflectionLogs)) {
-          return RoomOpenDelegate.ValidationResult(false, """
-              |reflection_logs(com.example.adlerlife.data.model.ReflectionLogEntity).
-              | Expected:
-              |""".trimMargin() + _infoReflectionLogs + """
-              |
-              | Found:
-              |""".trimMargin() + _existingReflectionLogs)
+              |""".trimMargin() + _existingTraceLogs)
         }
         return RoomOpenDelegate.ValidationResult(true, null)
       }
@@ -130,11 +96,11 @@ public class AdlerDatabase_Impl : AdlerDatabase() {
   protected override fun createInvalidationTracker(): InvalidationTracker {
     val _shadowTablesMap: MutableMap<String, String> = mutableMapOf()
     val _viewTables: MutableMap<String, Set<String>> = mutableMapOf()
-    return InvalidationTracker(this, _shadowTablesMap, _viewTables, "impulse_logs", "action_logs", "reflection_logs")
+    return InvalidationTracker(this, _shadowTablesMap, _viewTables, "trace_logs")
   }
 
   public override fun clearAllTables() {
-    super.performClear(false, "impulse_logs", "action_logs", "reflection_logs")
+    super.performClear(false, "trace_logs")
   }
 
   protected override fun getRequiredTypeConverterClasses(): Map<KClass<*>, List<KClass<*>>> {
@@ -148,7 +114,9 @@ public class AdlerDatabase_Impl : AdlerDatabase() {
     return _autoMigrationSpecsSet
   }
 
-  public override fun createAutoMigrations(autoMigrationSpecs: Map<KClass<out AutoMigrationSpec>, AutoMigrationSpec>): List<Migration> {
+  public override
+      fun createAutoMigrations(autoMigrationSpecs: Map<KClass<out AutoMigrationSpec>, AutoMigrationSpec>):
+      List<Migration> {
     val _autoMigrations: MutableList<Migration> = mutableListOf()
     return _autoMigrations
   }
