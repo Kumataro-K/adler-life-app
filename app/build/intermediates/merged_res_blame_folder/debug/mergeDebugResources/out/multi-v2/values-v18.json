@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.adlerlife.app-mergeDebugResources-59:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\strom\\.gradle\\caches\\8.13\\transforms\\0611eb37f641b414c5c2e54e7add0edc\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}
