@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -18,6 +17,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -94,7 +94,7 @@ private val feelingOptions = listOf(
     "😟 不安",
     "😔 悲しい",
     "😤 イライラ",
-    "😴 疲れ気味",
+    "😴 疲れた",
     "😰 プレッシャー",
     "🥺 寂しい",
     "😤 もやもや",
@@ -302,7 +302,6 @@ fun AdlerLifeApp(
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun TraceScreen(
     traceLogs: List<TraceLog>,
@@ -347,32 +346,6 @@ private fun TraceScreen(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                ScoreSlider(
-                    title = "今日の気分",
-                    value = mood,
-                    guidance = when (mood) {
-                        in 0..20 -> "😔 とてもつらい"
-                        in 21..40 -> "😟 少しつらい"
-                        in 41..60 -> "😐 ふつう"
-                        in 61..80 -> "🙂 まあまあ良い"
-                        else -> "😊 とても良い"
-                    },
-                    centerValueColor = Color(0xFF2D6A4F),
-                    onValueChange = onMoodChange
-                )
-                ScoreSlider(
-                    title = "身体のエネルギー",
-                    value = energy,
-                    guidance = when (energy) {
-                        in 0..20 -> "🪫 ほとんど動けない"
-                        in 21..40 -> "😴 疲れ気味"
-                        in 41..60 -> "😐 普通に動ける"
-                        in 61..80 -> "⚡ 元気がある"
-                        else -> "🔥 とても活力がある"
-                    },
-                    centerValueColor = Color(0xFF888888),
-                    onValueChange = onEnergyChange
-                )
                 Text("今日あったこと（複数選択可）", style = MaterialTheme.typography.titleSmall)
                 FlowRow(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -410,6 +383,32 @@ private fun TraceScreen(
                             )
                         )
                     }
+                }
+                ScoreSlider(
+                    title = "今日の気分",
+                    value = mood,
+                    guidance = when (mood) {
+                        in 0..20 -> "😔 とてもつらい"
+                        in 21..40 -> "😟 少しつらい"
+                        in 41..60 -> "😐 ふつう"
+                        in 61..80 -> "🙂 まあまあ良い"
+                        else -> "😊 とても良い"
+                    },
+                    centerValueColor = Color(0xFF2D6A4F),
+                    onValueChange = onMoodChange
+                )
+                ScoreSlider(
+                    title = "身体のエネルギー",
+                    value = energy,
+                    guidance = when (energy) {
+                        in 0..20 -> "🪫 ほとんど動けない"
+                        in 21..40 -> "😴 疲れ気味"
+                        in 41..60 -> "😐 普通に動ける"
+                        in 61..80 -> "⚡ 元気がある"
+                        else -> "🔥 とても活力がある"
+                    },
+                    centerValueColor = Color(0xFF888888),
+                    onValueChange = onEnergyChange
                 }
                 Button(
                     onClick = onSave,
@@ -469,7 +468,7 @@ private fun RecordsScreen(
     selectedPeriod: Int,
     onSelectPeriod: (Int) -> Unit,
     recordDays: Int,
-    chartData: List<Pair<String, Int>>
+    chartData: List<Pair<String, Int?>>
 ) {
     Column(
         modifier = Modifier
@@ -504,35 +503,27 @@ private fun RecordsScreen(
                     modifier = Modifier.padding(start = 32.dp)
                 )
             }
-            if (chartData.isEmpty()) {
-                Text(
-                    text = "まだ表示できる記録がありません。",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
-                )
-            } else {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 40.dp),
-                    horizontalArrangement = Arrangement.SpaceAround
-                ) {
-                    chartData.forEach { (date, _) ->
-                        Text(
-                            text = date,
-                            style = MaterialTheme.typography.labelSmall,
-                            color = Color(0xFF888888),
-                            fontSize = 9.sp
-                        )
-                    }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 40.dp),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                chartData.forEach { (date, _) ->
+                    Text(
+                        text = date,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = Color(0xFF888888),
+                        fontSize = 9.sp
+                    )
                 }
-                Text(
-                    text = "縦軸：気分（0〜100）　横軸：日付",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = Color(0xFF888888),
-                    modifier = Modifier.padding(top = 4.dp)
-                )
             }
+            Text(
+                text = "縦軸：気分（0〜100）　横軸：日付",
+                style = MaterialTheme.typography.labelSmall,
+                color = Color(0xFF888888),
+                modifier = Modifier.padding(top = 4.dp)
+            )
             RecordDaysCard(recordDays = recordDays)
             AdBanner()
         }
@@ -541,7 +532,7 @@ private fun RecordsScreen(
 
 @Composable
 private fun MoodBarChart(
-    dataPoints: List<Pair<String, Int>>,
+    dataPoints: List<Pair<String, Int?>>,
     modifier: Modifier = Modifier
 ) {
     val barColor = Color(0xFF52B788)
@@ -585,15 +576,17 @@ private fun MoodBarChart(
         }
 
         dataPoints.forEachIndexed { index, (_, value) ->
-            val barHeight = value / 100f * chartHeight
-            val left = index * (barWidth + gap) + gap / 2
-            val top = chartHeight - barHeight
-            drawRoundRect(
-                color = barColor,
-                topLeft = Offset(left, top),
-                size = Size(barWidth, barHeight),
-                cornerRadius = CornerRadius(4.dp.toPx())
-            )
+            if (value != null) {
+                val barHeight = value / 100f * chartHeight
+                val left = index * (barWidth + gap) + gap / 2
+                val top = chartHeight - barHeight
+                drawRoundRect(
+                    color = barColor,
+                    topLeft = Offset(left, top),
+                    size = Size(barWidth, barHeight),
+                    cornerRadius = CornerRadius(4.dp.toPx())
+                )
+            }
         }
     }
 }
@@ -645,6 +638,7 @@ private fun CalendarScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -894,14 +888,19 @@ private fun LegalDocumentDialog(title: String, text: String, onDismiss: () -> Un
 
 @Composable
 private fun CalendarWeekHeader() {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
+    Row(modifier = Modifier.fillMaxWidth()) {
         listOf("日", "月", "火", "水", "木", "金", "土").forEach { label ->
-            Box(modifier = Modifier.size(44.dp), contentAlignment = Alignment.Center) {
-                Text(text = label, style = MaterialTheme.typography.labelLarge)
-            }
+            Text(
+                text = label,
+                modifier = Modifier.weight(1f),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.labelSmall,
+                color = when (label) {
+                    "日" -> Color(0xFFE57373)
+                    "土" -> Color(0xFF64B5F6)
+                    else -> Color(0xFF666666)
+                }
+            )
         }
     }
 }

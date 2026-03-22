@@ -16,15 +16,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.YearMonth
-import java.util.Date
-import java.util.Locale
+import java.time.ZoneId
+import java.util.Calendar
 import java.util.UUID
 
 data class AdlerUiState(
@@ -45,7 +43,8 @@ data class AdlerUiState(
 )
 
 class AdlerViewModel(
-    private val repository: AdlerRepository
+    private val repository: AdlerRepository,
+    private val zoneId: ZoneId = ZoneId.systemDefault()
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(AdlerUiState())
     val uiState = _uiState.asStateFlow()
@@ -74,30 +73,20 @@ class AdlerViewModel(
             initialValue = emptyList()
         )
 
-    val recordLogs: StateFlow<List<TraceLog>> = selectedRecordPeriod
-        .flatMapLatest { period ->
-            val since = if (period == 0) {
-                System.currentTimeMillis() - 7 * 24 * 60 * 60 * 1000L
-            } else {
-                System.currentTimeMillis() - 30 * 24 * 60 * 60 * 1000L
-            }
-            repository.getLogsAfter(since)
-        }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = emptyList()
-        )
-
-    val chartData: StateFlow<List<Pair<String, Int>>> = combine(selectedRecordPeriod, recordLogs) { period, logs ->
-        val pattern = if (period == 0) "E" else "d日"
-        logs
-            .groupBy { SimpleDateFormat(pattern, Locale.JAPAN).format(Date(it.timestamp)) }
-            .map { (date, entries) -> date to entries.map { it.mood }.average().toInt() }
+    val recordLogs: StateFlow<List<TraceLog>> = combine(traceLogs, selectedRecordPeriod) { logs, period ->
+        if (period == 0) filterThisWeekLogs(logs) else filterThisMonthLogs(logs)
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
         initialValue = emptyList()
+    )
+
+    val chartData: StateFlow<List<Pair<String, Int?>>> = combine(selectedRecordPeriod, recordLogs) { period, logs ->
+        if (period == 0) getThisWeekData(logs) else getThisMonthData(logs)
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = getThisWeekData(emptyList())
     )
 
     fun updateMood(value: Int) = _uiState.update {
@@ -217,13 +206,92 @@ class AdlerViewModel(
         }
     }
 
-    fun countRecordedDays(logs: List<TraceLog>): Int = logs.map { it.toLocalDate() }.distinct().size
+    fun countRecordedDays(logs: List<TraceLog>): Int = logs.map { it.toLocalDate(zoneId) }.distinct().size
 
-    fun averageMood(logs: List<TraceLog>): Int? = logs.takeIf { it.isNotEmpty() }?.map { it.mood }?.average()?.toInt()
+    fun logsForDate(date: LocalDate): List<TraceLog> = traceLogs.value.filter { it.toLocalDate(zoneId) == date }
 
-    fun averageEnergy(logs: List<TraceLog>): Int? = logs.takeIf { it.isNotEmpty() }?.map { it.energy }?.average()?.toInt()
+    fun getThisWeekData(logs: List<TraceLog>): List<Pair<String, Int?>> {
+        val calendar = Calendar.getInstance().apply {
+            firstDayOfWeek = Calendar.MONDAY
+            set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+        }
+        val dayLabels = listOf("月", "火", "水", "木", "金", "土", "日")
+        val result = mutableListOf<Pair<String, Int?>>()
 
-    fun logsForDate(date: LocalDate): List<TraceLog> = traceLogs.value.filter { it.toLocalDate() == date }
+        repeat(7) { index ->
+            val dayStart = (calendar.clone() as Calendar).apply {
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+            val dayEnd = (calendar.clone() as Calendar).apply {
+                set(Calendar.HOUR_OF_DAY, 23)
+                set(Calendar.MINUTE, 59)
+                set(Calendar.SECOND, 59)
+                set(Calendar.MILLISECOND, 999)
+            }
+            val dayLogs = logs.filter { it.timestamp in dayStart.timeInMillis..dayEnd.timeInMillis }
+            val avgMood = dayLogs.takeIf { it.isNotEmpty() }?.map { it.mood }?.average()?.toInt()
+            result.add(dayLabels[index] to avgMood)
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+        return result
+    }
+
+    fun getThisMonthData(logs: List<TraceLog>): List<Pair<String, Int?>> {
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.DAY_OF_MONTH, 1)
+        }
+        val maxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        val result = mutableListOf<Pair<String, Int?>>()
+
+        repeat(maxDay) { index ->
+            val dayStart = (calendar.clone() as Calendar).apply {
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+            val dayEnd = (calendar.clone() as Calendar).apply {
+                set(Calendar.HOUR_OF_DAY, 23)
+                set(Calendar.MINUTE, 59)
+                set(Calendar.SECOND, 59)
+                set(Calendar.MILLISECOND, 999)
+            }
+            val dayLogs = logs.filter { it.timestamp in dayStart.timeInMillis..dayEnd.timeInMillis }
+            val avgMood = dayLogs.takeIf { it.isNotEmpty() }?.map { it.mood }?.average()?.toInt()
+            val dayNumber = index + 1
+            val label = if (dayNumber == 1 || dayNumber == maxDay || dayNumber % 5 == 0) {
+                dayNumber.toString()
+            } else {
+                ""
+            }
+            result.add(label to avgMood)
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+        return result
+    }
+
+    private fun filterThisWeekLogs(logs: List<TraceLog>): List<TraceLog> {
+        val calendar = Calendar.getInstance().apply {
+            firstDayOfWeek = Calendar.MONDAY
+            set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+        val weekStart = calendar.timeInMillis
+        calendar.add(Calendar.DAY_OF_MONTH, 7)
+        val weekEndExclusive = calendar.timeInMillis
+        return logs.filter { it.timestamp in weekStart until weekEndExclusive }
+    }
+
+    private fun filterThisMonthLogs(logs: List<TraceLog>): List<TraceLog> {
+        val currentMonth = YearMonth.now(zoneId)
+        return logs.filter { YearMonth.from(it.toLocalDate(zoneId)) == currentMonth }
+    }
 
     class Factory(
         private val repository: AdlerRepository
