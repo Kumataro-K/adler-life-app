@@ -524,7 +524,6 @@ private fun RecordsScreen(
                 color = Color(0xFF888888),
                 modifier = Modifier.padding(top = 4.dp)
             )
-            RecordDaysCard(recordDays = recordDays)
         }
     }
 }
