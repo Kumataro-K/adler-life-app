@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -17,7 +18,6 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -30,8 +30,6 @@ import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Spa
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -59,16 +57,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.adlerlife.BuildConfig
 import com.example.adlerlife.data.model.TraceDaySummary
@@ -133,7 +128,7 @@ private enum class Destination(
 
 private enum class LegalDocument { DISCLAIMER, PRIVACY }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun AdlerLifeApp(
     viewModel: AdlerViewModel,
@@ -302,13 +297,14 @@ fun AdlerLifeApp(
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun TraceScreen(
     traceLogs: List<TraceLog>,
     mood: Int,
     energy: Int,
     selectedTags: Set<String>,
-    selectedFeeling: String,
+    selectedFeeling: String?,
     isSaving: Boolean,
     onMoodChange: (Int) -> Unit,
     onEnergyChange: (Int) -> Unit,
@@ -316,37 +312,14 @@ private fun TraceScreen(
     onFeelingChange: (String) -> Unit,
     onSave: () -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(14.dp)
+    LazyColumn(
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier.fillMaxSize()
     ) {
-        Text(
-            text = "ありのままを記録しましょう。今日の気分や体調をあなたのペースで残せます。",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.76f)
-        )
-        LazyColumn(
-            modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(bottom = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-            items(traceLogs, key = { it.id }) { log ->
-                TraceLogRow(log)
-            }
-        }
-        GentleCard(
-            title = "今日の気分を記録する",
-            subtitle = "今日の気持ちを残しましょう。フォームは縦にスクロールできます。"
-        ) {
-            Column(
-                modifier = Modifier
-                    .heightIn(max = 520.dp)
-                    .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                Text("今日あったこと（複数選択可）", style = MaterialTheme.typography.titleSmall)
+        item {
+            GentleCard(title = "今日のきろく") {
+                Text("今日の活動タグ", style = MaterialTheme.typography.titleSmall)
                 FlowRow(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -409,7 +382,7 @@ private fun TraceScreen(
                     },
                     centerValueColor = Color(0xFF888888),
                     onValueChange = onEnergyChange
-                }
+                )
                 Button(
                     onClick = onSave,
                     enabled = !isSaving,
@@ -423,6 +396,18 @@ private fun TraceScreen(
                 }
                 AdBanner()
             }
+        }
+        item {
+            Text(
+                "これまでの軌跡",
+                style = MaterialTheme.typography.titleMedium,
+                color = Color(0xFF2D6A4F),
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+        }
+        items(traceLogs) { log ->
+            TraceLogRow(log = log)
         }
     }
 }
@@ -448,18 +433,11 @@ private fun ScoreSlider(
             valueRange = 0f..100f,
             steps = 99,
             colors = SliderDefaults.colors(
-                thumbColor = Color(0xFF2D6A4F),
-                activeTrackColor = Color(0xFF52B788)
+                thumbColor = Color(0xFF52B788),
+                activeTrackColor = Color(0xFF52B788),
+                inactiveTrackColor = Color(0xFFD8F3DC)
             )
         )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text("0", style = MaterialTheme.typography.bodySmall, color = Color(0xFF888888))
-            Text("現在: $value", style = MaterialTheme.typography.bodySmall, color = centerValueColor)
-            Text("100", style = MaterialTheme.typography.bodySmall, color = Color(0xFF888888))
-        }
     }
 }
 
@@ -470,167 +448,126 @@ private fun RecordsScreen(
     recordDays: Int,
     chartData: List<Pair<String, Int?>>
 ) {
-    val axisLabels = if (selectedPeriod == 0) {
-        listOf("月", "火", "水", "木", "金", "土", "日")
-    } else {
-        val maxDay = YearMonth.now().lengthOfMonth()
-        (1..maxDay).map { day ->
-            if (day == 1 || day % 5 == 0 || day == maxDay) "$day" else ""
-        }
-    }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        GentleCard(
-            title = "きろく",
-            subtitle = "あなたのペースで大丈夫です。気分の波をゆっくり見てみましょう。"
-        ) {
-            TabRow(selectedTabIndex = selectedPeriod) {
-                Tab(text = { Text("今週") }, selected = selectedPeriod == 0, onClick = { onSelectPeriod(0) })
-                Tab(text = { Text("今月") }, selected = selectedPeriod == 1, onClick = { onSelectPeriod(1) })
-            }
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Column(
-                    modifier = Modifier
-                        .align(Alignment.CenterStart)
-                        .width(32.dp)
-                        .height(220.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text("100", style = MaterialTheme.typography.labelSmall, color = Color(0xFF888888))
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text("50", style = MaterialTheme.typography.labelSmall, color = Color(0xFF888888))
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text("0", style = MaterialTheme.typography.labelSmall, color = Color(0xFF888888))
-                }
-                MoodBarChart(
-                    dataPoints = chartData,
-                    modifier = Modifier.padding(start = 32.dp)
-                )
-            }
+        GentleCard(title = "継続の記録") {
+            Spacer(modifier = Modifier.height(8.dp))
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 40.dp, end = 8.dp),
-                horizontalArrangement = Arrangement.SpaceAround
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.Bottom
             ) {
-                axisLabels.forEach { label ->
+                Column {
+                    Text("記録した日数", style = MaterialTheme.typography.bodySmall)
                     Text(
-                        text = label,
-                        style = MaterialTheme.typography.labelSmall,
-                        color = Color(0xFF888888),
-                        textAlign = TextAlign.Center,
-                        fontSize = 9.sp,
-                        modifier = Modifier.weight(1f)
+                        text = "$recordDays 日",
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = Color(0xFF1B4332),
+                        fontWeight = FontWeight.Bold
                     )
                 }
+                Icon(
+                    imageVector = Icons.Default.Park,
+                    contentDescription = null,
+                    tint = Color(0xFFB7E4C7),
+                    modifier = Modifier.size(48.dp)
+                )
             }
-            Text(
-                text = if (selectedPeriod == 0) "縦軸：気分（0〜100）　横軸：曜日" else "縦軸：気分（0〜100）　横軸：日付",
-                style = MaterialTheme.typography.labelSmall,
-                color = Color(0xFF888888),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 4.dp),
-                textAlign = TextAlign.Center
-            )
         }
+
+        TabRow(
+            selectedTabIndex = if (selectedPeriod == 7) 0 else 1,
+            containerColor = Color.Transparent,
+            contentColor = Color(0xFF2D6A4F),
+            divider = {}
+        ) {
+            Tab(selected = selectedPeriod == 7, onClick = { onSelectPeriod(7) }) {
+                Text("7日間", modifier = Modifier.padding(vertical = 12.dp))
+            }
+            Tab(selected = selectedPeriod == 30, onClick = { onSelectPeriod(30) }) {
+                Text("30日間", modifier = Modifier.padding(vertical = 12.dp))
+            }
+        }
+
+        GentleCard(title = "気分の推移") {
+            Spacer(modifier = Modifier.height(16.dp))
+            if (chartData.isEmpty()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("データがありません", color = Color.Gray)
+                }
+            } else {
+                SimpleLineChart(data = chartData)
+            }
+        }
+        AdBanner()
     }
 }
 
 @Composable
-private fun MoodBarChart(
-    dataPoints: List<Pair<String, Int?>>,
-    modifier: Modifier = Modifier
-) {
-    val barColor = Color(0xFF52B788)
-    val axisColor = Color(0xFF888888)
-
+private fun SimpleLineChart(data: List<Pair<String, Int?>>) {
     Canvas(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
-            .height(220.dp)
-            .padding(start = 8.dp, bottom = 24.dp, end = 8.dp, top = 8.dp)
+            .height(200.dp)
+            .padding(horizontal = 8.dp)
     ) {
-        if (dataPoints.isEmpty()) return@Canvas
+        val width = size.width
+        val height = size.height
+        val maxVal = 100f
+        
+        val validPoints = data.mapIndexedNotNull { index, pair ->
+            pair.second?.let { value ->
+                val stepX = width / (data.size - 1).coerceAtLeast(1)
+                Offset(
+                    x = index * stepX,
+                    y = height - (value.toFloat() / maxVal * height)
+                )
+            }
+        }
 
-        val chartWidth = size.width
-        val chartHeight = size.height
-        val slotWidth = chartWidth / dataPoints.size
-        val barWidth = slotWidth * 0.6f
-        val gap = slotWidth * 0.4f
-
-        drawLine(
-            color = axisColor,
-            start = Offset(0f, 0f),
-            end = Offset(0f, chartHeight),
-            strokeWidth = 2.dp.toPx()
-        )
-        drawLine(
-            color = axisColor,
-            start = Offset(0f, chartHeight),
-            end = Offset(chartWidth, chartHeight),
-            strokeWidth = 2.dp.toPx()
-        )
-
-        listOf(0, 50, 100).forEach { value ->
-            val y = chartHeight - (value / 100f * chartHeight)
+        // Draw grid lines
+        for (i in 0..4) {
+            val y = height - (i * height / 4)
             drawLine(
-                color = axisColor.copy(alpha = 0.3f),
+                color = Color.LightGray.copy(alpha = 0.5f),
                 start = Offset(0f, y),
-                end = Offset(chartWidth, y),
+                end = Offset(width, y),
                 strokeWidth = 1.dp.toPx()
             )
         }
 
-        dataPoints.forEachIndexed { index, (_, value) ->
-            if (value != null) {
-                val barHeight = value / 100f * chartHeight
-                val left = index * (barWidth + gap) + gap / 2
-                val top = chartHeight - barHeight
-                drawRoundRect(
-                    color = barColor,
-                    topLeft = Offset(left, top),
-                    size = Size(barWidth, barHeight),
-                    cornerRadius = CornerRadius(4.dp.toPx())
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun RecordDaysCard(recordDays: Int) {
-    Card(
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9))
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            Text(text = "📅", fontSize = 28.sp)
-            Text(
-                text = "${recordDays}日",
-                style = MaterialTheme.typography.titleMedium,
-                color = Color(0xFF2D6A4F)
+        // Draw line
+        for (i in 0 until validPoints.size - 1) {
+            drawLine(
+                color = Color(0xFF52B788),
+                start = validPoints[i],
+                end = validPoints[i + 1],
+                strokeWidth = 3.dp.toPx()
             )
-            Text(
-                text = "記録日数",
-                style = MaterialTheme.typography.bodySmall,
-                color = Color(0xFF666666)
+        }
+
+        // Draw dots
+        validPoints.forEach { point ->
+            drawCircle(
+                color = Color(0xFF2D6A4F),
+                radius = 4.dp.toPx(),
+                center = point
             )
         }
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun CalendarScreen(
     month: YearMonth,
@@ -640,181 +577,81 @@ private fun CalendarScreen(
     onNextMonth: () -> Unit,
     onSelectDate: (LocalDate) -> Unit
 ) {
-    val summaryMap = summaries.associateBy { it.date }
-    val firstDay = month.atDay(1)
-    val daysInMonth = month.lengthOfMonth()
-    val firstDayOffset = firstDay.dayOfWeek.value % 7
-    val avgMood = thisMonthLogs.takeIf { it.isNotEmpty() }?.map { it.mood }?.average()?.toInt()
-    val avgEnergy = thisMonthLogs.takeIf { it.isNotEmpty() }?.map { it.energy }?.average()?.toInt()
+    val summaryMap = remember(summaries) { summaries.associateBy { it.date } }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+            .padding(16.dp)
     ) {
-        GentleCard(
-            title = "気分の暦",
-            subtitle = "あなたのペースで大丈夫です。色でゆるやかな流れを見られます。"
-        ) {
-            LegendCard()
+        GentleCard(title = month.format(DateTimeFormatter.ofPattern("yyyy年 MM月", Locale.JAPANESE))) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(onClick = onPreviousMonth) {
-                    Text("‹", style = MaterialTheme.typography.titleLarge)
+                    Icon(Icons.Default.Park, contentDescription = "前月", modifier = Modifier.size(24.dp))
                 }
-                Text(
-                    text = month.format(DateTimeFormatter.ofPattern("yyyy年M月", Locale.JAPAN)),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold
-                )
                 IconButton(onClick = onNextMonth) {
-                    Text("›", style = MaterialTheme.typography.titleLarge)
+                    Icon(Icons.Default.Park, contentDescription = "次月", modifier = Modifier.size(24.dp))
                 }
             }
-            CalendarWeekHeader()
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                var dayNumber = 1
-                for (week in 0 until 6) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        for (dayIndex in 0 until 7) {
-                            val cellIndex = week * 7 + dayIndex
-                            if (cellIndex < firstDayOffset || dayNumber > daysInMonth) {
-                                CalendarDayCell(
-                                    dayLabel = "",
-                                    color = moodToColor(null),
-                                    isCurrentMonth = false
-                                ) {}
-                            } else {
-                                val date = month.atDay(dayNumber)
-                                val summary = summaryMap[date]
-                                CalendarDayCell(
-                                    dayLabel = dayNumber.toString(),
-                                    color = moodToColor(summary?.averageMood),
-                                    isCurrentMonth = true,
-                                    onClick = { onSelectDate(date) }
-                                )
-                                dayNumber++
-                            }
-                        }
-                    }
-                }
-            }
-            MonthSummaryCard(avgMood = avgMood, avgEnergy = avgEnergy)
-        }
-    }
-}
 
-@Composable
-private fun LegendCard() {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFF1F8E9))
-    ) {
-        Column(modifier = Modifier.padding(12.dp)) {
-            Text(
-                "気分の色ガイド",
-                style = MaterialTheme.typography.titleSmall,
-                color = Color(0xFF2D6A4F)
-            )
+            Spacer(modifier = Modifier.height(16.dp))
+
+            val daysInMonth = month.lengthOfMonth()
+            val firstDayOfWeek = month.atDay(1).dayOfWeek.value % 7 // 0=Sun, 1=Mon...
+            
+            Row(modifier = Modifier.fillMaxWidth()) {
+                listOf("日", "月", "火", "水", "木", "金", "土").forEach { day ->
+                    Text(
+                        text = day,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color.Gray
+                    )
+                }
+            }
+
             Spacer(modifier = Modifier.height(8.dp))
-            Row(
+
+            FlowRow(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
+                horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                maxItemsInEachRow = 7
             ) {
-                LegendItem(color = Color(0xFFEF9A9A), label = "つらい\n(0〜33)")
-                LegendItem(color = Color(0xFFFFE082), label = "ふつう\n(34〜66)")
-                LegendItem(color = Color(0xFF81C784), label = "よい\n(67〜100)")
-                LegendItem(color = Color(0xFFE0E0E0), label = "記録\nなし")
+                repeat(firstDayOfWeek) {
+                    Spacer(modifier = Modifier.size(44.dp))
+                }
+
+                for (day in 1..daysInMonth) {
+                    val date = month.atDay(day)
+                    val summary = summaryMap[date]
+                    CalendarDayCell(
+                        dayLabel = day.toString(),
+                        color = summary?.color ?: Color.Transparent,
+                        isCurrentMonth = true,
+                        onClick = { onSelectDate(date) }
+                    )
+                }
             }
         }
-    }
-}
 
-@Composable
-private fun LegendItem(color: Color, label: String) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Box(
-            modifier = Modifier
-                .size(28.dp)
-                .background(color = color, shape = RoundedCornerShape(6.dp))
-        )
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelSmall,
-            color = Color(0xFF666666),
-            textAlign = TextAlign.Center,
-            fontSize = 10.sp
-        )
-    }
-}
-
-@Composable
-private fun MonthSummaryCard(avgMood: Int?, avgEnergy: Int?) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9))
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                "今月のまとめ",
-                style = MaterialTheme.typography.titleSmall,
-                color = Color(0xFF2D6A4F)
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
-            ) {
-                MonthStatItem(
-                    icon = "😊",
-                    label = "平均気分",
-                    value = avgMood?.let { "$it / 100" } ?: "記録なし"
-                )
-                MonthStatItem(
-                    icon = "⚡",
-                    label = "平均エネルギー",
-                    value = avgEnergy?.let { "$it / 100" } ?: "記録なし"
-                )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text("今月のログ", style = MaterialTheme.typography.titleSmall, color = Color(0xFF2D6A4F))
+        Spacer(modifier = Modifier.height(8.dp))
+        
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.weight(1f)
+        ) {
+            items(thisMonthLogs) { log ->
+                TraceLogRow(log = log)
             }
         }
-    }
-}
-
-@Composable
-private fun MonthStatItem(icon: String, label: String, value: String) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = icon, fontSize = 28.sp)
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = value,
-            style = MaterialTheme.typography.titleMedium,
-            color = Color(0xFF2D6A4F)
-        )
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodySmall,
-            color = Color(0xFF666666)
-        )
-    }
-}
-
-private fun moodToColor(mood: Int?): Color {
-    return when {
-        mood == null -> Color(0xFFE0E0E0)
-        mood <= 33 -> Color(0xFFEF9A9A)
-        mood <= 66 -> Color(0xFFFFE082)
-        else -> Color(0xFF81C784)
     }
 }
 
@@ -831,62 +668,79 @@ private fun SettingsScreen(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        GentleCard(
-            title = "設定",
-            subtitle = "記録はあなたの味方です。必要な情報をここにまとめています。"
-        ) {
-            SettingsRow(title = "免責事項", subtitle = "セルフケアアプリとしての位置づけを確認") { onShowDisclaimer() }
-            SettingsRow(title = "プライバシーポリシー", subtitle = "データ保存と広告配信について") { onShowPrivacy() }
-            SettingsRow(title = "記録をエクスポート 📤", subtitle = "共有シートでメモやメールへ送る") { onExport() }
-            Text(
-                text = "バージョン情報  $versionName",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.72f)
-            )
-        }
-        GentleCard(
-            title = "ご利用の前に",
-            subtitle = "今日の気持ちを残しましょう。いつでも全文を確認できます。"
-        ) {
-            Text(
-                text = DISCLAIMER_TEXT,
-                modifier = Modifier.clickable { onShowDisclaimer() },
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
-    }
-}
+        Text("アプリの設定", style = MaterialTheme.typography.titleLarge, color = Color(0xFF2D6A4F))
 
-@Composable
-private fun SettingsRow(title: String, subtitle: String, onClick: () -> Unit) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(vertical = 6.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
-    ) {
-        Text(title, style = MaterialTheme.typography.bodyLarge)
+        GentleCard(title = "一般") {
+            SettingsItem(title = "データをエクスポート", onClick = onExport)
+            SettingsItem(title = "ご利用の前に", onClick = onShowDisclaimer)
+            SettingsItem(title = "プライバシーポリシー", onClick = onShowPrivacy)
+        }
+
+        Spacer(modifier = Modifier.weight(1f))
+        
         Text(
-            subtitle,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.68f)
+            text = "Version $versionName",
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.bodySmall,
+            color = Color.Gray
         )
     }
 }
 
 @Composable
-private fun LegalDocumentDialog(title: String, text: String, onDismiss: () -> Unit) {
+private fun SettingsItem(title: String, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(vertical = 12.dp, horizontal = 4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(title)
+        Icon(Icons.Default.Park, contentDescription = null, modifier = Modifier.size(16.dp), tint = Color.LightGray)
+    }
+}
+
+@Composable
+private fun DayLogSheet(date: LocalDate, logs: List<TraceLog>) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .heightIn(max = 500.dp)
+    ) {
+        Text(
+            text = date.format(DateTimeFormatter.ofPattern("yyyy年MM月dd日")),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        if (logs.isEmpty()) {
+            Text("この日の記録はありません。")
+        } else {
+            LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                items(logs) { log ->
+                    TraceLogRow(log = log)
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(32.dp))
+    }
+}
+
+@Composable
+private fun LegalDocumentDialog(
+    title: String,
+    text: String,
+    onDismiss: () -> Unit
+) {
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(title) },
         text = {
-            Column(
-                modifier = Modifier
-                    .heightIn(max = 420.dp)
-                    .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                 Text(text)
             }
         },
@@ -896,50 +750,4 @@ private fun LegalDocumentDialog(title: String, text: String, onDismiss: () -> Un
             }
         }
     )
-}
-
-@Composable
-private fun CalendarWeekHeader() {
-    Row(modifier = Modifier.fillMaxWidth()) {
-        listOf("日", "月", "火", "水", "木", "金", "土").forEach { label ->
-            Text(
-                text = label,
-                modifier = Modifier.weight(1f),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.labelSmall,
-                color = when (label) {
-                    "日" -> Color(0xFFE57373)
-                    "土" -> Color(0xFF64B5F6)
-                    else -> Color(0xFF666666)
-                }
-            )
-        }
-    }
-}
-
-@Composable
-private fun DayLogSheet(date: LocalDate, logs: List<TraceLog>) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 20.dp, vertical = 8.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        Text(
-            text = date.format(DateTimeFormatter.ofPattern("yyyy年M月d日", Locale.JAPAN)),
-            style = MaterialTheme.typography.titleLarge
-        )
-        if (logs.isEmpty()) {
-            Text("この日の記録はまだありません。")
-        } else {
-            LazyColumn(
-                modifier = Modifier.height(420.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
-                items(logs, key = { it.id }) { log ->
-                    TraceLogRow(log)
-                }
-            }
-        }
-    }
 }
