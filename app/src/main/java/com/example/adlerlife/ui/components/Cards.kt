@@ -86,13 +86,13 @@ fun TraceLogRow(log: TraceLog) {
                 fontWeight = FontWeight.SemiBold
             )
             MoodMeter(label = "今日の気分", value = log.mood)
-            MoodMeter(label = "体のエネルギー", value = log.energy)
+            MoodMeter(label = "身体のエネルギー", value = log.energy)
             Text(
-                text = log.whatHappened.ifBlank { "今日あったこと：未入力" },
+                text = log.tags.takeIf { it.isNotBlank() }?.let { "今日あったこと: $it" } ?: "今日あったこと: 未選択",
                 style = MaterialTheme.typography.bodyMedium
             )
             Text(
-                text = log.feeling.ifBlank { "今の気持ち：未入力" },
+                text = log.feeling.ifBlank { "今の気持ち: 未選択" },
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.84f)
             )
@@ -101,7 +101,7 @@ fun TraceLogRow(log: TraceLog) {
 }
 
 @Composable
-fun MoodMeter(label: String, value: Float) {
+fun MoodMeter(label: String, value: Int) {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(999.dp))
@@ -109,7 +109,7 @@ fun MoodMeter(label: String, value: Float) {
             .padding(horizontal = 12.dp, vertical = 7.dp)
     ) {
         Text(
-            text = "$label ${"%.2f".format(value)}",
+            text = "$label $value / 100",
             style = MaterialTheme.typography.labelLarge,
             color = MaterialTheme.colorScheme.onSurface
         )

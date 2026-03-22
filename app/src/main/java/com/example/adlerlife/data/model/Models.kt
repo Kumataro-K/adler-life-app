@@ -10,31 +10,31 @@ import java.time.ZoneId
 @Entity(tableName = "trace_logs")
 data class TraceLog(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val mood: Float,
-    val energy: Float,
-    val whatHappened: String,
+    val mood: Int,
+    val energy: Int,
+    val tags: String,
     val feeling: String,
     val timestamp: Long = System.currentTimeMillis()
 )
 
 data class TraceInput(
-    val mood: Float = 0.5f,
-    val energy: Float = 0.5f,
-    val whatHappened: String = "",
+    val mood: Int = 50,
+    val energy: Int = 50,
+    val tags: Set<String> = emptySet(),
     val feeling: String = ""
 )
 
 data class TraceDaySummary(
     val date: LocalDate,
-    val averageMood: Float,
+    val averageMood: Int,
     val logs: List<TraceLog>
 ) {
     val color: Color
         get() = when {
-            logs.isEmpty() -> Color(0xFFF5F5F5)
-            averageMood <= 0.33f -> Color(0xFFFFCDD2)
-            averageMood <= 0.66f -> Color(0xFFFFF9C4)
-            else -> Color(0xFFC8E6C9)
+            logs.isEmpty() -> Color(0xFFE0E0E0)
+            averageMood <= 33 -> Color(0xFFEF9A9A)
+            averageMood <= 66 -> Color(0xFFFFE082)
+            else -> Color(0xFF81C784)
         }
 }
 

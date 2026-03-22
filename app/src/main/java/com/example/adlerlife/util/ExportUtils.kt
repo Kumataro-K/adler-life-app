@@ -18,10 +18,10 @@ fun exportLogs(logs: List<TraceLog>): String {
     logs.forEach { log ->
         sb.appendLine("---")
         sb.appendLine("📅 ${log.timestamp.toDateTimeString(formatter)}")
-        sb.appendLine("気分：${log.mood.toMoodEmoji()} ${(log.mood * 10).toInt()}/10")
-        sb.appendLine("エネルギー：${log.energy.toEnergyEmoji()} ${(log.energy * 10).toInt()}/10")
-        if (log.whatHappened.isNotBlank()) {
-            sb.appendLine("今日あったこと：${log.whatHappened}")
+        sb.appendLine("気分：${log.mood.toMoodEmoji()} ${log.mood}/100")
+        sb.appendLine("エネルギー：${log.energy.toEnergyEmoji()} ${log.energy}/100")
+        if (log.tags.isNotBlank()) {
+            sb.appendLine("今日あったこと：${log.tags}")
         }
         if (log.feeling.isNotBlank()) {
             sb.appendLine("気持ち：${log.feeling}")
@@ -42,5 +42,14 @@ fun shareText(context: Context, text: String) {
 fun Long.toDateTimeString(formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm", Locale.JAPAN)): String =
     Instant.ofEpochMilli(this).atZone(ZoneId.systemDefault()).format(formatter)
 
-fun Float.toMoodEmoji(): String = if (this >= 0.67f) "😊" else if (this >= 0.34f) "😌" else "😔"
-fun Float.toEnergyEmoji(): String = if (this >= 0.67f) "⚡" else if (this >= 0.34f) "🌿" else "🪫"
+fun Int.toMoodEmoji(): String = when {
+    this >= 67 -> "😊"
+    this >= 34 -> "😌"
+    else -> "😔"
+}
+
+fun Int.toEnergyEmoji(): String = when {
+    this >= 67 -> "⚡"
+    this >= 34 -> "🌿"
+    else -> "🪫"
+}

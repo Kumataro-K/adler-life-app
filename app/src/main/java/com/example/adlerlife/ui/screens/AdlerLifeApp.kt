@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,10 +17,12 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Park
 import androidx.compose.material.icons.outlined.Park
@@ -31,15 +34,17 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
@@ -48,21 +53,20 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -82,6 +86,40 @@ import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+
+private val feelingOptions = listOf(
+    "😊 嬉しい",
+    "😌 穏やか",
+    "😐 ふつう",
+    "😟 不安",
+    "😔 悲しい",
+    "😤 イライラ",
+    "😴 疲れた",
+    "😰 プレッシャー",
+    "🥺 寂しい",
+    "😤 もやもや",
+    "🤗 感謝",
+    "😶 無気力"
+)
+
+private val tagOptions = listOf(
+    "💼 仕事",
+    "📚 勉強",
+    "👥 人間関係",
+    "🏃 運動",
+    "🍽️ 食事",
+    "😴 睡眠",
+    "🏥 体調",
+    "🎮 趣味",
+    "🏠 家事",
+    "🌿 休息",
+    "🚶 外出",
+    "💊 通院",
+    "👨‍👩‍👧 家族",
+    "❤️ 恋愛",
+    "💰 お金",
+    "🌤️ 天気の影響"
+)
 
 private enum class Destination(
     val label: String,
@@ -106,8 +144,10 @@ fun AdlerLifeApp(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val traceLogs by viewModel.traceLogs.collectAsStateWithLifecycle()
     val monthSummaries by viewModel.monthSummaries.collectAsStateWithLifecycle()
-    val weekLogs by viewModel.getThisWeekLogs().collectAsStateWithLifecycle(initialValue = emptyList())
-    val monthRecordLogs by viewModel.getThisMonthLogs().collectAsStateWithLifecycle(initialValue = emptyList())
+    val selectedPeriod by viewModel.selectedRecordPeriod.collectAsStateWithLifecycle()
+    val recordLogs by viewModel.recordLogs.collectAsStateWithLifecycle()
+    val chartData by viewModel.chartData.collectAsStateWithLifecycle()
+    val thisMonthLogs by viewModel.thisMonthLogs.collectAsStateWithLifecycle()
     var destination by rememberSaveable { mutableStateOf(Destination.TRACE) }
     var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
     var showInitialDisclaimer by rememberSaveable { mutableStateOf(showDisclaimerInitially) }
@@ -225,28 +265,27 @@ fun AdlerLifeApp(
                     traceLogs = traceLogs,
                     mood = uiState.traceInput.mood,
                     energy = uiState.traceInput.energy,
-                    whatHappened = uiState.traceInput.whatHappened,
-                    feeling = uiState.traceInput.feeling,
+                    selectedTags = uiState.traceInput.tags,
+                    selectedFeeling = uiState.traceInput.feeling,
                     isSaving = uiState.isSavingTrace,
                     onMoodChange = viewModel::updateMood,
                     onEnergyChange = viewModel::updateEnergy,
-                    onWhatHappenedChange = viewModel::updateWhatHappened,
+                    onTagsChange = viewModel::updateTags,
                     onFeelingChange = viewModel::updateFeeling,
                     onSave = { viewModel.saveTrace(onTraceSaved) }
                 )
 
                 Destination.RECORDS -> RecordsScreen(
-                    weekLogs = weekLogs,
-                    monthLogs = monthRecordLogs,
-                    calcAvgMood = viewModel::calcAvgMood,
-                    calcAvgEnergy = viewModel::calcAvgEnergy,
-                    countRecordedDays = viewModel::countRecordedDays,
-                    chartData = viewModel::getChartData
+                    selectedPeriod = selectedPeriod,
+                    onSelectPeriod = viewModel::selectRecordPeriod,
+                    recordDays = viewModel.countRecordedDays(recordLogs),
+                    chartData = chartData
                 )
 
                 Destination.CALENDAR -> CalendarScreen(
                     month = uiState.selectedMonth,
                     summaries = monthSummaries,
+                    thisMonthLogs = thisMonthLogs,
                     onPreviousMonth = viewModel::previousMonth,
                     onNextMonth = viewModel::nextMonth,
                     onSelectDate = { selectedDate = it }
@@ -266,14 +305,14 @@ fun AdlerLifeApp(
 @Composable
 private fun TraceScreen(
     traceLogs: List<TraceLog>,
-    mood: Float,
-    energy: Float,
-    whatHappened: String,
-    feeling: String,
+    mood: Int,
+    energy: Int,
+    selectedTags: Set<String>,
+    selectedFeeling: String,
     isSaving: Boolean,
-    onMoodChange: (Float) -> Unit,
-    onEnergyChange: (Float) -> Unit,
-    onWhatHappenedChange: (String) -> Unit,
+    onMoodChange: (Int) -> Unit,
+    onEnergyChange: (Int) -> Unit,
+    onTagsChange: (Set<String>) -> Unit,
     onFeelingChange: (String) -> Unit,
     onSave: () -> Unit
 ) {
@@ -303,42 +342,74 @@ private fun TraceScreen(
         ) {
             Column(
                 modifier = Modifier
-                    .heightIn(max = 360.dp)
+                    .heightIn(max = 520.dp)
                     .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(14.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                ForestSlider(
+                ScoreSlider(
                     title = "今日の気分",
-                    leftLabel = "😔 つらい",
-                    rightLabel = "😊 よい",
                     value = mood,
+                    guidance = when (mood) {
+                        in 0..20 -> "😔 とてもつらい"
+                        in 21..40 -> "😟 少しつらい"
+                        in 41..60 -> "😐 ふつう"
+                        in 61..80 -> "🙂 まあまあ良い"
+                        else -> "😊 とても良い"
+                    },
+                    centerValueColor = Color(0xFF2D6A4F),
                     onValueChange = onMoodChange
                 )
-                ForestSlider(
-                    title = "体のエネルギー",
-                    leftLabel = "🪫 低い",
-                    rightLabel = "⚡ 高い",
+                ScoreSlider(
+                    title = "身体のエネルギー",
                     value = energy,
+                    guidance = when (energy) {
+                        in 0..20 -> "🪫 ほとんど動けない"
+                        in 21..40 -> "😴 疲れ気味"
+                        in 41..60 -> "😐 普通に動ける"
+                        in 61..80 -> "⚡ 元気がある"
+                        else -> "🔥 とても活力がある"
+                    },
+                    centerValueColor = Color(0xFF888888),
                     onValueChange = onEnergyChange
                 )
-                OutlinedTextField(
-                    value = whatHappened,
-                    onValueChange = onWhatHappenedChange,
-                    modifier = Modifier.fillMaxWidth(),
-                    label = { Text("今日あったこと") },
-                    placeholder = { Text("今日どんなことがありましたか？") },
-                    minLines = 3,
-                    maxLines = 3
-                )
-                OutlinedTextField(
-                    value = feeling,
-                    onValueChange = onFeelingChange,
-                    modifier = Modifier.fillMaxWidth(),
-                    label = { Text("今の気持ちをひとこと") },
-                    placeholder = { Text("気持ちを自由に書いてください") },
-                    minLines = 3,
-                    maxLines = 3
-                )
+                Text("今日あったこと（複数選択可）", style = MaterialTheme.typography.titleSmall)
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    tagOptions.forEach { tag ->
+                        FilterChip(
+                            selected = tag in selectedTags,
+                            onClick = {
+                                onTagsChange(
+                                    if (tag in selectedTags) selectedTags - tag else selectedTags + tag
+                                )
+                            },
+                            label = { Text(tag, style = MaterialTheme.typography.bodySmall) },
+                            colors = FilterChipDefaults.filterChipColors(
+                                selectedContainerColor = Color(0xFF52B788),
+                                selectedLabelColor = Color.White
+                            )
+                        )
+                    }
+                }
+                Text("今の気持ちをひとこと", style = MaterialTheme.typography.titleSmall)
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    feelingOptions.forEach { option ->
+                        FilterChip(
+                            selected = selectedFeeling == option,
+                            onClick = { onFeelingChange(option) },
+                            label = { Text(option, style = MaterialTheme.typography.bodySmall) },
+                            colors = FilterChipDefaults.filterChipColors(
+                                selectedContainerColor = Color(0xFF2D6A4F),
+                                selectedLabelColor = Color.White
+                            )
+                        )
+                    }
+                }
                 Button(
                     onClick = onSave,
                     enabled = !isSaving,
@@ -357,43 +428,48 @@ private fun TraceScreen(
 }
 
 @Composable
-private fun ForestSlider(
+private fun ScoreSlider(
     title: String,
-    leftLabel: String,
-    rightLabel: String,
-    value: Float,
-    onValueChange: (Float) -> Unit
+    value: Int,
+    guidance: String,
+    centerValueColor: Color,
+    onValueChange: (Int) -> Unit
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        Text(text = "$title ${"%.2f".format(value)}", style = MaterialTheme.typography.bodyMedium)
-        Slider(
-            value = value,
-            onValueChange = onValueChange,
-            valueRange = 0f..1f
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Text(title, style = MaterialTheme.typography.titleSmall)
+        Text(
+            text = guidance,
+            style = MaterialTheme.typography.bodyMedium,
+            color = Color(0xFF2D6A4F)
         )
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text(leftLabel, style = MaterialTheme.typography.labelLarge)
-            Text(rightLabel, style = MaterialTheme.typography.labelLarge)
+        Slider(
+            value = value.toFloat(),
+            onValueChange = { onValueChange(it.toInt()) },
+            valueRange = 0f..100f,
+            steps = 99,
+            colors = SliderDefaults.colors(
+                thumbColor = Color(0xFF2D6A4F),
+                activeTrackColor = Color(0xFF52B788)
+            )
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text("0", style = MaterialTheme.typography.bodySmall, color = Color(0xFF888888))
+            Text("現在: $value", style = MaterialTheme.typography.bodySmall, color = centerValueColor)
+            Text("100", style = MaterialTheme.typography.bodySmall, color = Color(0xFF888888))
         }
     }
 }
 
 @Composable
 private fun RecordsScreen(
-    weekLogs: List<TraceLog>,
-    monthLogs: List<TraceLog>,
-    calcAvgMood: (List<TraceLog>) -> Float,
-    calcAvgEnergy: (List<TraceLog>) -> Float,
-    countRecordedDays: (List<TraceLog>) -> Int,
-    chartData: (List<TraceLog>) -> List<Pair<String, Float>>
+    selectedPeriod: Int,
+    onSelectPeriod: (Int) -> Unit,
+    recordDays: Int,
+    chartData: List<Pair<String, Int>>
 ) {
-    var selectedPeriod by rememberSaveable { mutableIntStateOf(0) }
-    val logs = if (selectedPeriod == 0) weekLogs else monthLogs
-    val avgMood = calcAvgMood(logs)
-    val avgEnergy = calcAvgEnergy(logs)
-    val recordDays = countRecordedDays(logs)
-    val dataPoints = chartData(logs)
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -405,122 +481,143 @@ private fun RecordsScreen(
             subtitle = "あなたのペースで大丈夫です。気分の波をゆっくり見てみましょう。"
         ) {
             TabRow(selectedTabIndex = selectedPeriod) {
-                Tab(text = { Text("今週") }, selected = selectedPeriod == 0, onClick = { selectedPeriod = 0 })
-                Tab(text = { Text("今月") }, selected = selectedPeriod == 1, onClick = { selectedPeriod = 1 })
+                Tab(text = { Text("今週") }, selected = selectedPeriod == 0, onClick = { onSelectPeriod(0) })
+                Tab(text = { Text("今月") }, selected = selectedPeriod == 1, onClick = { onSelectPeriod(1) })
             }
-            MoodLineChart(dataPoints = dataPoints)
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                StatCard(
-                    title = "平均気分",
-                    value = "${(avgMood * 10).toInt()}/10",
-                    icon = "😊",
-                    modifier = Modifier.weight(1f)
-                )
-                StatCard(
-                    title = "平均エネルギー",
-                    value = "${(avgEnergy * 10).toInt()}/10",
-                    icon = "⚡",
-                    modifier = Modifier.weight(1f)
-                )
-                StatCard(
-                    title = "記録日数",
-                    value = "${recordDays}日",
-                    icon = "📅",
-                    modifier = Modifier.weight(1f)
+            Box(modifier = Modifier.fillMaxWidth()) {
+                Column(
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .width(32.dp)
+                        .height(220.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text("100", style = MaterialTheme.typography.labelSmall, color = Color(0xFF888888))
+                    Spacer(modifier = Modifier.weight(1f))
+                    Text("50", style = MaterialTheme.typography.labelSmall, color = Color(0xFF888888))
+                    Spacer(modifier = Modifier.weight(1f))
+                    Text("0", style = MaterialTheme.typography.labelSmall, color = Color(0xFF888888))
+                }
+                MoodBarChart(
+                    dataPoints = chartData,
+                    modifier = Modifier.padding(start = 32.dp)
                 )
             }
+            if (chartData.isEmpty()) {
+                Text(
+                    text = "まだ表示できる記録がありません。",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                )
+            } else {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 40.dp),
+                    horizontalArrangement = Arrangement.SpaceAround
+                ) {
+                    chartData.forEach { (date, _) ->
+                        Text(
+                            text = date,
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Color(0xFF888888),
+                            fontSize = 9.sp
+                        )
+                    }
+                }
+                Text(
+                    text = "縦軸：気分（0〜100）　横軸：日付",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color(0xFF888888),
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+            }
+            RecordDaysCard(recordDays = recordDays)
             AdBanner()
         }
     }
 }
 
 @Composable
-private fun MoodLineChart(
-    dataPoints: List<Pair<String, Float>>,
+private fun MoodBarChart(
+    dataPoints: List<Pair<String, Int>>,
     modifier: Modifier = Modifier
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Canvas(modifier = modifier.fillMaxWidth().height(200.dp)) {
-            if (dataPoints.isEmpty()) return@Canvas
+    val barColor = Color(0xFF52B788)
+    val axisColor = Color(0xFF888888)
 
-            val maxVal = 1f
-            val minVal = 0f
-            val range = maxVal - minVal
-            val stepX = size.width / (dataPoints.size - 1).coerceAtLeast(1)
-            val points = dataPoints.mapIndexed { index, (_, value) ->
-                Offset(
-                    x = index * stepX,
-                    y = size.height - ((value - minVal) / range * size.height)
-                )
-            }
+    Canvas(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(220.dp)
+            .padding(start = 8.dp, bottom = 24.dp, end = 8.dp, top = 8.dp)
+    ) {
+        if (dataPoints.isEmpty()) return@Canvas
 
-            val areaPath = Path().apply {
-                moveTo(points.first().x, size.height)
-                points.forEach { lineTo(it.x, it.y) }
-                lineTo(points.last().x, size.height)
-                close()
-            }
-            drawPath(
-                path = areaPath,
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color(0xFF52B788).copy(alpha = 0.3f),
-                        Color.Transparent
-                    )
-                )
+        val chartWidth = size.width
+        val chartHeight = size.height
+        val slotWidth = chartWidth / dataPoints.size
+        val barWidth = slotWidth * 0.6f
+        val gap = slotWidth * 0.4f
+
+        drawLine(
+            color = axisColor,
+            start = Offset(0f, 0f),
+            end = Offset(0f, chartHeight),
+            strokeWidth = 2.dp.toPx()
+        )
+        drawLine(
+            color = axisColor,
+            start = Offset(0f, chartHeight),
+            end = Offset(chartWidth, chartHeight),
+            strokeWidth = 2.dp.toPx()
+        )
+
+        listOf(0, 50, 100).forEach { value ->
+            val y = chartHeight - (value / 100f * chartHeight)
+            drawLine(
+                color = axisColor.copy(alpha = 0.3f),
+                start = Offset(0f, y),
+                end = Offset(chartWidth, y),
+                strokeWidth = 1.dp.toPx()
             )
-
-            for (i in 0 until points.size - 1) {
-                drawLine(
-                    color = Color(0xFF2D6A4F),
-                    start = points[i],
-                    end = points[i + 1],
-                    strokeWidth = 3.dp.toPx(),
-                    cap = StrokeCap.Round
-                )
-            }
-
-            points.forEach { point ->
-                drawCircle(color = Color(0xFF2D6A4F), radius = 5.dp.toPx(), center = point)
-                drawCircle(color = Color.White, radius = 3.dp.toPx(), center = point)
-            }
         }
-        if (dataPoints.isEmpty()) {
-            Text(
-                text = "まだ表示できる記録がありません。",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+
+        dataPoints.forEachIndexed { index, (_, value) ->
+            val barHeight = value / 100f * chartHeight
+            val left = index * (barWidth + gap) + gap / 2
+            val top = chartHeight - barHeight
+            drawRoundRect(
+                color = barColor,
+                topLeft = Offset(left, top),
+                size = Size(barWidth, barHeight),
+                cornerRadius = CornerRadius(4.dp.toPx())
             )
-        } else {
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                dataPoints.forEach { (date, _) ->
-                    Text(date, style = MaterialTheme.typography.labelLarge)
-                }
-            }
         }
     }
 }
 
 @Composable
-private fun StatCard(title: String, value: String, icon: String, modifier: Modifier) {
+private fun RecordDaysCard(recordDays: Int) {
     Card(
-        modifier = modifier,
-        shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9))
     ) {
         Column(
-            modifier = Modifier.padding(12.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            Text(text = icon, fontSize = 24.sp)
+            Text(text = "📅", fontSize = 28.sp)
             Text(
-                text = value,
+                text = "${recordDays}日",
                 style = MaterialTheme.typography.titleMedium,
                 color = Color(0xFF2D6A4F)
             )
             Text(
-                text = title,
+                text = "記録日数",
                 style = MaterialTheme.typography.bodySmall,
                 color = Color(0xFF666666)
             )
@@ -532,6 +629,7 @@ private fun StatCard(title: String, value: String, icon: String, modifier: Modif
 private fun CalendarScreen(
     month: YearMonth,
     summaries: List<TraceDaySummary>,
+    thisMonthLogs: List<TraceLog>,
     onPreviousMonth: () -> Unit,
     onNextMonth: () -> Unit,
     onSelectDate: (LocalDate) -> Unit
@@ -540,6 +638,8 @@ private fun CalendarScreen(
     val firstDay = month.atDay(1)
     val daysInMonth = month.lengthOfMonth()
     val firstDayOffset = firstDay.dayOfWeek.value % 7
+    val avgMood = thisMonthLogs.takeIf { it.isNotEmpty() }?.map { it.mood }?.average()?.toInt()
+    val avgEnergy = thisMonthLogs.takeIf { it.isNotEmpty() }?.map { it.energy }?.average()?.toInt()
 
     Column(
         modifier = Modifier
@@ -551,6 +651,7 @@ private fun CalendarScreen(
             title = "気分の暦",
             subtitle = "あなたのペースで大丈夫です。色でゆるやかな流れを見られます。"
         ) {
+            LegendCard()
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -579,13 +680,17 @@ private fun CalendarScreen(
                         for (dayIndex in 0 until 7) {
                             val cellIndex = week * 7 + dayIndex
                             if (cellIndex < firstDayOffset || dayNumber > daysInMonth) {
-                                CalendarDayCell(dayLabel = "", color = MaterialTheme.colorScheme.background, isCurrentMonth = false) {}
+                                CalendarDayCell(
+                                    dayLabel = "",
+                                    color = moodToColor(null),
+                                    isCurrentMonth = false
+                                ) {}
                             } else {
                                 val date = month.atDay(dayNumber)
                                 val summary = summaryMap[date]
                                 CalendarDayCell(
                                     dayLabel = dayNumber.toString(),
-                                    color = summary?.color ?: Color(0xFFF5F5F5),
+                                    color = moodToColor(summary?.averageMood),
                                     isCurrentMonth = true,
                                     onClick = { onSelectDate(date) }
                                 )
@@ -595,7 +700,114 @@ private fun CalendarScreen(
                     }
                 }
             }
+            MonthSummaryCard(avgMood = avgMood, avgEnergy = avgEnergy)
         }
+    }
+}
+
+@Composable
+private fun LegendCard() {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFF1F8E9))
+    ) {
+        Column(modifier = Modifier.padding(12.dp)) {
+            Text(
+                "気分の色ガイド",
+                style = MaterialTheme.typography.titleSmall,
+                color = Color(0xFF2D6A4F)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                LegendItem(color = Color(0xFFEF9A9A), label = "つらい\n(0〜33)")
+                LegendItem(color = Color(0xFFFFE082), label = "ふつう\n(34〜66)")
+                LegendItem(color = Color(0xFF81C784), label = "よい\n(67〜100)")
+                LegendItem(color = Color(0xFFE0E0E0), label = "記録\nなし")
+            }
+        }
+    }
+}
+
+@Composable
+private fun LegendItem(color: Color, label: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Box(
+            modifier = Modifier
+                .size(28.dp)
+                .background(color = color, shape = RoundedCornerShape(6.dp))
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = Color(0xFF666666),
+            textAlign = TextAlign.Center,
+            fontSize = 10.sp
+        )
+    }
+}
+
+@Composable
+private fun MonthSummaryCard(avgMood: Int?, avgEnergy: Int?) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9))
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                "今月のまとめ",
+                style = MaterialTheme.typography.titleSmall,
+                color = Color(0xFF2D6A4F)
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                MonthStatItem(
+                    icon = "😊",
+                    label = "平均気分",
+                    value = avgMood?.let { "$it / 100" } ?: "記録なし"
+                )
+                MonthStatItem(
+                    icon = "⚡",
+                    label = "平均エネルギー",
+                    value = avgEnergy?.let { "$it / 100" } ?: "記録なし"
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun MonthStatItem(icon: String, label: String, value: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = icon, fontSize = 28.sp)
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = value,
+            style = MaterialTheme.typography.titleMedium,
+            color = Color(0xFF2D6A4F)
+        )
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodySmall,
+            color = Color(0xFF666666)
+        )
+    }
+}
+
+private fun moodToColor(mood: Int?): Color {
+    return when {
+        mood == null -> Color(0xFFE0E0E0)
+        mood <= 33 -> Color(0xFFEF9A9A)
+        mood <= 66 -> Color(0xFFFFE082)
+        else -> Color(0xFF81C784)
     }
 }
 
@@ -663,7 +875,9 @@ private fun LegalDocumentDialog(title: String, text: String, onDismiss: () -> Un
         title = { Text(title) },
         text = {
             Column(
-                modifier = Modifier.heightIn(max = 420.dp).verticalScroll(rememberScrollState()),
+                modifier = Modifier
+                    .heightIn(max = 420.dp)
+                    .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(text)

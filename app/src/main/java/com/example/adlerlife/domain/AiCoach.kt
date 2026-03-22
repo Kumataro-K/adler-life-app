@@ -124,7 +124,7 @@ class HybridAiCoach(
             append(" / エネルギー: ")
             append(energy)
             append(" / 今日あったこと: ")
-            append(whatHappened.ifBlank { "（未入力）" })
+            append(tags.ifBlank { "（未選択）" })
             append(" / 気持ち: ")
             append(feeling.ifBlank { "（未入力）" })
         }
@@ -132,8 +132,8 @@ class HybridAiCoach(
 
     private fun localReflection(logs: List<TraceLog>): String {
         if (logs.isEmpty()) return "今日はまだ言葉が少ないようですが、森の入り口で立ち止まるように、今いちばん近い気分はどんなものですか？"
-        val echoed = logs.firstNotNullOfOrNull { it.feeling.ifBlank { it.whatHappened }.takeIf(String::isNotBlank) } ?: "今日の気分"
-        val severe = logs.any { textLooksSerious(it.feeling) || textLooksSerious(it.whatHappened) }
+        val echoed = logs.firstNotNullOfOrNull { it.feeling.ifBlank { it.tags }.takeIf(String::isNotBlank) } ?: "今日の気分"
+        val severe = logs.any { textLooksSerious(it.feeling) || textLooksSerious(it.tags) }
         return if (severe) {
             "「$echoed」が続いている中で、今ひとりで抱え込まずにいられる相手や専門家は思い浮かびますか？ 必要なら、その一歩をやさしく考えてみませんか？"
         } else {
@@ -143,7 +143,7 @@ class HybridAiCoach(
 
     private fun localFollowUp(logs: List<TraceLog>, userMessage: String): String {
         val base = userMessage.takeIf { it.isNotBlank() }
-            ?: logs.firstNotNullOfOrNull { it.feeling.ifBlank { it.whatHappened }.takeIf(String::isNotBlank) }
+            ?: logs.firstNotNullOfOrNull { it.feeling.ifBlank { it.tags }.takeIf(String::isNotBlank) }
             ?: "今の気持ち"
         val severe = textLooksSerious(base)
         return if (severe) {

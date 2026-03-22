@@ -25,7 +25,7 @@ class AdlerRepository(
             TraceLog(
                 mood = input.mood,
                 energy = input.energy,
-                whatHappened = input.whatHappened.trim(),
+                tags = input.tags.joinToString(","),
                 feeling = input.feeling.trim()
             )
         )
@@ -39,11 +39,17 @@ class AdlerRepository(
                 .map { (date, dailyLogs) ->
                     TraceDaySummary(
                         date = date,
-                        averageMood = dailyLogs.map { it.mood }.average().toFloat(),
+                        averageMood = dailyLogs.map { it.mood }.average().toInt(),
                         logs = dailyLogs.sortedByDescending { it.timestamp }
                     )
                 }
         }
+    }
+
+    fun observeLogsForMonth(month: YearMonth): Flow<List<TraceLog>> {
+        val start = month.atDay(1).atStartOfDay(zoneId).toInstant().toEpochMilli()
+        val end = month.plusMonths(1).atDay(1).atStartOfDay(zoneId).toInstant().toEpochMilli()
+        return dao.observeTraceLogsBetween(start, end)
     }
 
     fun getLogsAfter(after: Long): Flow<List<TraceLog>> = dao.getLogsAfter(after)

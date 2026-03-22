@@ -10,12 +10,13 @@ import com.example.adlerlife.data.model.TraceInput
 import com.example.adlerlife.data.model.TraceLog
 import com.example.adlerlife.data.model.toLocalDate
 import com.example.adlerlife.data.repository.AdlerRepository
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -49,6 +50,9 @@ class AdlerViewModel(
     private val _uiState = MutableStateFlow(AdlerUiState())
     val uiState = _uiState.asStateFlow()
 
+    private val _selectedRecordPeriod = MutableStateFlow(0)
+    val selectedRecordPeriod: StateFlow<Int> = _selectedRecordPeriod.asStateFlow()
+
     val traceLogs: StateFlow<List<TraceLog>> = repository.traceLogs.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
@@ -63,16 +67,49 @@ class AdlerViewModel(
             initialValue = emptyList()
         )
 
-    fun updateMood(value: Float) = _uiState.update {
+    val thisMonthLogs: StateFlow<List<TraceLog>> = repository.observeLogsForMonth(YearMonth.now())
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = emptyList()
+        )
+
+    val recordLogs: StateFlow<List<TraceLog>> = selectedRecordPeriod
+        .flatMapLatest { period ->
+            val since = if (period == 0) {
+                System.currentTimeMillis() - 7 * 24 * 60 * 60 * 1000L
+            } else {
+                System.currentTimeMillis() - 30 * 24 * 60 * 60 * 1000L
+            }
+            repository.getLogsAfter(since)
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = emptyList()
+        )
+
+    val chartData: StateFlow<List<Pair<String, Int>>> = combine(selectedRecordPeriod, recordLogs) { period, logs ->
+        val pattern = if (period == 0) "E" else "d日"
+        logs
+            .groupBy { SimpleDateFormat(pattern, Locale.JAPAN).format(Date(it.timestamp)) }
+            .map { (date, entries) -> date to entries.map { it.mood }.average().toInt() }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = emptyList()
+    )
+
+    fun updateMood(value: Int) = _uiState.update {
         it.copy(traceInput = it.traceInput.copy(mood = value))
     }
 
-    fun updateEnergy(value: Float) = _uiState.update {
+    fun updateEnergy(value: Int) = _uiState.update {
         it.copy(traceInput = it.traceInput.copy(energy = value))
     }
 
-    fun updateWhatHappened(value: String) = _uiState.update {
-        it.copy(traceInput = it.traceInput.copy(whatHappened = value))
+    fun updateTags(value: Set<String>) = _uiState.update {
+        it.copy(traceInput = it.traceInput.copy(tags = value))
     }
 
     fun updateFeeling(value: String) = _uiState.update {
@@ -95,6 +132,9 @@ class AdlerViewModel(
 
     fun previousMonth() = _uiState.update { it.copy(selectedMonth = it.selectedMonth.minusMonths(1)) }
     fun nextMonth() = _uiState.update { it.copy(selectedMonth = it.selectedMonth.plusMonths(1)) }
+    fun selectRecordPeriod(index: Int) {
+        _selectedRecordPeriod.value = index
+    }
 
     fun updateChatDraft(value: String) = _uiState.update { it.copy(chatDraft = value) }
 
@@ -177,30 +217,11 @@ class AdlerViewModel(
         }
     }
 
-    fun getThisWeekLogs(): Flow<List<TraceLog>> {
-        val weekAgo = System.currentTimeMillis() - 7 * 24 * 60 * 60 * 1000L
-        return repository.getLogsAfter(weekAgo)
-    }
-
-    fun getThisMonthLogs(): Flow<List<TraceLog>> {
-        val monthAgo = System.currentTimeMillis() - 30 * 24 * 60 * 60 * 1000L
-        return repository.getLogsAfter(monthAgo)
-    }
-
-    fun calcAvgMood(logs: List<TraceLog>): Float =
-        if (logs.isEmpty()) 0f else logs.map { it.mood }.average().toFloat()
-
-    fun calcAvgEnergy(logs: List<TraceLog>): Float =
-        if (logs.isEmpty()) 0f else logs.map { it.energy }.average().toFloat()
-
-    fun getChartData(logs: List<TraceLog>): List<Pair<String, Float>> {
-        return logs
-            .groupBy { SimpleDateFormat("MM/dd", Locale.JAPAN).format(Date(it.timestamp)) }
-            .map { (date, entries) -> date to entries.map { it.mood }.average().toFloat() }
-            .sortedBy { it.first }
-    }
-
     fun countRecordedDays(logs: List<TraceLog>): Int = logs.map { it.toLocalDate() }.distinct().size
+
+    fun averageMood(logs: List<TraceLog>): Int? = logs.takeIf { it.isNotEmpty() }?.map { it.mood }?.average()?.toInt()
+
+    fun averageEnergy(logs: List<TraceLog>): Int? = logs.takeIf { it.isNotEmpty() }?.map { it.energy }?.average()?.toInt()
 
     fun logsForDate(date: LocalDate): List<TraceLog> = traceLogs.value.filter { it.toLocalDate() == date }
 
