@@ -35,6 +35,7 @@
     <string name="bottomsheet_action_collapse">Скупите доњу табелу</string>
     <string name="bottomsheet_action_expand">Проширите доњу табелу</string>
     <string name="bottomsheet_action_expand_halfway">Проширите до пола</string>
+    <string name="bottomsheet_drag_handle_clicked">Идентификатор за превлачење је двапут додирнут</string>
     <string name="bottomsheet_drag_handle_content_description">Ручица за превлачење</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"Одговори"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Видео"</string>
@@ -80,7 +81,6 @@
     <string msgid="6827826412747255547" name="in_progress">"У току"</string>
     <string msgid="7933458017204019916" name="indeterminate">"Делимично означено"</string>
     <string name="item_view_role_description">Картица</string>
-    <string name="m3_loading_indicator_content_description">Учитава се</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Скупите доњу табелу"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Одбаците доњу табелу"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Идентификатор за превлачење"</string>
@@ -144,9 +144,6 @@
     <string name="material_hour_suffix">%1$s с</string>
     <string name="material_minute_selection">Изаберите минуте</string>
     <string name="material_minute_suffix">%1$s мин</string>
-    <string name="material_slider_range_end">Крај опсега</string>
-    <string name="material_slider_range_start">Почетак опсега</string>
-    <string name="material_slider_value">Вредност</string>
     <string name="material_timepicker_am">AM</string>
     <string name="material_timepicker_clock_mode_description">Пређите у режим сата ради уноса времена.</string>
     <string name="material_timepicker_hour">Сат</string>
@@ -194,11 +191,9 @@
     <string name="mtrl_picker_text_input_year_abbr">г</string>
     <string name="mtrl_picker_today_description">Данас %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">Пређите на режим уноса у Календару</string>
-    <string name="mtrl_picker_toggle_to_day_selection">Пређите на приказ календара</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Додирните да бисте прешли на приказ календара</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">Пређите на режим уноса текста</string>
-    <string name="mtrl_picker_toggle_to_year_selection">Пређите на приказ године</string>
-    <string name="mtrl_picker_toggled_to_day_selection">Прешли сте на приказ календара</string>
-    <string name="mtrl_picker_toggled_to_year_selection">Прешли сте на приказ године</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Додирните да бисте прешли на приказ године</string>
     <string name="mtrl_timepicker_cancel">Откажи</string>
     <string name="mtrl_timepicker_confirm">Потврди</string>
     <string name="native_body">Садржај</string>

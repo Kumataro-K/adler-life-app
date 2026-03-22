@@ -34,6 +34,7 @@
     <string name="bottomsheet_action_collapse">Contrae o panel inferior</string>
     <string name="bottomsheet_action_expand">Desprega o panel inferior</string>
     <string name="bottomsheet_action_expand_halfway">Despregar ata a metade</string>
+    <string name="bottomsheet_drag_handle_clicked">Controlador de arrastre tocado dúas veces</string>
     <string name="bottomsheet_drag_handle_content_description">Controlador de arrastre</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"Contestar"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Vídeo"</string>
@@ -79,7 +80,6 @@
     <string msgid="6827826412747255547" name="in_progress">"En curso"</string>
     <string msgid="7933458017204019916" name="indeterminate">"Marcada parcialmente"</string>
     <string name="item_view_role_description">Pestana</string>
-    <string name="m3_loading_indicator_content_description">Cargando</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Contrae o panel inferior"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Pecha o panel inferior"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Controlador de arrastre"</string>
@@ -143,9 +143,6 @@
     <string name="material_hour_suffix">%1$s en punto</string>
     <string name="material_minute_selection">Seleccionar minutos</string>
     <string name="material_minute_suffix">%1$s minutos</string>
-    <string name="material_slider_range_end">Fin do intervalo</string>
-    <string name="material_slider_range_start">Inicio do intervalo</string>
-    <string name="material_slider_value">Valor</string>
     <string name="material_timepicker_am">a.m.</string>
     <string name="material_timepicker_clock_mode_description">Cambiar ao modo de reloxo para introducir a hora.</string>
     <string name="material_timepicker_hour">Hora</string>
@@ -179,10 +176,10 @@
     <string name="mtrl_picker_navigate_to_year_description">Ir ao ano %1$d</string>
     <string name="mtrl_picker_out_of_range">Só se admiten datas do intervalo: %1$s</string>
     <string name="mtrl_picker_range_header_only_end_selected">Data de inicio - %1$s</string>
-    <string name="mtrl_picker_range_header_only_start_selected">%1$s - Data de finalización</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s - data de finalización</string>
     <string name="mtrl_picker_range_header_selected">%1$s - %2$s</string>
     <string name="mtrl_picker_range_header_title">Selecciona un intervalo de datas</string>
-    <string name="mtrl_picker_range_header_unselected">Data de inicio - Data de finalización</string>
+    <string name="mtrl_picker_range_header_unselected">Data de inicio - data de finalización</string>
     <string name="mtrl_picker_save">Gardar</string>
     <string name="mtrl_picker_start_date_description">Data de inicio: %1$s</string>
     <string name="mtrl_picker_text_input_date_hint">Data</string>
@@ -193,11 +190,9 @@
     <string name="mtrl_picker_text_input_year_abbr">a</string>
     <string name="mtrl_picker_today_description">Hoxe (%1$s)</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">Cambiar ao modo de entrada de calendario</string>
-    <string name="mtrl_picker_toggle_to_day_selection">Cambiar á vista de calendario</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Tocar para cambiar á vista de calendario</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">Cambiar ao modo de introdución de texto</string>
-    <string name="mtrl_picker_toggle_to_year_selection">Cambiar á vista de ano</string>
-    <string name="mtrl_picker_toggled_to_day_selection">Cambiouse á vista de calendario</string>
-    <string name="mtrl_picker_toggled_to_year_selection">Cambiouse á vista de ano</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Tocar para cambiar á vista de ano</string>
     <string name="mtrl_timepicker_cancel">Cancelar</string>
     <string name="mtrl_timepicker_confirm">Aceptar</string>
     <string name="native_body">Corpo</string>

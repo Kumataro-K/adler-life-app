@@ -34,6 +34,7 @@
     <string name="bottomsheet_action_collapse">하단 시트 접기</string>
     <string name="bottomsheet_action_expand">하단 시트 펼치기</string>
     <string name="bottomsheet_action_expand_halfway">반만 펼치기</string>
+    <string name="bottomsheet_drag_handle_clicked">두 번 탭한 드래그 핸들</string>
     <string name="bottomsheet_drag_handle_content_description">드래그 핸들</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"통화"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"동영상"</string>
@@ -79,7 +80,6 @@
     <string msgid="6827826412747255547" name="in_progress">"진행 중"</string>
     <string msgid="7933458017204019916" name="indeterminate">"일부 선택됨"</string>
     <string name="item_view_role_description">탭</string>
-    <string name="m3_loading_indicator_content_description">로드 중</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"하단 시트 접기"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"하단 시트 닫기"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"드래그 핸들"</string>
@@ -143,9 +143,6 @@
     <string name="material_hour_suffix">%1$s시 정각</string>
     <string name="material_minute_selection">분 선택</string>
     <string name="material_minute_suffix">%1$s분</string>
-    <string name="material_slider_range_end">범위 끝</string>
-    <string name="material_slider_range_start">범위 시작</string>
-    <string name="material_slider_value">값</string>
     <string name="material_timepicker_am">오전</string>
     <string name="material_timepicker_clock_mode_description">시간 입력을 위해 시계 모드로 전환합니다.</string>
     <string name="material_timepicker_hour">시간</string>
@@ -193,11 +190,9 @@
     <string name="mtrl_picker_text_input_year_abbr">년</string>
     <string name="mtrl_picker_today_description">오늘(%1$s)</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">캘린더 입력 모드로 전환</string>
-    <string name="mtrl_picker_toggle_to_day_selection">캘린더 뷰로 전환</string>
+    <string name="mtrl_picker_toggle_to_day_selection">탭하여 캘린더 뷰로 전환</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">텍스트 입력 모드로 전환</string>
-    <string name="mtrl_picker_toggle_to_year_selection">연도별 뷰로 전환</string>
-    <string name="mtrl_picker_toggled_to_day_selection">캘린더 보기로 전환됨</string>
-    <string name="mtrl_picker_toggled_to_year_selection">연도별 보기로 전환됨</string>
+    <string name="mtrl_picker_toggle_to_year_selection">탭하여 연도 뷰로 전환</string>
     <string name="mtrl_timepicker_cancel">취소</string>
     <string name="mtrl_timepicker_confirm">확인</string>
     <string name="native_body">본문</string>
