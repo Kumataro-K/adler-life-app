@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.example.adlerlife.app-debug-83:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.adlerlife.app-main-85:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.adlerlife.app-debug-83:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.adlerlife.app-main-85:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.adlerlife.app-debug-83:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.adlerlife.app-main-85:/drawable/ic_launcher_foreground.xml"
+    }
+]
