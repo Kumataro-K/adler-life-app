@@ -32,7 +32,7 @@ public class AdlerDatabase_Impl : AdlerDatabase() {
   }
 
   protected override fun createOpenDelegate(): RoomOpenDelegate {
-    val _openDelegate: RoomOpenDelegate = object : RoomOpenDelegate(2,
+    val _openDelegate: RoomOpenDelegate = object : RoomOpenDelegate(4,
         "a7b4725180c6d7fb23e240eb0b723a57", "740b1d3f30d602bec92e5a5d6d1ccb0d") {
       public override fun createAllTables(connection: SQLiteConnection) {
         connection.execSQL("CREATE TABLE IF NOT EXISTS `trace_logs` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mood` INTEGER NOT NULL, `energy` INTEGER NOT NULL, `tags` TEXT NOT NULL, `feeling` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)")
