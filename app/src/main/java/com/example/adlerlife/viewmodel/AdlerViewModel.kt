@@ -10,6 +10,7 @@ import com.example.adlerlife.data.model.TraceInput
 import com.example.adlerlife.data.model.TraceLog
 import com.example.adlerlife.data.model.toLocalDate
 import com.example.adlerlife.data.repository.AdlerRepository
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -18,8 +19,11 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.YearMonth
+import java.util.Date
+import java.util.Locale
 import java.util.UUID
 
 data class AdlerUiState(
@@ -30,11 +34,11 @@ data class AdlerUiState(
         ChatMessage(
             id = UUID.randomUUID().toString(),
             role = ChatRole.AI,
-            text = "森の中でひと息つくように、今日はどんな気分だったかから話してみませんか？"
+            text = "今日の記録を振り返ると、どんな場面がいちばん心に残っていますか？"
         )
     ),
     val chatDraft: String = "",
-    val aiReply: String = "必要なときだけ、今日の記録をもとにやさしく振り返れます。",
+    val aiReply: String = "必要なときだけ、振り返りをサポートします。",
     val isSavingTrace: Boolean = false,
     val isLoadingConversation: Boolean = false
 )
@@ -75,7 +79,7 @@ class AdlerViewModel(
         it.copy(traceInput = it.traceInput.copy(feeling = value))
     }
 
-    fun saveTrace() {
+    fun saveTrace(onSaved: () -> Unit = {}) {
         viewModelScope.launch {
             _uiState.update { it.copy(isSavingTrace = true) }
             repository.saveTrace(uiState.value.traceInput)
@@ -85,6 +89,7 @@ class AdlerViewModel(
                     isSavingTrace = false
                 )
             }
+            onSaved()
         }
     }
 
@@ -105,7 +110,7 @@ class AdlerViewModel(
                         ChatMessage(
                             id = UUID.randomUUID().toString(),
                             role = ChatRole.AI,
-                            text = "森の中でひと息つくように、今日はどんな気分だったかから話してみませんか？"
+                            text = "今日の記録を振り返ると、どんな場面がいちばん心に残っていますか？"
                         )
                     )
                 }
@@ -171,6 +176,31 @@ class AdlerViewModel(
             }
         }
     }
+
+    fun getThisWeekLogs(): Flow<List<TraceLog>> {
+        val weekAgo = System.currentTimeMillis() - 7 * 24 * 60 * 60 * 1000L
+        return repository.getLogsAfter(weekAgo)
+    }
+
+    fun getThisMonthLogs(): Flow<List<TraceLog>> {
+        val monthAgo = System.currentTimeMillis() - 30 * 24 * 60 * 60 * 1000L
+        return repository.getLogsAfter(monthAgo)
+    }
+
+    fun calcAvgMood(logs: List<TraceLog>): Float =
+        if (logs.isEmpty()) 0f else logs.map { it.mood }.average().toFloat()
+
+    fun calcAvgEnergy(logs: List<TraceLog>): Float =
+        if (logs.isEmpty()) 0f else logs.map { it.energy }.average().toFloat()
+
+    fun getChartData(logs: List<TraceLog>): List<Pair<String, Float>> {
+        return logs
+            .groupBy { SimpleDateFormat("MM/dd", Locale.JAPAN).format(Date(it.timestamp)) }
+            .map { (date, entries) -> date to entries.map { it.mood }.average().toFloat() }
+            .sortedBy { it.first }
+    }
+
+    fun countRecordedDays(logs: List<TraceLog>): Int = logs.map { it.toLocalDate() }.distinct().size
 
     fun logsForDate(date: LocalDate): List<TraceLog> = traceLogs.value.filter { it.toLocalDate() == date }
 

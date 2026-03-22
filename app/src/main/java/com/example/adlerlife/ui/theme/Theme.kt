@@ -27,15 +27,15 @@ private val LightColors = lightColorScheme(
 
 private val DarkColors = darkColorScheme(
     primary = Color(0xFF74C69D),
+    onPrimary = Color(0xFF000000),
+    background = Color(0xFF000000),
+    surface = Color(0xFF121212),
+    onBackground = Color(0xFFE0E0E0),
+    onSurface = Color(0xFFE0E0E0),
     secondary = Color(0xFF52B788),
     tertiary = Color(0xFFB7E4C7),
-    background = Color(0xFF102218),
-    surface = Color(0xFF183124),
-    onPrimary = Color(0xFF0F2218),
-    onBackground = Color(0xFFE9F7EE),
-    onSurface = Color(0xFFE9F7EE),
     primaryContainer = Color(0xFF2D6A4F),
-    secondaryContainer = Color(0xFF245540)
+    secondaryContainer = Color(0xFF1C1C1C)
 )
 
 private val ForestTypography = Typography(

@@ -20,4 +20,7 @@ interface AdlerDao {
 
     @Query("SELECT * FROM trace_logs WHERE timestamp BETWEEN :startInclusive AND :endExclusive ORDER BY timestamp DESC")
     suspend fun getTraceLogsBetween(startInclusive: Long, endExclusive: Long): List<TraceLog>
+
+    @Query("SELECT * FROM trace_logs WHERE timestamp >= :after ORDER BY timestamp ASC")
+    fun getLogsAfter(after: Long): Flow<List<TraceLog>>
 }

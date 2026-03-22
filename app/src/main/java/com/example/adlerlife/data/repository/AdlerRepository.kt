@@ -46,6 +46,8 @@ class AdlerRepository(
         }
     }
 
+    fun getLogsAfter(after: Long): Flow<List<TraceLog>> = dao.getLogsAfter(after)
+
     suspend fun getTodayLogs(today: LocalDate = LocalDate.now(zoneId)): List<TraceLog> {
         val start = today.atStartOfDay(zoneId).toInstant().toEpochMilli()
         val end = today.plusDays(1).atStartOfDay(zoneId).toInstant().toEpochMilli()
