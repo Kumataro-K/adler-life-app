@@ -8,7 +8,6 @@ import androidx.room.util.performSuspending
 import androidx.sqlite.SQLiteStatement
 import com.example.adlerlife.`data`.model.TraceLog
 import javax.`annotation`.processing.Generated
-import kotlin.Float
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
@@ -32,13 +31,13 @@ public class AdlerDao_Impl(
     this.__db = __db
     this.__insertAdapterOfTraceLog = object : EntityInsertAdapter<TraceLog>() {
       protected override fun createQuery(): String =
-          "INSERT OR REPLACE INTO `trace_logs` (`id`,`mood`,`energy`,`whatHappened`,`feeling`,`timestamp`) VALUES (nullif(?, 0),?,?,?,?,?)"
+          "INSERT OR REPLACE INTO `trace_logs` (`id`,`mood`,`energy`,`tags`,`feeling`,`timestamp`) VALUES (nullif(?, 0),?,?,?,?,?)"
 
       protected override fun bind(statement: SQLiteStatement, entity: TraceLog) {
         statement.bindLong(1, entity.id.toLong())
-        statement.bindDouble(2, entity.mood.toDouble())
-        statement.bindDouble(3, entity.energy.toDouble())
-        statement.bindText(4, entity.whatHappened)
+        statement.bindLong(2, entity.mood.toLong())
+        statement.bindLong(3, entity.energy.toLong())
+        statement.bindText(4, entity.tags)
         statement.bindText(5, entity.feeling)
         statement.bindLong(6, entity.timestamp)
       }
@@ -58,7 +57,7 @@ public class AdlerDao_Impl(
         val _columnIndexOfId: Int = getColumnIndexOrThrow(_stmt, "id")
         val _columnIndexOfMood: Int = getColumnIndexOrThrow(_stmt, "mood")
         val _columnIndexOfEnergy: Int = getColumnIndexOrThrow(_stmt, "energy")
-        val _columnIndexOfWhatHappened: Int = getColumnIndexOrThrow(_stmt, "whatHappened")
+        val _columnIndexOfTags: Int = getColumnIndexOrThrow(_stmt, "tags")
         val _columnIndexOfFeeling: Int = getColumnIndexOrThrow(_stmt, "feeling")
         val _columnIndexOfTimestamp: Int = getColumnIndexOrThrow(_stmt, "timestamp")
         val _result: MutableList<TraceLog> = mutableListOf()
@@ -66,17 +65,17 @@ public class AdlerDao_Impl(
           val _item: TraceLog
           val _tmpId: Int
           _tmpId = _stmt.getLong(_columnIndexOfId).toInt()
-          val _tmpMood: Float
-          _tmpMood = _stmt.getDouble(_columnIndexOfMood).toFloat()
-          val _tmpEnergy: Float
-          _tmpEnergy = _stmt.getDouble(_columnIndexOfEnergy).toFloat()
-          val _tmpWhatHappened: String
-          _tmpWhatHappened = _stmt.getText(_columnIndexOfWhatHappened)
+          val _tmpMood: Int
+          _tmpMood = _stmt.getLong(_columnIndexOfMood).toInt()
+          val _tmpEnergy: Int
+          _tmpEnergy = _stmt.getLong(_columnIndexOfEnergy).toInt()
+          val _tmpTags: String
+          _tmpTags = _stmt.getText(_columnIndexOfTags)
           val _tmpFeeling: String
           _tmpFeeling = _stmt.getText(_columnIndexOfFeeling)
           val _tmpTimestamp: Long
           _tmpTimestamp = _stmt.getLong(_columnIndexOfTimestamp)
-          _item = TraceLog(_tmpId,_tmpMood,_tmpEnergy,_tmpWhatHappened,_tmpFeeling,_tmpTimestamp)
+          _item = TraceLog(_tmpId,_tmpMood,_tmpEnergy,_tmpTags,_tmpFeeling,_tmpTimestamp)
           _result.add(_item)
         }
         _result
@@ -100,7 +99,7 @@ public class AdlerDao_Impl(
         val _columnIndexOfId: Int = getColumnIndexOrThrow(_stmt, "id")
         val _columnIndexOfMood: Int = getColumnIndexOrThrow(_stmt, "mood")
         val _columnIndexOfEnergy: Int = getColumnIndexOrThrow(_stmt, "energy")
-        val _columnIndexOfWhatHappened: Int = getColumnIndexOrThrow(_stmt, "whatHappened")
+        val _columnIndexOfTags: Int = getColumnIndexOrThrow(_stmt, "tags")
         val _columnIndexOfFeeling: Int = getColumnIndexOrThrow(_stmt, "feeling")
         val _columnIndexOfTimestamp: Int = getColumnIndexOrThrow(_stmt, "timestamp")
         val _result: MutableList<TraceLog> = mutableListOf()
@@ -108,17 +107,17 @@ public class AdlerDao_Impl(
           val _item: TraceLog
           val _tmpId: Int
           _tmpId = _stmt.getLong(_columnIndexOfId).toInt()
-          val _tmpMood: Float
-          _tmpMood = _stmt.getDouble(_columnIndexOfMood).toFloat()
-          val _tmpEnergy: Float
-          _tmpEnergy = _stmt.getDouble(_columnIndexOfEnergy).toFloat()
-          val _tmpWhatHappened: String
-          _tmpWhatHappened = _stmt.getText(_columnIndexOfWhatHappened)
+          val _tmpMood: Int
+          _tmpMood = _stmt.getLong(_columnIndexOfMood).toInt()
+          val _tmpEnergy: Int
+          _tmpEnergy = _stmt.getLong(_columnIndexOfEnergy).toInt()
+          val _tmpTags: String
+          _tmpTags = _stmt.getText(_columnIndexOfTags)
           val _tmpFeeling: String
           _tmpFeeling = _stmt.getText(_columnIndexOfFeeling)
           val _tmpTimestamp: Long
           _tmpTimestamp = _stmt.getLong(_columnIndexOfTimestamp)
-          _item = TraceLog(_tmpId,_tmpMood,_tmpEnergy,_tmpWhatHappened,_tmpFeeling,_tmpTimestamp)
+          _item = TraceLog(_tmpId,_tmpMood,_tmpEnergy,_tmpTags,_tmpFeeling,_tmpTimestamp)
           _result.add(_item)
         }
         _result
@@ -142,7 +141,7 @@ public class AdlerDao_Impl(
         val _columnIndexOfId: Int = getColumnIndexOrThrow(_stmt, "id")
         val _columnIndexOfMood: Int = getColumnIndexOrThrow(_stmt, "mood")
         val _columnIndexOfEnergy: Int = getColumnIndexOrThrow(_stmt, "energy")
-        val _columnIndexOfWhatHappened: Int = getColumnIndexOrThrow(_stmt, "whatHappened")
+        val _columnIndexOfTags: Int = getColumnIndexOrThrow(_stmt, "tags")
         val _columnIndexOfFeeling: Int = getColumnIndexOrThrow(_stmt, "feeling")
         val _columnIndexOfTimestamp: Int = getColumnIndexOrThrow(_stmt, "timestamp")
         val _result: MutableList<TraceLog> = mutableListOf()
@@ -150,17 +149,17 @@ public class AdlerDao_Impl(
           val _item: TraceLog
           val _tmpId: Int
           _tmpId = _stmt.getLong(_columnIndexOfId).toInt()
-          val _tmpMood: Float
-          _tmpMood = _stmt.getDouble(_columnIndexOfMood).toFloat()
-          val _tmpEnergy: Float
-          _tmpEnergy = _stmt.getDouble(_columnIndexOfEnergy).toFloat()
-          val _tmpWhatHappened: String
-          _tmpWhatHappened = _stmt.getText(_columnIndexOfWhatHappened)
+          val _tmpMood: Int
+          _tmpMood = _stmt.getLong(_columnIndexOfMood).toInt()
+          val _tmpEnergy: Int
+          _tmpEnergy = _stmt.getLong(_columnIndexOfEnergy).toInt()
+          val _tmpTags: String
+          _tmpTags = _stmt.getText(_columnIndexOfTags)
           val _tmpFeeling: String
           _tmpFeeling = _stmt.getText(_columnIndexOfFeeling)
           val _tmpTimestamp: Long
           _tmpTimestamp = _stmt.getLong(_columnIndexOfTimestamp)
-          _item = TraceLog(_tmpId,_tmpMood,_tmpEnergy,_tmpWhatHappened,_tmpFeeling,_tmpTimestamp)
+          _item = TraceLog(_tmpId,_tmpMood,_tmpEnergy,_tmpTags,_tmpFeeling,_tmpTimestamp)
           _result.add(_item)
         }
         _result
@@ -180,7 +179,7 @@ public class AdlerDao_Impl(
         val _columnIndexOfId: Int = getColumnIndexOrThrow(_stmt, "id")
         val _columnIndexOfMood: Int = getColumnIndexOrThrow(_stmt, "mood")
         val _columnIndexOfEnergy: Int = getColumnIndexOrThrow(_stmt, "energy")
-        val _columnIndexOfWhatHappened: Int = getColumnIndexOrThrow(_stmt, "whatHappened")
+        val _columnIndexOfTags: Int = getColumnIndexOrThrow(_stmt, "tags")
         val _columnIndexOfFeeling: Int = getColumnIndexOrThrow(_stmt, "feeling")
         val _columnIndexOfTimestamp: Int = getColumnIndexOrThrow(_stmt, "timestamp")
         val _result: MutableList<TraceLog> = mutableListOf()
@@ -188,17 +187,17 @@ public class AdlerDao_Impl(
           val _item: TraceLog
           val _tmpId: Int
           _tmpId = _stmt.getLong(_columnIndexOfId).toInt()
-          val _tmpMood: Float
-          _tmpMood = _stmt.getDouble(_columnIndexOfMood).toFloat()
-          val _tmpEnergy: Float
-          _tmpEnergy = _stmt.getDouble(_columnIndexOfEnergy).toFloat()
-          val _tmpWhatHappened: String
-          _tmpWhatHappened = _stmt.getText(_columnIndexOfWhatHappened)
+          val _tmpMood: Int
+          _tmpMood = _stmt.getLong(_columnIndexOfMood).toInt()
+          val _tmpEnergy: Int
+          _tmpEnergy = _stmt.getLong(_columnIndexOfEnergy).toInt()
+          val _tmpTags: String
+          _tmpTags = _stmt.getText(_columnIndexOfTags)
           val _tmpFeeling: String
           _tmpFeeling = _stmt.getText(_columnIndexOfFeeling)
           val _tmpTimestamp: Long
           _tmpTimestamp = _stmt.getLong(_columnIndexOfTimestamp)
-          _item = TraceLog(_tmpId,_tmpMood,_tmpEnergy,_tmpWhatHappened,_tmpFeeling,_tmpTimestamp)
+          _item = TraceLog(_tmpId,_tmpMood,_tmpEnergy,_tmpTags,_tmpFeeling,_tmpTimestamp)
           _result.add(_item)
         }
         _result

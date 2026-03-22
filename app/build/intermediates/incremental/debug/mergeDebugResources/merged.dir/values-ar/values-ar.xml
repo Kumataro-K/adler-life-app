@@ -38,6 +38,7 @@
     <string name="bottomsheet_action_collapse">تصغير البطاقة السفلية</string>
     <string name="bottomsheet_action_expand">توسيع البطاقة السفلية</string>
     <string name="bottomsheet_action_expand_halfway">توسيع البطاقة السفلية</string>
+    <string name="bottomsheet_drag_handle_clicked">تم النقر مرّتين على مقبض السحب.</string>
     <string name="bottomsheet_drag_handle_content_description">مقبض السحب</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"ردّ"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"فيديو"</string>
@@ -48,7 +49,6 @@
     <string msgid="59049573811482460" name="call_notification_screening_text">"يتم فحص المكالمة الواردة"</string>
     <string name="character_counter_content_description">تمّ إدخال %1$d حرف من إجمالي %2$d.</string>
     <string name="character_counter_overflowed_content_description">تجاوز عدد الأحرف المسموح به %1$d من %2$d.</string>
-    <string name="character_counter_pattern">%2$d/%1$d</string>
     <string name="clear_text_end_icon_content_description">محو النص</string>
     <string msgid="406453423630273620" name="close_drawer">"إغلاق قائمة التنقل"</string>
     <string msgid="7573152094250666567" name="close_sheet">"إغلاق الورقة"</string>
@@ -84,7 +84,6 @@
     <string msgid="6827826412747255547" name="in_progress">"قيد التقدم"</string>
     <string msgid="7933458017204019916" name="indeterminate">"تم وضع علامة في المربّع بشكل جزئي"</string>
     <string name="item_view_role_description">علامة تبويب</string>
-    <string name="m3_loading_indicator_content_description">جارٍ التحميل</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"تصغير البطاقة السفلية"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"إغلاق البطاقة السفلية"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"مقبض السحب"</string>
@@ -148,9 +147,6 @@
     <string name="material_hour_suffix">الساعة %1$s</string>
     <string name="material_minute_selection">تحديد الدقائق</string>
     <string name="material_minute_suffix">%1$s دقيقة</string>
-    <string name="material_slider_range_end">نهاية النطاق</string>
-    <string name="material_slider_range_start">بداية النطاق</string>
-    <string name="material_slider_value">القيمة</string>
     <string name="material_timepicker_am">صباحًا</string>
     <string name="material_timepicker_clock_mode_description">يُرجى التبديل إلى وضع الساعة لإدخال الوقت.</string>
     <string name="material_timepicker_hour">الساعة</string>
@@ -198,11 +194,9 @@
     <string name="mtrl_picker_text_input_year_abbr">س</string>
     <string name="mtrl_picker_today_description">اليوم %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">التبديل إلى وضع \"الإدخال في التقويم\"</string>
-    <string name="mtrl_picker_toggle_to_day_selection">التبديل إلى عرض \"تقويم Google\"</string>
+    <string name="mtrl_picker_toggle_to_day_selection">يمكنك النقر للتبديل إلى عرض \"تقويم Google\".</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">التبديل إلى وضع \"إدخال النص\"</string>
-    <string name="mtrl_picker_toggle_to_year_selection">التبديل إلى العرض حسب السنة</string>
-    <string name="mtrl_picker_toggled_to_day_selection">تم التبديل إلى عرض التقويم</string>
-    <string name="mtrl_picker_toggled_to_year_selection">تم التبديل إلى عرض اختيار السنة</string>
+    <string name="mtrl_picker_toggle_to_year_selection">يمكنك النقر للتبديل إلى عرض السنة.</string>
     <string name="mtrl_timepicker_cancel">إلغاء</string>
     <string name="mtrl_timepicker_confirm">حسنًا</string>
     <string name="native_body">النص</string>

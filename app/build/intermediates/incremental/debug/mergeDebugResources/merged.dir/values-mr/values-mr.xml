@@ -34,6 +34,7 @@
     <string name="bottomsheet_action_collapse">तळाशी असलेली शीट कोलॅप्स करा</string>
     <string name="bottomsheet_action_expand">तळाशी असलेल्या शीटचा विस्तार करा</string>
     <string name="bottomsheet_action_expand_halfway">पूर्णपणे विस्तृत करा</string>
+    <string name="bottomsheet_drag_handle_clicked">ड्रॅग हॅंडलवर दोनदा टॅप केले आहे</string>
     <string name="bottomsheet_drag_handle_content_description">ड्रॅग हॅंडल</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"उत्तर द्या"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"व्हिडिओ"</string>
@@ -79,7 +80,6 @@
     <string msgid="6827826412747255547" name="in_progress">"प्रगतीपथावर आहे"</string>
     <string msgid="7933458017204019916" name="indeterminate">"अंशतः तपासले"</string>
     <string name="item_view_role_description">टॅब</string>
-    <string name="m3_loading_indicator_content_description">लोड करत आहे</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"तळाशी असलेली शीट कोलॅप्स करा"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"तळाशी असलेली शीट डिसमिस करा"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"ड्रॅग हॅंडल"</string>
@@ -143,9 +143,6 @@
     <string name="material_hour_suffix">%1$s वाजता</string>
     <string name="material_minute_selection">मिनिटे निवडा</string>
     <string name="material_minute_suffix">%1$s मिनिटे</string>
-    <string name="material_slider_range_end">रेंजचा शेवट</string>
-    <string name="material_slider_range_start">रेंजची सुरुवात</string>
-    <string name="material_slider_value">मूल्य</string>
     <string name="material_timepicker_am">AM</string>
     <string name="material_timepicker_clock_mode_description">वेळेच्या इनपुटसाठी घड्याळ मोडवर स्विच करा.</string>
     <string name="material_timepicker_hour">तास</string>
@@ -193,11 +190,9 @@
     <string name="mtrl_picker_text_input_year_abbr">व</string>
     <string name="mtrl_picker_today_description">आज %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">कॅलेंडर इनपुट मोडवर स्विच करा</string>
-    <string name="mtrl_picker_toggle_to_day_selection">कॅलेंडर व्ह्यूवर स्विच करा</string>
+    <string name="mtrl_picker_toggle_to_day_selection">कॅलेंडर या दृश्यावर स्विच करण्यासाठी टॅप करा</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">मजकूर इनपुट मोडवर स्विच करा</string>
-    <string name="mtrl_picker_toggle_to_year_selection">वर्ष व्ह्यूवर स्विच करा</string>
-    <string name="mtrl_picker_toggled_to_day_selection">Calendar दृश्यावर स्विच केले आहे</string>
-    <string name="mtrl_picker_toggled_to_year_selection">वर्षाच्या दृश्यावर स्विच केले आहे</string>
+    <string name="mtrl_picker_toggle_to_year_selection">वर्ष या दृश्यावर स्विच करण्यासाठी टॅप करा</string>
     <string name="mtrl_timepicker_cancel">रद्द करा</string>
     <string name="mtrl_timepicker_confirm">ओके</string>
     <string name="native_body">मुख्य भाग</string>

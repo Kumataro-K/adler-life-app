@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.adlerlife.app-mergeDebugResources-83:/values-h360dp-land-v13/values-h360dp-land-v13.xml",
+            "outputFile": "com.example.adlerlife.app-mergeDebugResources-81:/values-h360dp-land-v13/values-h360dp-land-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\strom\\.gradle\\caches\\8.13\\transforms\\b7bb1a64bd7fdd1f078d31f64b4427d3\\transformed\\material-1.13.0\\res\\values-h360dp-land-v13\\values-h360dp-land-v13.xml",
+                    "source": "C:\\Users\\strom\\.gradle\\caches\\8.13\\transforms\\9bb0a157980b7e57eeb38501e0ca3d02\\transformed\\material-1.12.0\\res\\values-h360dp-land-v13\\values-h360dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

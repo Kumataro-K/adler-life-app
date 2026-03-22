@@ -32,12 +32,12 @@ public class AdlerDatabase_Impl : AdlerDatabase() {
   }
 
   protected override fun createOpenDelegate(): RoomOpenDelegate {
-    val _openDelegate: RoomOpenDelegate = object : RoomOpenDelegate(3,
-        "604f623dbb43f767e36d8bdd6877efba", "c934c307c0304d6833a062b87aaa8a20") {
+    val _openDelegate: RoomOpenDelegate = object : RoomOpenDelegate(2,
+        "a7b4725180c6d7fb23e240eb0b723a57", "740b1d3f30d602bec92e5a5d6d1ccb0d") {
       public override fun createAllTables(connection: SQLiteConnection) {
-        connection.execSQL("CREATE TABLE IF NOT EXISTS `trace_logs` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mood` REAL NOT NULL, `energy` REAL NOT NULL, `whatHappened` TEXT NOT NULL, `feeling` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)")
+        connection.execSQL("CREATE TABLE IF NOT EXISTS `trace_logs` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mood` INTEGER NOT NULL, `energy` INTEGER NOT NULL, `tags` TEXT NOT NULL, `feeling` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)")
         connection.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)")
-        connection.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '604f623dbb43f767e36d8bdd6877efba')")
+        connection.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a7b4725180c6d7fb23e240eb0b723a57')")
       }
 
       public override fun dropAllTables(connection: SQLiteConnection) {
@@ -63,12 +63,12 @@ public class AdlerDatabase_Impl : AdlerDatabase() {
         val _columnsTraceLogs: MutableMap<String, TableInfo.Column> = mutableMapOf()
         _columnsTraceLogs.put("id", TableInfo.Column("id", "INTEGER", true, 1, null,
             TableInfo.CREATED_FROM_ENTITY))
-        _columnsTraceLogs.put("mood", TableInfo.Column("mood", "REAL", true, 0, null,
+        _columnsTraceLogs.put("mood", TableInfo.Column("mood", "INTEGER", true, 0, null,
             TableInfo.CREATED_FROM_ENTITY))
-        _columnsTraceLogs.put("energy", TableInfo.Column("energy", "REAL", true, 0, null,
+        _columnsTraceLogs.put("energy", TableInfo.Column("energy", "INTEGER", true, 0, null,
             TableInfo.CREATED_FROM_ENTITY))
-        _columnsTraceLogs.put("whatHappened", TableInfo.Column("whatHappened", "TEXT", true, 0,
-            null, TableInfo.CREATED_FROM_ENTITY))
+        _columnsTraceLogs.put("tags", TableInfo.Column("tags", "TEXT", true, 0, null,
+            TableInfo.CREATED_FROM_ENTITY))
         _columnsTraceLogs.put("feeling", TableInfo.Column("feeling", "TEXT", true, 0, null,
             TableInfo.CREATED_FROM_ENTITY))
         _columnsTraceLogs.put("timestamp", TableInfo.Column("timestamp", "INTEGER", true, 0, null,
