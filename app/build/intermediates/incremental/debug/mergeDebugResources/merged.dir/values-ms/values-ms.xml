@@ -34,7 +34,6 @@
     <string name="bottomsheet_action_collapse">Kuncupkan helaian bawah</string>
     <string name="bottomsheet_action_expand">Kembangkan helaian bawah</string>
     <string name="bottomsheet_action_expand_halfway">Kembangkan helaian bawah</string>
-    <string name="bottomsheet_drag_handle_clicked">Pemegang seret diketik dua kali</string>
     <string name="bottomsheet_drag_handle_content_description">Pemegang seret</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"Jawab"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Video"</string>
@@ -80,6 +79,7 @@
     <string msgid="6827826412747255547" name="in_progress">"Dalam proses"</string>
     <string msgid="7933458017204019916" name="indeterminate">"Sebahagiannya ditandai"</string>
     <string name="item_view_role_description">Tab</string>
+    <string name="m3_loading_indicator_content_description">Memuatkan</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Kuncupkan helaian bawah"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Ketepikan helaian bawah"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Pemegang seret"</string>
@@ -143,6 +143,9 @@
     <string name="material_hour_suffix">Pukul %1$s</string>
     <string name="material_minute_selection">Pilih minit</string>
     <string name="material_minute_suffix">%1$s minit</string>
+    <string name="material_slider_range_end">Penghujung julat</string>
+    <string name="material_slider_range_start">Permulaan julat</string>
+    <string name="material_slider_value">Nilai</string>
     <string name="material_timepicker_am">PG</string>
     <string name="material_timepicker_clock_mode_description">Beralih ke mod jam untuk input masa.</string>
     <string name="material_timepicker_hour">Jam</string>
@@ -190,9 +193,11 @@
     <string name="mtrl_picker_text_input_year_abbr">t</string>
     <string name="mtrl_picker_today_description">Hari ini %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">Beralih kepada mod input kalendar</string>
-    <string name="mtrl_picker_toggle_to_day_selection">Ketik untuk menukar kepada paparan Kalendar</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Beralih kepada paparan Kalendar</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">Beralih kepada mod input teks</string>
-    <string name="mtrl_picker_toggle_to_year_selection">Ketik untuk menukar kepada paparan tahun</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Beralih kepada paparan tahun</string>
+    <string name="mtrl_picker_toggled_to_day_selection">Beralih kepada paparan Kalendar</string>
+    <string name="mtrl_picker_toggled_to_year_selection">Beralih kepada paparan tahun</string>
     <string name="mtrl_timepicker_cancel">Batal</string>
     <string name="mtrl_timepicker_confirm">OK</string>
     <string name="native_body">Kandungan</string>

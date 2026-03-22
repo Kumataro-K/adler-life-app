@@ -36,7 +36,6 @@
     <string name="bottomsheet_action_collapse">Свернуть нижний экран</string>
     <string name="bottomsheet_action_expand">Развернуть нижний экран</string>
     <string name="bottomsheet_action_expand_halfway">Развернуть наполовину</string>
-    <string name="bottomsheet_drag_handle_clicked">Двойное нажатие на маркер перемещения</string>
     <string name="bottomsheet_drag_handle_content_description">Маркер перемещения</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"Ответить"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Видео"</string>
@@ -82,6 +81,7 @@
     <string msgid="6827826412747255547" name="in_progress">"Выполняется"</string>
     <string msgid="7933458017204019916" name="indeterminate">"Отмечено частично"</string>
     <string name="item_view_role_description">Вкладка</string>
+    <string name="m3_loading_indicator_content_description">Загрузка</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Свернуть нижний экран"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Закрыть нижний экран"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Маркер перемещения"</string>
@@ -145,6 +145,9 @@
     <string name="material_hour_suffix">%1$s ч.</string>
     <string name="material_minute_selection">Выберите минуты</string>
     <string name="material_minute_suffix">%1$s мин.</string>
+    <string name="material_slider_range_end">Конец диапазона</string>
+    <string name="material_slider_range_start">Начало диапазона</string>
+    <string name="material_slider_value">Значение</string>
     <string name="material_timepicker_am">AM</string>
     <string name="material_timepicker_clock_mode_description">Чтобы ввести время, перейдите в режим часов.</string>
     <string name="material_timepicker_hour">Час</string>
@@ -178,7 +181,7 @@
     <string name="mtrl_picker_navigate_to_year_description">Перейти к %1$d году</string>
     <string name="mtrl_picker_out_of_range">Вне диапазона: %1$s</string>
     <string name="mtrl_picker_range_header_only_end_selected">Дата начала – %1$s</string>
-    <string name="mtrl_picker_range_header_only_start_selected">%1$s – дата окончания</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – Дата окончания</string>
     <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
     <string name="mtrl_picker_range_header_title">Выберите диапазон дат</string>
     <string name="mtrl_picker_range_header_unselected">Дата начала – дата окончания</string>
@@ -192,9 +195,11 @@
     <string name="mtrl_picker_text_input_year_abbr">г</string>
     <string name="mtrl_picker_today_description">Сегодня: %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">Перейти в режим выбора дней</string>
-    <string name="mtrl_picker_toggle_to_day_selection">Нажмите, чтобы перейти к Календарю</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Перейти в режим выбора даты</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">Перейти в режим ввода текста</string>
-    <string name="mtrl_picker_toggle_to_year_selection">Нажмите, чтобы выбрать год</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Перейти в режим выбора года</string>
+    <string name="mtrl_picker_toggled_to_day_selection">Вы перешли к Календарю</string>
+    <string name="mtrl_picker_toggled_to_year_selection">Вы перешли к выбору года</string>
     <string name="mtrl_timepicker_cancel">Отмена</string>
     <string name="mtrl_timepicker_confirm">ОК</string>
     <string name="native_body">Текст</string>

@@ -34,7 +34,6 @@
     <string name="bottomsheet_action_collapse">ยุบ Bottom Sheet</string>
     <string name="bottomsheet_action_expand">ขยาย Bottom Sheet</string>
     <string name="bottomsheet_action_expand_halfway">ขยายรายการครึ่งหนึ่ง</string>
-    <string name="bottomsheet_drag_handle_clicked">แตะแฮนเดิลการลากสองครั้ง</string>
     <string name="bottomsheet_drag_handle_content_description">แฮนเดิลการลาก</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"รับสาย"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"วิดีโอ"</string>
@@ -80,6 +79,7 @@
     <string msgid="6827826412747255547" name="in_progress">"กำลังดำเนินการ"</string>
     <string msgid="7933458017204019916" name="indeterminate">"เลือกบางส่วน"</string>
     <string name="item_view_role_description">แท็บ</string>
+    <string name="m3_loading_indicator_content_description">กำลังโหลด</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"ยุบ Bottom Sheet"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"ปิด Bottom Sheet"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"แฮนเดิลการลาก"</string>
@@ -143,6 +143,9 @@
     <string name="material_hour_suffix">%1$s นาฬิกา</string>
     <string name="material_minute_selection">เลือกนาที</string>
     <string name="material_minute_suffix">%1$s นาที</string>
+    <string name="material_slider_range_end">จุดสิ้นสุดของช่วง</string>
+    <string name="material_slider_range_start">จุดเริ่มต้นของช่วง</string>
+    <string name="material_slider_value">ค่า</string>
     <string name="material_timepicker_am">AM</string>
     <string name="material_timepicker_clock_mode_description">สลับไปโหมดนาฬิกาเพื่อป้อนเวลา</string>
     <string name="material_timepicker_hour">ชั่วโมง</string>
@@ -190,9 +193,11 @@
     <string name="mtrl_picker_text_input_year_abbr">ป</string>
     <string name="mtrl_picker_today_description">วันนี้ %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">สลับไปใช้โหมดป้อนข้อมูลปฏิทิน</string>
-    <string name="mtrl_picker_toggle_to_day_selection">แตะเพื่อเปลี่ยนเป็นมุมมองปฏิทิน</string>
+    <string name="mtrl_picker_toggle_to_day_selection">เปลี่ยนเป็นมุมมองปฏิทิน</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">สลับไปใช้โหมดป้อนข้อมูลข้อความ</string>
-    <string name="mtrl_picker_toggle_to_year_selection">แตะเพื่อเปลี่ยนเป็นมุมมองปี</string>
+    <string name="mtrl_picker_toggle_to_year_selection">เปลี่ยนเป็นมุมมองปี</string>
+    <string name="mtrl_picker_toggled_to_day_selection">เปลี่ยนเป็นมุมมองปฏิทินแล้ว</string>
+    <string name="mtrl_picker_toggled_to_year_selection">เปลี่ยนเป็นมุมมองปีแล้ว</string>
     <string name="mtrl_timepicker_cancel">ยกเลิก</string>
     <string name="mtrl_timepicker_confirm">ตกลง</string>
     <string name="native_body">เนื้อความ</string>

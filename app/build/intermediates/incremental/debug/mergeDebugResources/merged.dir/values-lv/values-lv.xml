@@ -35,7 +35,6 @@
     <string name="bottomsheet_action_collapse">Sakļaut ekrāna apakšdaļas lapu</string>
     <string name="bottomsheet_action_expand">Izvērst ekrāna apakšdaļas lapu</string>
     <string name="bottomsheet_action_expand_halfway">Izvērst līdz pusei</string>
-    <string name="bottomsheet_drag_handle_clicked">Tika veikts dubultskāriens uz vilkšanas tura</string>
     <string name="bottomsheet_drag_handle_content_description">Vilkšanas turis</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"Atbildēt"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Video"</string>
@@ -81,6 +80,7 @@
     <string msgid="6827826412747255547" name="in_progress">"Notiek apstrāde"</string>
     <string msgid="7933458017204019916" name="indeterminate">"Daļēji atzīmēta"</string>
     <string name="item_view_role_description">Cilne</string>
+    <string name="m3_loading_indicator_content_description">Notiek ielāde…</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Sakļaut ekrāna apakšdaļas lapu"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Noraidīt ekrāna apakšdaļas lapu"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Vilkšanas turis"</string>
@@ -144,6 +144,9 @@
     <string name="material_hour_suffix">plkst. %1$s</string>
     <string name="material_minute_selection">Atlasiet minūtes.</string>
     <string name="material_minute_suffix">%1$s min</string>
+    <string name="material_slider_range_end">Diapazona beigas</string>
+    <string name="material_slider_range_start">Diapazona sākums</string>
+    <string name="material_slider_value">Vērtība</string>
     <string name="material_timepicker_am">AM</string>
     <string name="material_timepicker_clock_mode_description">Lai ievadītu laiku, ieslēdziet pulksteņa režīmu.</string>
     <string name="material_timepicker_hour">Stunda</string>
@@ -191,9 +194,11 @@
     <string name="mtrl_picker_text_input_year_abbr">g</string>
     <string name="mtrl_picker_today_description">Šodien (%1$s)</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">Pārslēgties uz kalendāra ievades režīmu</string>
-    <string name="mtrl_picker_toggle_to_day_selection">Pieskarieties, lai pārslēgtos uz Kalendāra skatu</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Pārslēgties uz Kalendāra skatu</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">Pārslēgties uz teksta ievades režīmu</string>
-    <string name="mtrl_picker_toggle_to_year_selection">Pieskarieties, lai pārslēgtos uz gada skatu</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Pārslēgties uz gada skatu</string>
+    <string name="mtrl_picker_toggled_to_day_selection">Pārslēgts uz Kalendāra skatu</string>
+    <string name="mtrl_picker_toggled_to_year_selection">Pārslēgts uz gada skatu</string>
     <string name="mtrl_timepicker_cancel">Atcelt</string>
     <string name="mtrl_timepicker_confirm">Labi</string>
     <string name="native_body">Pamatteksts</string>

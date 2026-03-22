@@ -34,7 +34,6 @@
     <string name="bottomsheet_action_collapse">దిగువున ఉన్న షీట్‌ను కుదిస్తుంది</string>
     <string name="bottomsheet_action_expand">దిగువున ఉన్న షీట్‌ను విస్తరిస్తుంది</string>
     <string name="bottomsheet_action_expand_halfway">సగాన్ని విస్తరింపజేయండి</string>
-    <string name="bottomsheet_drag_handle_clicked">లాగే హ్యాండిల్ డబుల్-ట్యాప్ చేయబడింది</string>
     <string name="bottomsheet_drag_handle_content_description">లాగే హ్యాండిల్</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"పికప్ చేయండి"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"వీడియో కాల్"</string>
@@ -80,6 +79,7 @@
     <string msgid="6827826412747255547" name="in_progress">"ప్రోగ్రెస్‌లో ఉంది"</string>
     <string msgid="7933458017204019916" name="indeterminate">"పాక్షికంగా ఎంచుకోబడింది"</string>
     <string name="item_view_role_description">ట్యాబ్</string>
+    <string name="m3_loading_indicator_content_description">లోడ్ అవుతోంది</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"దిగువున ఉన్న షీట్‌ను కుదిస్తుంది"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"దిగువున ఉన్న షీట్‌ను విస్మరిస్తుంది"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"లాగే హ్యాండిల్"</string>
@@ -143,6 +143,9 @@
     <string name="material_hour_suffix">%1$s అవుతుంది</string>
     <string name="material_minute_selection">నిమిషాలను ఎంచుకోండి</string>
     <string name="material_minute_suffix">%1$s నిమిషాలు</string>
+    <string name="material_slider_range_end">పరిధి ముగింపు విలువ</string>
+    <string name="material_slider_range_start">పరిధి ప్రారంభ విలువ</string>
+    <string name="material_slider_value">విలువ</string>
     <string name="material_timepicker_am">AM</string>
     <string name="material_timepicker_clock_mode_description">సమయాన్ని నమోదు చేయడం కోసం గడియారం మోడ్‌కు మారండి.</string>
     <string name="material_timepicker_hour">గంట</string>
@@ -176,10 +179,10 @@
     <string name="mtrl_picker_navigate_to_year_description">%1$dసంవత్సరానికి నావిగేట్ చేస్తుంది</string>
     <string name="mtrl_picker_out_of_range">పరిధి వెలుపల ఉంది: %1$s</string>
     <string name="mtrl_picker_range_header_only_end_selected">ప్రారంభ తేదీ – %1$s</string>
-    <string name="mtrl_picker_range_header_only_start_selected">%1$s – ముగింపు తేది</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – ముగింపు తేదీ</string>
     <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
     <string name="mtrl_picker_range_header_title">పరిధిని ఎంచుకోండి</string>
-    <string name="mtrl_picker_range_header_unselected">ప్రారంభ తేది - ముగింపు తేది</string>
+    <string name="mtrl_picker_range_header_unselected">ప్రారంభ తేదీ - ముగింపు తేదీ</string>
     <string name="mtrl_picker_save">సేవ్ చేయండి</string>
     <string name="mtrl_picker_start_date_description">ప్రారంభ తేదీ %1$s</string>
     <string name="mtrl_picker_text_input_date_hint">తేదీ</string>
@@ -190,9 +193,11 @@
     <string name="mtrl_picker_text_input_year_abbr">సం</string>
     <string name="mtrl_picker_today_description">ఈరోజు %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">క్యాలెండర్ ఇన్‌పుట్ మోడ్‌కు మారుస్తుంది</string>
-    <string name="mtrl_picker_toggle_to_day_selection">క్యాలెండర్ వీక్షణకు మారడానికి ట్యాప్ చేయండి</string>
+    <string name="mtrl_picker_toggle_to_day_selection">క్యాలెండర్ వీక్షణకు మారండి</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">వచన ఇన్‌పుట్ మోడ్‌కు మారుస్తుంది</string>
-    <string name="mtrl_picker_toggle_to_year_selection">సంవత్సర వీక్షణకు మారడానికి ట్యాప్ చేయండి</string>
+    <string name="mtrl_picker_toggle_to_year_selection">సంవత్సరం వీక్షణకు మారండి</string>
+    <string name="mtrl_picker_toggled_to_day_selection">క్యాలెండర్ వీక్షణకు మారారు</string>
+    <string name="mtrl_picker_toggled_to_year_selection">సంవత్సరం వీక్షణకు మారారు</string>
     <string name="mtrl_timepicker_cancel">రద్దు చేయండి</string>
     <string name="mtrl_timepicker_confirm">సరే</string>
     <string name="native_body">విషయం</string>

@@ -36,7 +36,6 @@
     <string name="bottomsheet_action_collapse">Strnitev razdelka na dnu zaslona</string>
     <string name="bottomsheet_action_expand">Razširitev razdelka na dnu zaslona</string>
     <string name="bottomsheet_action_expand_halfway">Razširjanje na pol višine</string>
-    <string name="bottomsheet_drag_handle_clicked">Dvakrat dotaknjena ročica za vlečenje</string>
     <string name="bottomsheet_drag_handle_content_description">Ročica za vlečenje</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"Sprejmi"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Video"</string>
@@ -82,6 +81,7 @@
     <string msgid="6827826412747255547" name="in_progress">"Poteka"</string>
     <string msgid="7933458017204019916" name="indeterminate">"Delno potrjeno"</string>
     <string name="item_view_role_description">Zavihek</string>
+    <string name="m3_loading_indicator_content_description">Nalaganje</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Strnitev razdelka na dnu zaslona"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Opustitev razdelka na dnu zaslona"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Ročica za vlečenje"</string>
@@ -145,6 +145,9 @@
     <string name="material_hour_suffix">%1$s</string>
     <string name="material_minute_selection">Izberite minute</string>
     <string name="material_minute_suffix">%1$s min</string>
+    <string name="material_slider_range_end">Konec razpona</string>
+    <string name="material_slider_range_start">Začetek razpona</string>
+    <string name="material_slider_value">Vrednost</string>
     <string name="material_timepicker_am">dop.</string>
     <string name="material_timepicker_clock_mode_description">Preklopite na način ure, da vnesete čas.</string>
     <string name="material_timepicker_hour">Ura</string>
@@ -178,10 +181,10 @@
     <string name="mtrl_picker_navigate_to_year_description">Pomik na leto %1$d</string>
     <string name="mtrl_picker_out_of_range">Zunaj razpona: %1$s</string>
     <string name="mtrl_picker_range_header_only_end_selected">Začetni datum–%1$s</string>
-    <string name="mtrl_picker_range_header_only_start_selected">%1$s–končni datum</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s–Končni datum</string>
     <string name="mtrl_picker_range_header_selected">%1$s–%2$s</string>
     <string name="mtrl_picker_range_header_title">Izberite obseg</string>
-    <string name="mtrl_picker_range_header_unselected">Začetni datum–končni datum</string>
+    <string name="mtrl_picker_range_header_unselected">Začetni datum–Končni datum</string>
     <string name="mtrl_picker_save">Shrani</string>
     <string name="mtrl_picker_start_date_description">Začetni datum %1$s</string>
     <string name="mtrl_picker_text_input_date_hint">Datum</string>
@@ -192,9 +195,11 @@
     <string name="mtrl_picker_text_input_year_abbr">l</string>
     <string name="mtrl_picker_today_description">Danes %1$s</string>
     <string name="mtrl_picker_toggle_to_calendar_input_mode">Preklop na način vnosa v koledar</string>
-    <string name="mtrl_picker_toggle_to_day_selection">Dotaknite se za preklop na pogled koledarja</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Preklopi na pogled koledarja</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">Preklop na način vnosa besedila</string>
-    <string name="mtrl_picker_toggle_to_year_selection">Dotaknite se za preklop na pogled leta</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Preklopi na pogled leta</string>
+    <string name="mtrl_picker_toggled_to_day_selection">Preklopljeno na pogled koledarja</string>
+    <string name="mtrl_picker_toggled_to_year_selection">Preklopljeno na pogled leta</string>
     <string name="mtrl_timepicker_cancel">Prekliči</string>
     <string name="mtrl_timepicker_confirm">V redu</string>
     <string name="native_body">Telo</string>
