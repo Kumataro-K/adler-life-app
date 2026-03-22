@@ -1,0 +1,890 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-30:12
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-30:12
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-30:12
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:1-30:12
+MERGED from [androidx.navigation:navigation-common:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\bf86d31cd58b3b5f77381ce0d73122f6\transformed\navigation-common-2.8.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\16910e597aeb40ab250f8693227e5dd2\transformed\navigation-runtime-2.8.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\8bd2d9549805fffc58fa823bef94d621\transformed\navigation-common-ktx-2.8.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\d14a50e19cd2bddbc4d57b5b527bb31b\transformed\navigation-runtime-ktx-2.8.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-compose:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\d09f3a1f427a8f888084434c078a0d41\transformed\navigation-compose-2.8.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material3:material3-android:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\20619c7f8d8f30735ae0281383bc6396\transformed\material3-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.material:material-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\a4b10576e8333aa9020122a3267eb146\transformed\material-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\2e418850a0d51db5595040e1da04c9d8\transformed\material-ripple-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\7940c9b0ecc15fce0e0f558fd9147992\transformed\foundation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\84637503b5b7cfa1f9458e1182554fda\transformed\foundation-layout-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-core-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\e0427f101e2dd2ba624aaa7f914a1ce2\transformed\animation-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\e9009931a1533e7718edb73b41edc8ae\transformed\animation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\778d5ddfbed67ae1f4ccff37d845d361\transformed\ui-tooling-data-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\a4cc0da7c56c4aa60ac806b61817a5ed\transformed\ui-unit-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\c95f910ac4034ea907e59c75d89d7aee\transformed\ui-graphics-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\8ba010c09bb7ba9d161f7102b45fe4d2\transformed\ui-geometry-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\8adfb1520a1bca4e70b9bfc47413e531\transformed\ui-util-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\b3488198e220139d3744c2c3ef208d0a\transformed\ui-text-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\d85e69a9fd9ba7a1cd5f5ef8edd3469d\transformed\ui-tooling-preview-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\dc0baad5e3b30b0eb6043dee857ffded\transformed\ui-test-manifest-1.7.3\AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.android.material:material:1.13.0] C:\Users\strom\.gradle\caches\8.13\transforms\b7bb1a64bd7fdd1f078d31f64b4427d3\transformed\material-1.13.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\3f9a80aadbafee737203945c76f6427c\transformed\constraintlayout-2.1.0\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\894f657b24ed21735f8bbf282b38bc91\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\770ac84729bdcf2846db356df94ad70d\transformed\appcompat-1.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\fb1ffc986eae1bcde9e6c1199287529b\transformed\viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-ads:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\bf2cd150842878c2b2520692f4504197\transformed\play-services-ads-23.0.0\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:17:1-95:12
+MERGED from [com.google.android.gms:play-services-ads-base:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\04764eeff84d5a90952805cff5c64235\transformed\play-services-ads-base-23.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\720b1340d2629be7292e13d65d1e3356\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.android.gms:play-services-appset:16.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\2ce52abb58798e0c9d34a445be3f07b9\transformed\play-services-appset-16.0.1\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\980b4262897c80cae642a3ada34b7f7b\transformed\play-services-base-18.0.0\AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\c2d91e1a33ca5809036e204ed98f107d\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.android.ump:user-messaging-platform:2.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\398c51803d421e62a2eef6085a98f7ca\transformed\user-messaging-platform-2.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-measurement-base:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\66dc0f363ce0c8f37c0e68ea13b6d7e4\transformed\play-services-measurement-base-20.1.2\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\e1dc4e9855cb37f15cf8660106aa9bcc\transformed\play-services-basement-18.2.0\AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\strom\.gradle\caches\8.13\transforms\0bb38d68ecc8dbd6dedcfb5ec95d5263\transformed\fragment-1.5.4\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.10.1] C:\Users\strom\.gradle\caches\8.13\transforms\c5343023c94335d4857b6b7b8c02ce39\transformed\activity-1.10.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\68a267ded1abed3e877d0791fa54f1df\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\593bf9cd05277e9f4be6d3d1ccc088f1\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\strom\.gradle\caches\8.13\transforms\5894ee6944a15bcf4840b12a3894b12e\transformed\transition-1.5.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\ef3f7a7f28d2f604fa1be727820d1a0d\transformed\dynamicanimation-1.1.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\strom\.gradle\caches\8.13\transforms\266cc340e434b52944750f0ce6e6274d\transformed\recyclerview-1.2.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\f28f76b404214a1a67f51682774e5d2a\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\7d282c418b12c5e13fdc2ad202b88da1\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\c6d311c339bfb0e0adcaeb8a832d4ab8\transformed\browser-1.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\1509b185e948889b97b0c887350c50e2\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ab2b4f4360f704848fe1db9de636cf70\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\5a15f8b7e831ac8dd57a0dfb5a22356e\transformed\customview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:17:1-145:12
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\98d80d4d402f2398c0cfe9d31690d4c9\transformed\autofill-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ce8927bc68a580b679f914918c798746\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\3b10cb58d0b5f3b9ef4488f0167e6bbd\transformed\graphics-path-1.0.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\strom\.gradle\caches\8.13\transforms\eaa1caa14cb74f36a6fd636ca23d0e1d\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\strom\.gradle\caches\8.13\transforms\0bcbca9ab4d5e6ecc219d13f2cbeaaad\transformed\savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\7a05d20f4c192d133382bada5d36d040\transformed\lifecycle-livedata-core-ktx-2.8.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\89d4d97806103a9fd99555605db42a26\transformed\lifecycle-service-2.8.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\4c045602c620f2f5ca7c54125b49573b\transformed\lifecycle-livedata-2.8.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\2cae617c76123bd2c0bde0cce73286b2\transformed\lifecycle-livedata-core-2.8.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\fe3e1c146087323e3fe417fda0409c0c\transformed\lifecycle-viewmodel-2.8.7\AndroidManifest.xml:2:1-5:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\c9d5644423a3a41aaea187d9f2b1800e\transformed\lifecycle-viewmodel-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\a6da0876e47c95d3579e4a53067e8a7d\transformed\lifecycle-runtime-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\b2a4dbb31841a9a1b681d4a19a24caec\transformed\lifecycle-viewmodel-ktx-2.8.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\631d3c2d5b2810ac9bbe5d1e4cff3805\transformed\lifecycle-viewmodel-savedstate-2.8.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\b586b04a7adff33eac0108cb3633fe77\transformed\lifecycle-runtime-compose-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\67f5f9d4ef0e82fd23ab5350bd8fa9ea\transformed\lifecycle-runtime-ktx-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\9aeac01fdbd6ba40ef6f9b0b7b747197\transformed\lifecycle-viewmodel-compose-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\b8e756611b918f0ad8784922c97e6740\transformed\material-icons-extended-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\891b69971f0415b7132af7df3c679637\transformed\material-icons-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\649f37c65c83f258b4390353604953ad\transformed\ui-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-ktx:1.10.1] C:\Users\strom\.gradle\caches\8.13\transforms\1142a7da827aa9e8406f486281668765\transformed\activity-ktx-1.10.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-compose:1.10.1] C:\Users\strom\.gradle\caches\8.13\transforms\749812d7cab1757572037e7bf3fbd749\transformed\activity-compose-1.10.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\7613487ff4baffe694112a434bf528db\transformed\ads-adservices-java-1.0.0-beta05\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\678527f33f18d91c27f8694061c5bb72\transformed\ads-adservices-1.0.0-beta05\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\82ae5ff0ef3f75ae6bd2a72dde5eab4a\transformed\graphics-shapes-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ee5a8571dfeb56aa21c75fd15248295e\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\6147a5f1900599a3715e281891c187b1\transformed\core-ktx-1.15.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\b84658dbfb8117be886a1ae402a2302a\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.room:room-ktx:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\633bfd50d6c0abe14004ec5141674779\transformed\room-ktx-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\591e4055483cd422154dac8925b97254\transformed\runtime-saveable-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\582e3eafe5f22f213e05d54c95da7806\transformed\runtime-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\strom\.gradle\caches\8.13\transforms\ddc3e7175d8238755259cb3d75815239\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\31f9925115534f9f3ec8d826d6d5ce6b\transformed\core-viewtree-1.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.sqlite:sqlite-framework-android:2.5.0] C:\Users\strom\.gradle\caches\8.13\transforms\2f13c9e6948a3256e9b85a2a7a6114d7\transformed\sqlite-framework-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-android:2.5.0] C:\Users\strom\.gradle\caches\8.13\transforms\91e3ff512ffe81b9ec0d3c37964937df\transformed\sqlite-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\8039f03b684c0ddd4e2fc7a405ea2612\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\a6137b34a065321451fa9f90239d3d96\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\0853092c58355e76c0c0a24ceaa3a927\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\924b7cccebe9bfdb5bb77e3972c6e5b2\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\d3fd56bcb7b6556556401d870df36b43\transformed\tracing-1.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\5955a0c3d56f25999ea28677d435c15d\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\b19ba0d76283062d044194a1407bae9a\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:2:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:2:22-64
+application
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:4:5-29:19
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:4:5-29:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\dc0baad5e3b30b0eb6043dee857ffded\transformed\ui-test-manifest-1.7.3\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\dc0baad5e3b30b0eb6043dee857ffded\transformed\ui-test-manifest-1.7.3\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.material:material:1.13.0] C:\Users\strom\.gradle\caches\8.13\transforms\b7bb1a64bd7fdd1f078d31f64b4427d3\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.13.0] C:\Users\strom\.gradle\caches\8.13\transforms\b7bb1a64bd7fdd1f078d31f64b4427d3\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\3f9a80aadbafee737203945c76f6427c\transformed\constraintlayout-2.1.0\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\3f9a80aadbafee737203945c76f6427c\transformed\constraintlayout-2.1.0\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:53:5-93:19
+MERGED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:53:5-93:19
+MERGED from [com.google.android.gms:play-services-ads-base:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\04764eeff84d5a90952805cff5c64235\transformed\play-services-ads-base-23.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-ads-base:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\04764eeff84d5a90952805cff5c64235\transformed\play-services-ads-base-23.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\720b1340d2629be7292e13d65d1e3356\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:25:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\720b1340d2629be7292e13d65d1e3356\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:25:5-20
+MERGED from [com.google.android.gms:play-services-appset:16.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\2ce52abb58798e0c9d34a445be3f07b9\transformed\play-services-appset-16.0.1\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-appset:16.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\2ce52abb58798e0c9d34a445be3f07b9\transformed\play-services-appset-16.0.1\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\980b4262897c80cae642a3ada34b7f7b\transformed\play-services-base-18.0.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\980b4262897c80cae642a3ada34b7f7b\transformed\play-services-base-18.0.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\c2d91e1a33ca5809036e204ed98f107d\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\c2d91e1a33ca5809036e204ed98f107d\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\66dc0f363ce0c8f37c0e68ea13b6d7e4\transformed\play-services-measurement-base-20.1.2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\66dc0f363ce0c8f37c0e68ea13b6d7e4\transformed\play-services-measurement-base-20.1.2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\e1dc4e9855cb37f15cf8660106aa9bcc\transformed\play-services-basement-18.2.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\e1dc4e9855cb37f15cf8660106aa9bcc\transformed\play-services-basement-18.2.0\AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:30:5-143:19
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:30:5-143:19
+MERGED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\678527f33f18d91c27f8694061c5bb72\transformed\ads-adservices-1.0.0-beta05\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\678527f33f18d91c27f8694061c5bb72\transformed\ads-adservices-1.0.0-beta05\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\8039f03b684c0ddd4e2fc7a405ea2612\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\8039f03b684c0ddd4e2fc7a405ea2612\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\924b7cccebe9bfdb5bb77e3972c6e5b2\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\924b7cccebe9bfdb5bb77e3972c6e5b2\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:9:9-35
+	android:label
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:7:9-41
+	android:roundIcon
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:8:9-61
+	android:icon
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:6:9-56
+	android:allowBackup
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:5:9-35
+	android:theme
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:10:9-48
+meta-data#com.google.android.gms.ads.APPLICATION_ID
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:11:9-13:70
+	android:value
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:13:13-67
+	android:name
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:12:13-69
+activity#com.example.adlerlife.MainActivity
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:15:9-18:40
+	android:exported
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:18:13-37
+	android:theme
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:17:13-54
+	android:name
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:16:13-41
+activity#com.example.adlerlife.SplashActivity
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:20:9-28:20
+	android:exported
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:23:13-36
+	android:theme
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:22:13-54
+	android:name
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:21:13-43
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:24:13-27:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:25:17-69
+	android:name
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:25:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:26:17-77
+	android:name
+		ADDED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml:26:27-74
+uses-sdk
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml
+MERGED from [androidx.navigation:navigation-common:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\bf86d31cd58b3b5f77381ce0d73122f6\transformed\navigation-common-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\bf86d31cd58b3b5f77381ce0d73122f6\transformed\navigation-common-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\16910e597aeb40ab250f8693227e5dd2\transformed\navigation-runtime-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\16910e597aeb40ab250f8693227e5dd2\transformed\navigation-runtime-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\8bd2d9549805fffc58fa823bef94d621\transformed\navigation-common-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\8bd2d9549805fffc58fa823bef94d621\transformed\navigation-common-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\d14a50e19cd2bddbc4d57b5b527bb31b\transformed\navigation-runtime-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\d14a50e19cd2bddbc4d57b5b527bb31b\transformed\navigation-runtime-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\d09f3a1f427a8f888084434c078a0d41\transformed\navigation-compose-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\d09f3a1f427a8f888084434c078a0d41\transformed\navigation-compose-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material3:material3-android:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\20619c7f8d8f30735ae0281383bc6396\transformed\material3-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\20619c7f8d8f30735ae0281383bc6396\transformed\material3-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\a4b10576e8333aa9020122a3267eb146\transformed\material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\a4b10576e8333aa9020122a3267eb146\transformed\material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\2e418850a0d51db5595040e1da04c9d8\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\2e418850a0d51db5595040e1da04c9d8\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\7940c9b0ecc15fce0e0f558fd9147992\transformed\foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\7940c9b0ecc15fce0e0f558fd9147992\transformed\foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\84637503b5b7cfa1f9458e1182554fda\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\84637503b5b7cfa1f9458e1182554fda\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\e0427f101e2dd2ba624aaa7f914a1ce2\transformed\animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\e0427f101e2dd2ba624aaa7f914a1ce2\transformed\animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\e9009931a1533e7718edb73b41edc8ae\transformed\animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\e9009931a1533e7718edb73b41edc8ae\transformed\animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\778d5ddfbed67ae1f4ccff37d845d361\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\778d5ddfbed67ae1f4ccff37d845d361\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\a4cc0da7c56c4aa60ac806b61817a5ed\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\a4cc0da7c56c4aa60ac806b61817a5ed\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\c95f910ac4034ea907e59c75d89d7aee\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\c95f910ac4034ea907e59c75d89d7aee\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\8ba010c09bb7ba9d161f7102b45fe4d2\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\8ba010c09bb7ba9d161f7102b45fe4d2\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\8adfb1520a1bca4e70b9bfc47413e531\transformed\ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\8adfb1520a1bca4e70b9bfc47413e531\transformed\ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\b3488198e220139d3744c2c3ef208d0a\transformed\ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\b3488198e220139d3744c2c3ef208d0a\transformed\ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\d85e69a9fd9ba7a1cd5f5ef8edd3469d\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\d85e69a9fd9ba7a1cd5f5ef8edd3469d\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\dc0baad5e3b30b0eb6043dee857ffded\transformed\ui-test-manifest-1.7.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\dc0baad5e3b30b0eb6043dee857ffded\transformed\ui-test-manifest-1.7.3\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.13.0] C:\Users\strom\.gradle\caches\8.13\transforms\b7bb1a64bd7fdd1f078d31f64b4427d3\transformed\material-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.13.0] C:\Users\strom\.gradle\caches\8.13\transforms\b7bb1a64bd7fdd1f078d31f64b4427d3\transformed\material-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\3f9a80aadbafee737203945c76f6427c\transformed\constraintlayout-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\3f9a80aadbafee737203945c76f6427c\transformed\constraintlayout-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\894f657b24ed21735f8bbf282b38bc91\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\894f657b24ed21735f8bbf282b38bc91\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\770ac84729bdcf2846db356df94ad70d\transformed\appcompat-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\770ac84729bdcf2846db356df94ad70d\transformed\appcompat-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\fb1ffc986eae1bcde9e6c1199287529b\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\fb1ffc986eae1bcde9e6c1199287529b\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-ads:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\bf2cd150842878c2b2520692f4504197\transformed\play-services-ads-23.0.0\AndroidManifest.xml:21:5-23:52
+MERGED from [com.google.android.gms:play-services-ads:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\bf2cd150842878c2b2520692f4504197\transformed\play-services-ads-23.0.0\AndroidManifest.xml:21:5-23:52
+MERGED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:21:5-44
+MERGED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:21:5-44
+MERGED from [com.google.android.gms:play-services-ads-base:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\04764eeff84d5a90952805cff5c64235\transformed\play-services-ads-base-23.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-ads-base:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\04764eeff84d5a90952805cff5c64235\transformed\play-services-ads-base-23.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\720b1340d2629be7292e13d65d1e3356\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\720b1340d2629be7292e13d65d1e3356\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-appset:16.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\2ce52abb58798e0c9d34a445be3f07b9\transformed\play-services-appset-16.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-appset:16.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\2ce52abb58798e0c9d34a445be3f07b9\transformed\play-services-appset-16.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\980b4262897c80cae642a3ada34b7f7b\transformed\play-services-base-18.0.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\980b4262897c80cae642a3ada34b7f7b\transformed\play-services-base-18.0.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\c2d91e1a33ca5809036e204ed98f107d\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\c2d91e1a33ca5809036e204ed98f107d\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.ump:user-messaging-platform:2.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\398c51803d421e62a2eef6085a98f7ca\transformed\user-messaging-platform-2.2.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.ump:user-messaging-platform:2.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\398c51803d421e62a2eef6085a98f7ca\transformed\user-messaging-platform-2.2.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\66dc0f363ce0c8f37c0e68ea13b6d7e4\transformed\play-services-measurement-base-20.1.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\66dc0f363ce0c8f37c0e68ea13b6d7e4\transformed\play-services-measurement-base-20.1.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\e1dc4e9855cb37f15cf8660106aa9bcc\transformed\play-services-basement-18.2.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\e1dc4e9855cb37f15cf8660106aa9bcc\transformed\play-services-basement-18.2.0\AndroidManifest.xml:18:5-43
+MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\strom\.gradle\caches\8.13\transforms\0bb38d68ecc8dbd6dedcfb5ec95d5263\transformed\fragment-1.5.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\strom\.gradle\caches\8.13\transforms\0bb38d68ecc8dbd6dedcfb5ec95d5263\transformed\fragment-1.5.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.10.1] C:\Users\strom\.gradle\caches\8.13\transforms\c5343023c94335d4857b6b7b8c02ce39\transformed\activity-1.10.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.10.1] C:\Users\strom\.gradle\caches\8.13\transforms\c5343023c94335d4857b6b7b8c02ce39\transformed\activity-1.10.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\68a267ded1abed3e877d0791fa54f1df\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\68a267ded1abed3e877d0791fa54f1df\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\593bf9cd05277e9f4be6d3d1ccc088f1\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\593bf9cd05277e9f4be6d3d1ccc088f1\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\strom\.gradle\caches\8.13\transforms\5894ee6944a15bcf4840b12a3894b12e\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\strom\.gradle\caches\8.13\transforms\5894ee6944a15bcf4840b12a3894b12e\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\ef3f7a7f28d2f604fa1be727820d1a0d\transformed\dynamicanimation-1.1.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\ef3f7a7f28d2f604fa1be727820d1a0d\transformed\dynamicanimation-1.1.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\strom\.gradle\caches\8.13\transforms\266cc340e434b52944750f0ce6e6274d\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\strom\.gradle\caches\8.13\transforms\266cc340e434b52944750f0ce6e6274d\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\f28f76b404214a1a67f51682774e5d2a\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\f28f76b404214a1a67f51682774e5d2a\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\7d282c418b12c5e13fdc2ad202b88da1\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\7d282c418b12c5e13fdc2ad202b88da1\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\c6d311c339bfb0e0adcaeb8a832d4ab8\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\c6d311c339bfb0e0adcaeb8a832d4ab8\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\1509b185e948889b97b0c887350c50e2\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\1509b185e948889b97b0c887350c50e2\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ab2b4f4360f704848fe1db9de636cf70\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ab2b4f4360f704848fe1db9de636cf70\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\5a15f8b7e831ac8dd57a0dfb5a22356e\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\strom\.gradle\caches\8.13\transforms\5a15f8b7e831ac8dd57a0dfb5a22356e\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\98d80d4d402f2398c0cfe9d31690d4c9\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\98d80d4d402f2398c0cfe9d31690d4c9\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ce8927bc68a580b679f914918c798746\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ce8927bc68a580b679f914918c798746\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\3b10cb58d0b5f3b9ef4488f0167e6bbd\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\3b10cb58d0b5f3b9ef4488f0167e6bbd\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\strom\.gradle\caches\8.13\transforms\eaa1caa14cb74f36a6fd636ca23d0e1d\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\strom\.gradle\caches\8.13\transforms\eaa1caa14cb74f36a6fd636ca23d0e1d\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\strom\.gradle\caches\8.13\transforms\0bcbca9ab4d5e6ecc219d13f2cbeaaad\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\strom\.gradle\caches\8.13\transforms\0bcbca9ab4d5e6ecc219d13f2cbeaaad\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\7a05d20f4c192d133382bada5d36d040\transformed\lifecycle-livedata-core-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\7a05d20f4c192d133382bada5d36d040\transformed\lifecycle-livedata-core-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\89d4d97806103a9fd99555605db42a26\transformed\lifecycle-service-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\89d4d97806103a9fd99555605db42a26\transformed\lifecycle-service-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\4c045602c620f2f5ca7c54125b49573b\transformed\lifecycle-livedata-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\4c045602c620f2f5ca7c54125b49573b\transformed\lifecycle-livedata-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\2cae617c76123bd2c0bde0cce73286b2\transformed\lifecycle-livedata-core-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\2cae617c76123bd2c0bde0cce73286b2\transformed\lifecycle-livedata-core-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\fe3e1c146087323e3fe417fda0409c0c\transformed\lifecycle-viewmodel-2.8.7\AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\fe3e1c146087323e3fe417fda0409c0c\transformed\lifecycle-viewmodel-2.8.7\AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\c9d5644423a3a41aaea187d9f2b1800e\transformed\lifecycle-viewmodel-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\c9d5644423a3a41aaea187d9f2b1800e\transformed\lifecycle-viewmodel-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\a6da0876e47c95d3579e4a53067e8a7d\transformed\lifecycle-runtime-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\a6da0876e47c95d3579e4a53067e8a7d\transformed\lifecycle-runtime-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\b2a4dbb31841a9a1b681d4a19a24caec\transformed\lifecycle-viewmodel-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\b2a4dbb31841a9a1b681d4a19a24caec\transformed\lifecycle-viewmodel-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\631d3c2d5b2810ac9bbe5d1e4cff3805\transformed\lifecycle-viewmodel-savedstate-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\631d3c2d5b2810ac9bbe5d1e4cff3805\transformed\lifecycle-viewmodel-savedstate-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\b586b04a7adff33eac0108cb3633fe77\transformed\lifecycle-runtime-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\b586b04a7adff33eac0108cb3633fe77\transformed\lifecycle-runtime-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\67f5f9d4ef0e82fd23ab5350bd8fa9ea\transformed\lifecycle-runtime-ktx-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\67f5f9d4ef0e82fd23ab5350bd8fa9ea\transformed\lifecycle-runtime-ktx-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\9aeac01fdbd6ba40ef6f9b0b7b747197\transformed\lifecycle-viewmodel-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\9aeac01fdbd6ba40ef6f9b0b7b747197\transformed\lifecycle-viewmodel-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\b8e756611b918f0ad8784922c97e6740\transformed\material-icons-extended-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\b8e756611b918f0ad8784922c97e6740\transformed\material-icons-extended-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\891b69971f0415b7132af7df3c679637\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\891b69971f0415b7132af7df3c679637\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\649f37c65c83f258b4390353604953ad\transformed\ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\649f37c65c83f258b4390353604953ad\transformed\ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.10.1] C:\Users\strom\.gradle\caches\8.13\transforms\1142a7da827aa9e8406f486281668765\transformed\activity-ktx-1.10.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.10.1] C:\Users\strom\.gradle\caches\8.13\transforms\1142a7da827aa9e8406f486281668765\transformed\activity-ktx-1.10.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.10.1] C:\Users\strom\.gradle\caches\8.13\transforms\749812d7cab1757572037e7bf3fbd749\transformed\activity-compose-1.10.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.10.1] C:\Users\strom\.gradle\caches\8.13\transforms\749812d7cab1757572037e7bf3fbd749\transformed\activity-compose-1.10.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\7613487ff4baffe694112a434bf528db\transformed\ads-adservices-java-1.0.0-beta05\AndroidManifest.xml:5:5-44
+MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\7613487ff4baffe694112a434bf528db\transformed\ads-adservices-java-1.0.0-beta05\AndroidManifest.xml:5:5-44
+MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\678527f33f18d91c27f8694061c5bb72\transformed\ads-adservices-1.0.0-beta05\AndroidManifest.xml:20:5-44
+MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\678527f33f18d91c27f8694061c5bb72\transformed\ads-adservices-1.0.0-beta05\AndroidManifest.xml:20:5-44
+MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\82ae5ff0ef3f75ae6bd2a72dde5eab4a\transformed\graphics-shapes-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\82ae5ff0ef3f75ae6bd2a72dde5eab4a\transformed\graphics-shapes-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ee5a8571dfeb56aa21c75fd15248295e\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\ee5a8571dfeb56aa21c75fd15248295e\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\6147a5f1900599a3715e281891c187b1\transformed\core-ktx-1.15.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\6147a5f1900599a3715e281891c187b1\transformed\core-ktx-1.15.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\b84658dbfb8117be886a1ae402a2302a\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\strom\.gradle\caches\8.13\transforms\b84658dbfb8117be886a1ae402a2302a\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-ktx:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\633bfd50d6c0abe14004ec5141674779\transformed\room-ktx-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\633bfd50d6c0abe14004ec5141674779\transformed\room-ktx-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\591e4055483cd422154dac8925b97254\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\591e4055483cd422154dac8925b97254\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\582e3eafe5f22f213e05d54c95da7806\transformed\runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\582e3eafe5f22f213e05d54c95da7806\transformed\runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\strom\.gradle\caches\8.13\transforms\ddc3e7175d8238755259cb3d75815239\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\strom\.gradle\caches\8.13\transforms\ddc3e7175d8238755259cb3d75815239\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\31f9925115534f9f3ec8d826d6d5ce6b\transformed\core-viewtree-1.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\31f9925115534f9f3ec8d826d6d5ce6b\transformed\core-viewtree-1.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.sqlite:sqlite-framework-android:2.5.0] C:\Users\strom\.gradle\caches\8.13\transforms\2f13c9e6948a3256e9b85a2a7a6114d7\transformed\sqlite-framework-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework-android:2.5.0] C:\Users\strom\.gradle\caches\8.13\transforms\2f13c9e6948a3256e9b85a2a7a6114d7\transformed\sqlite-framework-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-android:2.5.0] C:\Users\strom\.gradle\caches\8.13\transforms\91e3ff512ffe81b9ec0d3c37964937df\transformed\sqlite-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-android:2.5.0] C:\Users\strom\.gradle\caches\8.13\transforms\91e3ff512ffe81b9ec0d3c37964937df\transformed\sqlite-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\8039f03b684c0ddd4e2fc7a405ea2612\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\8039f03b684c0ddd4e2fc7a405ea2612\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\a6137b34a065321451fa9f90239d3d96\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\a6137b34a065321451fa9f90239d3d96\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\0853092c58355e76c0c0a24ceaa3a927\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\0853092c58355e76c0c0a24ceaa3a927\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\924b7cccebe9bfdb5bb77e3972c6e5b2\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\924b7cccebe9bfdb5bb77e3972c6e5b2\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\d3fd56bcb7b6556556401d870df36b43\transformed\tracing-1.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\d3fd56bcb7b6556556401d870df36b43\transformed\tracing-1.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\5955a0c3d56f25999ea28677d435c15d\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\5955a0c3d56f25999ea28677d435c15d\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\b19ba0d76283062d044194a1407bae9a\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\b19ba0d76283062d044194a1407bae9a\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+	tools:overrideLibrary
+		ADDED from [com.google.android.gms:play-services-ads:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\bf2cd150842878c2b2520692f4504197\transformed\play-services-ads-23.0.0\AndroidManifest.xml:23:9-49
+	android:targetSdkVersion
+		INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\strom\AndroidStudioProjects\adler-life-app\app\src\main\AndroidManifest.xml
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\895a0f982fdc7692a450aadbc5694964\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+activity#androidx.activity.ComponentActivity
+ADDED from [androidx.compose.ui:ui-test-manifest:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\dc0baad5e3b30b0eb6043dee857ffded\transformed\ui-test-manifest-1.7.3\AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\dc0baad5e3b30b0eb6043dee857ffded\transformed\ui-test-manifest-1.7.3\AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.7.3] C:\Users\strom\.gradle\caches\8.13\transforms\dc0baad5e3b30b0eb6043dee857ffded\transformed\ui-test-manifest-1.7.3\AndroidManifest.xml:24:13-63
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:24:5-79
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:26:5-79
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:26:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:25:22-76
+uses-permission#com.google.android.gms.permission.AD_ID
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:26:5-79
+MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\720b1340d2629be7292e13d65d1e3356\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\720b1340d2629be7292e13d65d1e3356\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:26:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:26:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:26:22-76
+uses-permission#android.permission.ACCESS_ADSERVICES_AD_ID
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:27:5-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:27:22-79
+uses-permission#android.permission.ACCESS_ADSERVICES_ATTRIBUTION
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:28:5-88
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:28:22-85
+uses-permission#android.permission.ACCESS_ADSERVICES_TOPICS
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:29:5-83
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:29:22-80
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:30:5-32:31
+REJECTED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:27:5-81
+	tools:node
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:32:9-28
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:31:9-65
+queries
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:35:5-51:15
+intent#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+data:scheme:https
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:38:9-44:18
+action#android.intent.action.VIEW
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:39:13-65
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:39:21-62
+category#android.intent.category.BROWSABLE
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:41:13-74
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:41:23-71
+data
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:43:13-44
+	android:scheme
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:43:19-41
+intent#action:name:android.support.customtabs.action.CustomTabsService
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:47:9-49:18
+action#android.support.customtabs.action.CustomTabsService
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:48:13-90
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:48:21-87
+activity#com.google.android.gms.ads.AdActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:56:9-61:43
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:59:13-37
+	tools:ignore
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:61:13-40
+	android:configChanges
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:58:13-122
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:60:13-61
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:57:13-65
+provider#com.google.android.gms.ads.MobileAdsInitProvider
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:63:9-68:43
+	android:authorities
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:65:13-73
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:66:13-37
+	tools:ignore
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:68:13-40
+	android:initOrder
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:67:13-36
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:64:13-76
+service#com.google.android.gms.ads.AdService
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:70:9-74:43
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:72:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:73:13-37
+	tools:ignore
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:74:13-40
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:71:13-64
+activity#com.google.android.gms.ads.OutOfContextTestingActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:76:9-80:43
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:79:13-37
+	tools:ignore
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:80:13-40
+	android:configChanges
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:78:13-122
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:77:13-82
+activity#com.google.android.gms.ads.NotificationHandlerActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:81:9-88:43
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:83:13-46
+	android:launchMode
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:85:13-44
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:84:13-37
+	tools:ignore
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:88:13-40
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:87:13-72
+	android:taskAffinity
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:86:13-36
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:82:13-82
+property#android.adservices.AD_SERVICES_CONFIG
+ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:90:9-92:62
+	android:resource
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:92:13-59
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:23.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\928be9e435eba21226e202ad88dba4b1\transformed\play-services-ads-lite-23.0.0\AndroidManifest.xml:91:13-65
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\980b4262897c80cae642a3ada34b7f7b\transformed\play-services-base-18.0.0\AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\980b4262897c80cae642a3ada34b7f7b\transformed\play-services-base-18.0.0\AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\980b4262897c80cae642a3ada34b7f7b\transformed\play-services-base-18.0.0\AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\strom\.gradle\caches\8.13\transforms\980b4262897c80cae642a3ada34b7f7b\transformed\play-services-base-18.0.0\AndroidManifest.xml:20:19-85
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:25:5-68
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:25:5-68
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:25:5-68
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\strom\.gradle\caches\8.13\transforms\6406c1139074e1af6b4cf7ea3e2c5e85\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:25:22-65
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\e1dc4e9855cb37f15cf8660106aa9bcc\transformed\play-services-basement-18.2.0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\e1dc4e9855cb37f15cf8660106aa9bcc\transformed\play-services-basement-18.2.0\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\strom\.gradle\caches\8.13\transforms\e1dc4e9855cb37f15cf8660106aa9bcc\transformed\play-services-basement-18.2.0\AndroidManifest.xml:22:13-58
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:31:9-39:20
+MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:31:9-39:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\924b7cccebe9bfdb5bb77e3972c6e5b2\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\strom\.gradle\caches\8.13\transforms\924b7cccebe9bfdb5bb77e3972c6e5b2\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\strom\.gradle\caches\8.13\transforms\82b02ce7a383125f748bb87ce7ea2db1\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:28:5-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:28:22-74
+meta-data#androidx.work.WorkManagerInitializer
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:36:13-38:52
+	android:value
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:38:17-49
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:37:17-68
+service#androidx.work.impl.background.systemalarm.SystemAlarmService
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:41:9-46:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:44:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:45:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:46:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:43:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:42:13-88
+service#androidx.work.impl.background.systemjob.SystemJobService
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:47:9-53:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:50:13-70
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:51:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:52:13-69
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:53:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:49:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:48:13-84
+service#androidx.work.impl.foreground.SystemForegroundService
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:54:9-59:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:57:13-77
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:58:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:59:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:56:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:55:13-81
+receiver#androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:61:9-66:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:64:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:65:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:66:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:63:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:62:13-88
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:67:9-77:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:70:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:71:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:72:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:69:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:68:13-106
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:73:13-76:29
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:74:17-87
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:74:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:75:17-90
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:75:25-87
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:78:9-88:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:81:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:82:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:83:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:80:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:79:13-104
+intent-filter#action:name:android.intent.action.BATTERY_LOW+action:name:android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:84:13-87:29
+action#android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:85:17-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:85:25-74
+action#android.intent.action.BATTERY_LOW
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:86:17-76
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:86:25-73
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:89:9-99:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:92:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:93:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:94:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:91:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:90:13-104
+intent-filter#action:name:android.intent.action.DEVICE_STORAGE_LOW+action:name:android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:95:13-98:29
+action#android.intent.action.DEVICE_STORAGE_LOW
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:96:17-83
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:96:25-80
+action#android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:97:17-82
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:97:25-79
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:100:9-109:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:103:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:104:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:105:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:102:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:101:13-103
+intent-filter#action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:106:13-108:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:107:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:107:25-76
+receiver#androidx.work.impl.background.systemalarm.RescheduleReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:110:9-121:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:113:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:114:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:115:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:112:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:111:13-88
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.TIMEZONE_CHANGED+action:name:android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:116:13-120:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:117:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:117:25-76
+action#android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:118:17-73
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:118:25-70
+action#android.intent.action.TIMEZONE_CHANGED
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:119:17-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:119:25-78
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:122:9-131:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:125:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:126:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:127:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:124:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:123:13-99
+intent-filter#action:name:androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:128:13-130:29
+action#androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:129:17-98
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:129:25-95
+receiver#androidx.work.impl.diagnostics.DiagnosticsReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:132:9-142:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:135:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:136:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:137:13-57
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:138:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:134:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:133:13-78
+intent-filter#action:name:androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:139:13-141:29
+action#androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:140:17-88
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\359c2a249813c9cf4206780d834575b0\transformed\work-runtime-2.7.0\AndroidManifest.xml:140:25-85
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
+permission#com.example.adlerlife.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+uses-permission#com.example.adlerlife.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.15.0] C:\Users\strom\.gradle\caches\8.13\transforms\f239fcd0bd567a33798c5a2a382e4bb4\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\strom\.gradle\caches\8.13\transforms\40c29a5e0cd8ecc7db25f781cadeec4b\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:30:17-78
+uses-library#android.ext.adservices
+ADDED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\678527f33f18d91c27f8694061c5bb72\transformed\ads-adservices-1.0.0-beta05\AndroidManifest.xml:23:9-25:40
+	android:required
+		ADDED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\678527f33f18d91c27f8694061c5bb72\transformed\ads-adservices-1.0.0-beta05\AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\strom\.gradle\caches\8.13\transforms\678527f33f18d91c27f8694061c5bb72\transformed\ads-adservices-1.0.0-beta05\AndroidManifest.xml:24:13-50
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime-android:2.7.0] C:\Users\strom\.gradle\caches\8.13\transforms\99405d43d40d6868b5fdc0809f343dc7\transformed\room-runtime-release\AndroidManifest.xml:25:13-74
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\strom\.gradle\caches\8.13\transforms\51f491af2c91311349a076a18efd9b1f\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
