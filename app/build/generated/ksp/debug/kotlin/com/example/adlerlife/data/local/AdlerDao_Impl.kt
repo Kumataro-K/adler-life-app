@@ -170,6 +170,44 @@ public class AdlerDao_Impl(
     }
   }
 
+  public override fun getLogsAfter(after: Long): Flow<List<TraceLog>> {
+    val _sql: String = "SELECT * FROM trace_logs WHERE timestamp >= ? ORDER BY timestamp ASC"
+    return createFlow(__db, false, arrayOf("trace_logs")) { _connection ->
+      val _stmt: SQLiteStatement = _connection.prepare(_sql)
+      try {
+        var _argIndex: Int = 1
+        _stmt.bindLong(_argIndex, after)
+        val _columnIndexOfId: Int = getColumnIndexOrThrow(_stmt, "id")
+        val _columnIndexOfMood: Int = getColumnIndexOrThrow(_stmt, "mood")
+        val _columnIndexOfEnergy: Int = getColumnIndexOrThrow(_stmt, "energy")
+        val _columnIndexOfWhatHappened: Int = getColumnIndexOrThrow(_stmt, "whatHappened")
+        val _columnIndexOfFeeling: Int = getColumnIndexOrThrow(_stmt, "feeling")
+        val _columnIndexOfTimestamp: Int = getColumnIndexOrThrow(_stmt, "timestamp")
+        val _result: MutableList<TraceLog> = mutableListOf()
+        while (_stmt.step()) {
+          val _item: TraceLog
+          val _tmpId: Int
+          _tmpId = _stmt.getLong(_columnIndexOfId).toInt()
+          val _tmpMood: Float
+          _tmpMood = _stmt.getDouble(_columnIndexOfMood).toFloat()
+          val _tmpEnergy: Float
+          _tmpEnergy = _stmt.getDouble(_columnIndexOfEnergy).toFloat()
+          val _tmpWhatHappened: String
+          _tmpWhatHappened = _stmt.getText(_columnIndexOfWhatHappened)
+          val _tmpFeeling: String
+          _tmpFeeling = _stmt.getText(_columnIndexOfFeeling)
+          val _tmpTimestamp: Long
+          _tmpTimestamp = _stmt.getLong(_columnIndexOfTimestamp)
+          _item = TraceLog(_tmpId,_tmpMood,_tmpEnergy,_tmpWhatHappened,_tmpFeeling,_tmpTimestamp)
+          _result.add(_item)
+        }
+        _result
+      } finally {
+        _stmt.close()
+      }
+    }
+  }
+
   public companion object {
     public fun getRequiredConverters(): List<KClass<*>> = emptyList()
   }
