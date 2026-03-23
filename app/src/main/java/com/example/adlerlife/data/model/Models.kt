@@ -1,4 +1,4 @@
-package com.example.adlerlife.data.model
+package com.forestmood.app.data.model
 
 import androidx.compose.ui.graphics.Color
 import androidx.room.Entity

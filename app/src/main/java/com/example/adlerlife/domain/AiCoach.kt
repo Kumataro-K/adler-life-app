@@ -1,8 +1,8 @@
-package com.example.adlerlife.domain
+package com.forestmood.app.domain
 
-import com.example.adlerlife.BuildConfig
-import com.example.adlerlife.data.model.ChatMessage
-import com.example.adlerlife.data.model.TraceLog
+import com.forestmood.app.BuildConfig
+import com.forestmood.app.data.model.ChatMessage
+import com.forestmood.app.data.model.TraceLog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType

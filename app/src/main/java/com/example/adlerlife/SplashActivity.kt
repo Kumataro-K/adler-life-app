@@ -1,4 +1,4 @@
-package com.example.adlerlife
+package com.forestmood.app
 
 import android.content.Intent
 import android.os.Build

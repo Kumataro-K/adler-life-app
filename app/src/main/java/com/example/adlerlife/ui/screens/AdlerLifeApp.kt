@@ -1,4 +1,4 @@
-package com.example.adlerlife.ui.screens
+package com.forestmood.app.ui.screens
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -18,6 +17,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -70,18 +70,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.adlerlife.BuildConfig
-import com.example.adlerlife.data.model.TraceDaySummary
-import com.example.adlerlife.data.model.TraceLog
-import com.example.adlerlife.ui.components.AdBanner
-import com.example.adlerlife.ui.components.CalendarDayCell
-import com.example.adlerlife.ui.components.GentleCard
-import com.example.adlerlife.ui.components.TraceLogRow
-import com.example.adlerlife.util.DISCLAIMER_TEXT
-import com.example.adlerlife.util.PRIVACY_POLICY_TEXT
-import com.example.adlerlife.util.exportLogs
-import com.example.adlerlife.util.shareText
-import com.example.adlerlife.viewmodel.AdlerViewModel
+import com.forestmood.app.BuildConfig
+import com.forestmood.app.data.model.TraceDaySummary
+import com.forestmood.app.data.model.TraceLog
+import com.forestmood.app.ui.components.AdBanner
+import com.forestmood.app.ui.components.CalendarDayCell
+import com.forestmood.app.ui.components.GentleCard
+import com.forestmood.app.ui.components.TraceLogRow
+import com.forestmood.app.util.DISCLAIMER_TEXT
+import com.forestmood.app.util.PRIVACY_POLICY_TEXT
+import com.forestmood.app.util.exportLogs
+import com.forestmood.app.util.shareText
+import com.forestmood.app.viewmodel.AdlerViewModel
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -302,14 +302,13 @@ fun AdlerLifeApp(
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun TraceScreen(
     traceLogs: List<TraceLog>,
     mood: Int,
     energy: Int,
     selectedTags: Set<String>,
-    selectedFeeling: String?,
+    selectedFeeling: String,
     isSaving: Boolean,
     onMoodChange: (Int) -> Unit,
     onEnergyChange: (Int) -> Unit,
@@ -321,8 +320,13 @@ private fun TraceScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
+        Text(
+            text = "ありのままを記録しましょう。今日の気分や体調をあなたのペースで残せます。",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.76f)
+        )
         LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(bottom = 8.dp),
@@ -405,7 +409,7 @@ private fun TraceScreen(
                     },
                     centerValueColor = Color(0xFF888888),
                     onValueChange = onEnergyChange
-                )
+                }
                 Button(
                     onClick = onSave,
                     enabled = !isSaving,

@@ -1,15 +1,15 @@
-package com.example.adlerlife.viewmodel
+package com.forestmood.app.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.adlerlife.data.model.ChatMessage
-import com.example.adlerlife.data.model.ChatRole
-import com.example.adlerlife.data.model.TraceDaySummary
-import com.example.adlerlife.data.model.TraceInput
-import com.example.adlerlife.data.model.TraceLog
-import com.example.adlerlife.data.model.toLocalDate
-import com.example.adlerlife.data.repository.AdlerRepository
+import com.forestmood.app.data.model.ChatMessage
+import com.forestmood.app.data.model.ChatRole
+import com.forestmood.app.data.model.TraceDaySummary
+import com.forestmood.app.data.model.TraceInput
+import com.forestmood.app.data.model.TraceLog
+import com.forestmood.app.data.model.toLocalDate
+import com.forestmood.app.data.repository.AdlerRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

@@ -1,4 +1,4 @@
-package com.example.adlerlife.ui.theme
+package com.forestmood.app.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

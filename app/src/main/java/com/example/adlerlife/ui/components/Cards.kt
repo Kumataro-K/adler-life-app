@@ -1,4 +1,4 @@
-package com.example.adlerlife.ui.components
+package com.forestmood.app.ui.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
@@ -25,10 +25,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.example.adlerlife.BuildConfig
-import com.example.adlerlife.data.model.ChatMessage
-import com.example.adlerlife.data.model.ChatRole
-import com.example.adlerlife.data.model.TraceLog
+import com.forestmood.app.BuildConfig
+import com.forestmood.app.data.model.ChatMessage
+import com.forestmood.app.data.model.ChatRole
+import com.forestmood.app.data.model.TraceLog
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView

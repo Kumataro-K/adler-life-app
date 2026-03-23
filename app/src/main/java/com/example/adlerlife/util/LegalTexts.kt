@@ -1,4 +1,4 @@
-package com.example.adlerlife.util
+package com.forestmood.app.util
 
 const val DISCLAIMER_TEXT = """
 このアプリは日々の気分・体調を記録するセルフケアアプリです。

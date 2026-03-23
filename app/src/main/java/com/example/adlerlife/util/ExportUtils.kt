@@ -1,8 +1,8 @@
-package com.example.adlerlife.util
+package com.forestmood.app.util
 
 import android.content.Context
 import android.content.Intent
-import com.example.adlerlife.data.model.TraceLog
+import com.forestmood.app.data.model.TraceLog
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId

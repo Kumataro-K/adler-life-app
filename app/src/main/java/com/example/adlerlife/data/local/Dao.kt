@@ -1,10 +1,10 @@
-package com.example.adlerlife.data.local
+package com.forestmood.app.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.adlerlife.data.model.TraceLog
+import com.forestmood.app.data.model.TraceLog
 import kotlinx.coroutines.flow.Flow
 
 @Dao

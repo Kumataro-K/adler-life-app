@@ -1,8 +1,8 @@
-package com.example.adlerlife.util
+package com.forestmood.app.util
 
 import android.app.Activity
 import android.content.Context
-import com.example.adlerlife.BuildConfig
+import com.forestmood.app.BuildConfig
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError

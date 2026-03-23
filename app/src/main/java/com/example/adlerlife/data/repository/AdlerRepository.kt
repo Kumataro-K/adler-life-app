@@ -1,12 +1,12 @@
-package com.example.adlerlife.data.repository
+package com.forestmood.app.data.repository
 
-import com.example.adlerlife.data.local.AdlerDao
-import com.example.adlerlife.data.model.ChatMessage
-import com.example.adlerlife.data.model.TraceDaySummary
-import com.example.adlerlife.data.model.TraceInput
-import com.example.adlerlife.data.model.TraceLog
-import com.example.adlerlife.data.model.toLocalDate
-import com.example.adlerlife.domain.AiCoach
+import com.forestmood.app.data.local.AdlerDao
+import com.forestmood.app.data.model.ChatMessage
+import com.forestmood.app.data.model.TraceDaySummary
+import com.forestmood.app.data.model.TraceInput
+import com.forestmood.app.data.model.TraceLog
+import com.forestmood.app.data.model.toLocalDate
+import com.forestmood.app.domain.AiCoach
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
