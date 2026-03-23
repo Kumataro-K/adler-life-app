@@ -397,19 +397,6 @@ private fun TraceScreen(
                     centerValueColor = Color(0xFF2D6A4F),
                     onValueChange = onMoodChange
                 )
-                ScoreSlider(
-                    title = "身体のエネルギー",
-                    value = energy,
-                    guidance = when (energy) {
-                        in 0..20 -> "🪫 ほとんど動けない"
-                        in 21..40 -> "😴 疲れ気味"
-                        in 41..60 -> "😐 普通に動ける"
-                        in 61..80 -> "⚡ 元気がある"
-                        else -> "🔥 とても活力がある"
-                    },
-                    centerValueColor = Color(0xFF888888),
-                    onValueChange = onEnergyChange
-                }
                 Button(
                     onClick = onSave,
                     enabled = !isSaving,
@@ -468,7 +455,7 @@ private fun RecordsScreen(
     selectedPeriod: Int,
     onSelectPeriod: (Int) -> Unit,
     recordDays: Int,
-    chartData: List<Pair<String, Int?>>
+    chartData: List<Triple<String, Int?, Int?>>
 ) {
     val axisLabels = if (selectedPeriod == 0) {
         listOf("月", "火", "水", "木", "金", "土", "日")
@@ -493,7 +480,7 @@ private fun RecordsScreen(
                 Tab(text = { Text("今週") }, selected = selectedPeriod == 0, onClick = { onSelectPeriod(0) })
                 Tab(text = { Text("今月") }, selected = selectedPeriod == 1, onClick = { onSelectPeriod(1) })
             }
-            MoodBarChart(
+            MoodEnergyBarChart(
                 dataPoints = chartData,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -528,15 +515,39 @@ private fun RecordsScreen(
 }
 
 @Composable
-private fun MoodBarChart(
-    dataPoints: List<Pair<String, Int?>>,
+private fun MoodEnergyBarChart(
+    dataPoints: List<Triple<String, Int?, Int?>>,
     modifier: Modifier = Modifier
 ) {
-    val barColor = Color(0xFF52B788)
+    val moodColor = Color(0xFF52B788)
+    val energyColor = Color(0xFFFF9800)
     val axisColor = Color(0xFF888888)
-    val gridColor = Color(0xFFCCCCCC)
+    val gridColor = Color(0xFFDDDDDD)
 
     Column(modifier = modifier) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 40.dp, bottom = 8.dp),
+            horizontalArrangement = Arrangement.Start
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(12.dp)
+                    .background(moodColor, RoundedCornerShape(2.dp))
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Text("気分", style = MaterialTheme.typography.labelSmall, color = Color(0xFF444444))
+            Spacer(modifier = Modifier.width(16.dp))
+            Box(
+                modifier = Modifier
+                    .size(12.dp)
+                    .background(energyColor, RoundedCornerShape(2.dp))
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Text("エネルギー", style = MaterialTheme.typography.labelSmall, color = Color(0xFF444444))
+        }
+
         Box(modifier = Modifier.fillMaxWidth()) {
             Column(
                 modifier = Modifier
@@ -591,8 +602,9 @@ private fun MoodBarChart(
                 val chartWidth = size.width
                 val chartHeight = size.height
                 val barCount = dataPoints.size.coerceAtLeast(1)
-                val barWidth = (chartWidth / barCount) * 0.5f
-                val gap = (chartWidth / barCount) * 0.5f
+                val slotWidth = chartWidth / barCount
+                val barWidth = slotWidth * 0.3f
+                val gap = slotWidth * 0.05f
 
                 listOf(25, 50, 75, 100).forEach { value ->
                     val y = chartHeight - (value / 100f * chartHeight)
@@ -618,14 +630,26 @@ private fun MoodBarChart(
                     strokeWidth = 2.dp.toPx()
                 )
 
-                dataPoints.forEachIndexed { index, (_, value) ->
-                    if (value != null) {
-                        val barHeight = value / 100f * chartHeight
-                        val left = index * (chartWidth / barCount) + gap / 2
-                        val top = chartHeight - barHeight
+                dataPoints.forEachIndexed { index, (_, mood, energy) ->
+                    val centerX = index * slotWidth + slotWidth / 2
+
+                    if (mood != null) {
+                        val barHeight = mood / 100f * chartHeight
+                        val left = centerX - barWidth - gap / 2
                         drawRoundRect(
-                            color = barColor,
-                            topLeft = Offset(left, top),
+                            color = moodColor,
+                            topLeft = Offset(left, chartHeight - barHeight),
+                            size = Size(barWidth, barHeight),
+                            cornerRadius = CornerRadius(4.dp.toPx())
+                        )
+                    }
+
+                    if (energy != null) {
+                        val barHeight = energy / 100f * chartHeight
+                        val left = centerX + gap / 2
+                        drawRoundRect(
+                            color = energyColor,
+                            topLeft = Offset(left, chartHeight - barHeight),
                             size = Size(barWidth, barHeight),
                             cornerRadius = CornerRadius(4.dp.toPx())
                         )
@@ -637,7 +661,7 @@ private fun MoodBarChart(
         Spacer(modifier = Modifier.height(4.dp))
 
         Text(
-            text = "気分（0〜100）",
+            text = "縦軸：気分・エネルギー（0〜100）",
             style = MaterialTheme.typography.labelSmall,
             color = Color(0xFF888888),
             modifier = Modifier.fillMaxWidth(),
@@ -773,14 +797,14 @@ private fun LegendCard() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
-                LegendItem(color = Color(0xFFEF9A9A), label = "つらい\n(0〜33)")
-                LegendItem(color = Color(0xFFFFE082), label = "ふつう\n(34〜66)")
-                LegendItem(color = Color(0xFF81C784), label = "よい\n(67〜100)")
+                LegendItem(color = Color(0xFFEF9A9A), label = "つらい\n0〜33")
+                LegendItem(color = Color(0xFFFFE082), label = "ふつう\n34〜66")
+                LegendItem(color = Color(0xFF81C784), label = "よい\n67〜100")
                 LegendItem(color = Color(0xFFE0E0E0), label = "記録\nなし")
             }
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "暖色（赤・黄）→ 気分が低め　緑 → 気分が良い",
+                text = "🔴 赤・🟡 黄 → 気分が低め　🟢 緑 → 気分が良い",
                 style = MaterialTheme.typography.labelSmall,
                 color = Color(0xFF666666),
                 textAlign = TextAlign.Center,

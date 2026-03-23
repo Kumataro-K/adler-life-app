@@ -81,7 +81,7 @@ class AdlerViewModel(
         initialValue = emptyList()
     )
 
-    val chartData: StateFlow<List<Pair<String, Int?>>> = combine(selectedRecordPeriod, recordLogs) { period, logs ->
+    val chartData: StateFlow<List<Triple<String, Int?, Int?>>> = combine(selectedRecordPeriod, recordLogs) { period, logs ->
         if (period == 0) getThisWeekData(logs) else getThisMonthData(logs)
     }.stateIn(
         scope = viewModelScope,
@@ -210,67 +210,62 @@ class AdlerViewModel(
 
     fun logsForDate(date: LocalDate): List<TraceLog> = traceLogs.value.filter { it.toLocalDate(zoneId) == date }
 
-    fun getThisWeekData(logs: List<TraceLog>): List<Pair<String, Int?>> {
-        val calendar = Calendar.getInstance().apply {
-            firstDayOfWeek = Calendar.MONDAY
-            set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
-        }
+    fun getThisWeekData(logs: List<TraceLog>): List<Triple<String, Int?, Int?>> {
+        val calendar = Calendar.getInstance()
+        val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        val daysFromMonday = (dayOfWeek + 5) % 7
+        calendar.add(Calendar.DAY_OF_MONTH, -daysFromMonday)
         val dayLabels = listOf("月", "火", "水", "木", "金", "土", "日")
-        val result = mutableListOf<Pair<String, Int?>>()
+        return dayLabels.map { label ->
+            val dayStart = calendar.clone() as Calendar
+            dayStart.set(Calendar.HOUR_OF_DAY, 0)
+            dayStart.set(Calendar.MINUTE, 0)
+            dayStart.set(Calendar.SECOND, 0)
+            dayStart.set(Calendar.MILLISECOND, 0)
 
-        repeat(7) { index ->
-            val dayStart = (calendar.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, 0)
-                set(Calendar.MINUTE, 0)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
+            val dayEnd = calendar.clone() as Calendar
+            dayEnd.set(Calendar.HOUR_OF_DAY, 23)
+            dayEnd.set(Calendar.MINUTE, 59)
+            dayEnd.set(Calendar.SECOND, 59)
+
+            val dayLogs = logs.filter {
+                it.timestamp >= dayStart.timeInMillis &&
+                    it.timestamp <= dayEnd.timeInMillis
             }
-            val dayEnd = (calendar.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, 23)
-                set(Calendar.MINUTE, 59)
-                set(Calendar.SECOND, 59)
-                set(Calendar.MILLISECOND, 999)
-            }
-            val dayLogs = logs.filter { it.timestamp in dayStart.timeInMillis..dayEnd.timeInMillis }
-            val avgMood = dayLogs.takeIf { it.isNotEmpty() }?.map { it.mood }?.average()?.toInt()
-            result.add(dayLabels[index] to avgMood)
+            val avgMood = if (dayLogs.isEmpty()) null else dayLogs.map { it.mood }.average().toInt()
+            val avgEnergy = if (dayLogs.isEmpty()) null else dayLogs.map { it.energy }.average().toInt()
             calendar.add(Calendar.DAY_OF_MONTH, 1)
+            Triple(label, avgMood, avgEnergy)
         }
-        return result
     }
 
-    fun getThisMonthData(logs: List<TraceLog>): List<Pair<String, Int?>> {
-        val calendar = Calendar.getInstance().apply {
-            set(Calendar.DAY_OF_MONTH, 1)
-        }
+    fun getThisMonthData(logs: List<TraceLog>): List<Triple<String, Int?, Int?>> {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.DAY_OF_MONTH, 1)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
         val maxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
-        val result = mutableListOf<Pair<String, Int?>>()
 
-        repeat(maxDay) { index ->
-            val dayStart = (calendar.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, 0)
-                set(Calendar.MINUTE, 0)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
+        return (1..maxDay).map { day ->
+            val dayStart = calendar.clone() as Calendar
+            val dayEnd = calendar.clone() as Calendar
+            dayEnd.set(Calendar.HOUR_OF_DAY, 23)
+            dayEnd.set(Calendar.MINUTE, 59)
+            dayEnd.set(Calendar.SECOND, 59)
+
+            val dayLogs = logs.filter {
+                it.timestamp >= dayStart.timeInMillis &&
+                    it.timestamp <= dayEnd.timeInMillis
             }
-            val dayEnd = (calendar.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, 23)
-                set(Calendar.MINUTE, 59)
-                set(Calendar.SECOND, 59)
-                set(Calendar.MILLISECOND, 999)
-            }
-            val dayLogs = logs.filter { it.timestamp in dayStart.timeInMillis..dayEnd.timeInMillis }
-            val avgMood = dayLogs.takeIf { it.isNotEmpty() }?.map { it.mood }?.average()?.toInt()
-            val dayNumber = index + 1
-            val label = if (dayNumber == 1 || dayNumber == maxDay || dayNumber % 5 == 0) {
-                dayNumber.toString()
-            } else {
-                ""
-            }
-            result.add(label to avgMood)
+            val avgMood = if (dayLogs.isEmpty()) null else dayLogs.map { it.mood }.average().toInt()
+            val avgEnergy = if (dayLogs.isEmpty()) null else dayLogs.map { it.energy }.average().toInt()
+
             calendar.add(Calendar.DAY_OF_MONTH, 1)
+            val label = if (day == 1 || day % 5 == 0 || day == maxDay) day.toString() else ""
+            Triple(label, avgMood, avgEnergy)
         }
-        return result
     }
 
     private fun filterThisWeekLogs(logs: List<TraceLog>): List<TraceLog> {
