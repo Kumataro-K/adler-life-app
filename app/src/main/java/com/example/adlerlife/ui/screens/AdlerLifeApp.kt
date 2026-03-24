@@ -397,6 +397,19 @@ private fun TraceScreen(
                     centerValueColor = Color(0xFF2D6A4F),
                     onValueChange = onMoodChange
                 )
+                ScoreSlider(
+                    title = "身体のエネルギー",
+                    value = energy,
+                    guidance = when (energy) {
+                        in 0..20 -> "🪫 ほとんど動けない"
+                        in 21..40 -> "😴 疲れ気味"
+                        in 41..60 -> "😐 普通に動ける"
+                        in 61..80 -> "⚡ 元気がある"
+                        else -> "🔥 とても活力がある"
+                    },
+                    centerValueColor = Color(0xFF2D6A4F),
+                    onValueChange = onEnergyChange
+                )
                 Button(
                     onClick = onSave,
                     enabled = !isSaving,
